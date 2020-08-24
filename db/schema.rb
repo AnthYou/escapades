@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_24_161633) do
+ActiveRecord::Schema.define(version: 2020_08_24_162122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 2020_08_24_161633) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["trip_id"], name: "index_applications_on_trip_id"
     t.index ["user_id"], name: "index_applications_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "trip_id", null: false
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["trip_id"], name: "index_posts_on_trip_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -82,6 +92,8 @@ ActiveRecord::Schema.define(version: 2020_08_24_161633) do
   add_foreign_key "activities", "trips"
   add_foreign_key "applications", "trips"
   add_foreign_key "applications", "users"
+  add_foreign_key "posts", "trips"
+  add_foreign_key "posts", "users"
   add_foreign_key "reviews", "applications"
   add_foreign_key "reviews", "users"
   add_foreign_key "trips", "users"
