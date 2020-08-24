@@ -3,6 +3,7 @@ class Trip < ApplicationRecord
   belongs_to :user
   has_many :applications, dependent: :destroy
   has_many :users, through: :applications
+  has_many :activities
   validates :title, presence: true
   validates :description, presence: true, length: { minimum: 30 }
   validates :destination, presence: true
