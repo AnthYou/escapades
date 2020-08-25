@@ -1,11 +1,11 @@
 require "open-uri"
 
 # Destroy all previous instances
-Trip.destroy_all
-User.destroy_all
-Application.destroy_all
 Review.destroy_all
 Post.destroy_all
+Application.destroy_all
+Trip.destroy_all
+User.destroy_all
 
 # USERS CREATION =========================================
 puts "Seeding users..."
@@ -148,7 +148,6 @@ users = [
 users.each do |user| iterated_user = User.new(user.first)
   file = URI.open(user.last)
   iterated_user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
-  # p iterated_user
   iterated_user.save!
 end
 
@@ -285,43 +284,35 @@ puts "Done !"
 puts "Seeding reviews..."
 
 reviews = [
-  [
     {
       content: "You were amazing mate =)",
       stars: '5',
-      application_id: 1,
-      user_id: 1,
-    }
-  ],
-  [
+      application: Application.first,
+      user: User.first
+    },
     {
       content: "You are such a beautiful person <3",
       stars: '5',
-      application_id: 2,
-      user_id: 1,
-    }
-  ],
-  [
+      application: Application.second,
+      user: User.first
+    },
     {
       content: "You suck man",
       stars: '0',
-      application_id: 3,
-      user_id: 1,
-    }
-  ],
-  [
+      application: Application.third,
+      user: User.first
+    },
     {
       content: "I had a very good time with you =)",
       stars: '4',
-      application_id: 4,
-      user_id: 1,
+      application: Application.fourth,
+      user: User.first
     }
-  ],
-]
+  ]
 
-reviews.each do |review|
-  Review.create!(review.first)
-end
+
+Review.create!(reviews)
+
 
 puts "Done !"
 
@@ -332,8 +323,8 @@ posts = [
   [
     {
       content: "My arrival at flinder's street",
-      user: 1,
-      trip: 1,
+      user: User.first,
+      trip: Trip.first,
 
     },
     "https://images.unsplash.com/photo-1514395462725-fb4566210144?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
@@ -342,8 +333,8 @@ posts = [
   [
     {
       content: "I saw cute kangaroos in the outback",
-      user: 1,
-      trip: 1,
+      user: User.first,
+      trip: Trip.first,
 
     },
     "https://images.unsplash.com/photo-1526515579900-98518e7862cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1041&q=80"
@@ -352,8 +343,8 @@ posts = [
   [
     {
       content: "Just arrived at Byron Bay! I'm ready to go surfing 😛",
-      user: 1,
-      trip: 1,
+      user: User.first,
+      trip: Trip.first,
 
     },
     "https://images.unsplash.com/photo-1566761011348-57ccaa67ea69?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80"
@@ -362,8 +353,8 @@ posts = [
   [
     {
       content: "A beautiful view from the 12 apostles.",
-      user: 1,
-      trip: 1,
+      user: User.first,
+      trip: Trip.first,
 
     },
     "https://images.unsplash.com/photo-1596430222039-4a2d7b4cd767?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
@@ -372,8 +363,8 @@ posts = [
   [
     {
       content: "A beautiful view from the 12 apostles.",
-      user: 1,
-      trip: 1,
+      user: User.first,
+      trip: Trip.first,
 
     },
     "https://images.unsplash.com/photo-1596430222039-4a2d7b4cd767?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
@@ -382,8 +373,8 @@ posts = [
   [
     {
       content: "I'm in a forest in Cairns. Now the adventure begins.",
-      user: 1,
-      trip: 1,
+      user: User.first,
+      trip: Trip.first,
 
     },
     "https://images.unsplash.com/photo-1556592446-6113e4690ef7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1059&q=80"
@@ -392,8 +383,8 @@ posts = [
   [
     {
       content: "Chillout time in Darwin.",
-      user: 1,
-      trip: 1,
+      user: User.first,
+      trip: Trip.first,
 
     },
     "https://images.unsplash.com/photo-1579545564328-7d4aa4bc7df8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80"
@@ -402,99 +393,61 @@ posts = [
   [
     {
       content: "Last step of my trip: Perth",
-      user: 1,
-      trip: 1,
+      user: User.first,
+      trip: Trip.first,
 
     },
     "https://images.unsplash.com/photo-1524586410818-196d249560e4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1207&q=80"
   ],
 ]
 
-posts.each do |post|
-  Post.create!(post.first)
+posts.each do |post| iterated_post = Post.new(post.first)
+  file = URI.open(post.last)
+  iterated_post.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  iterated_post.save!
 end
+# # ACTIVITIES CREATION
+puts "Seeding activities..."
 
-# # DESTINATIONS CREATION
-puts "Seeding destinations..."
-
-posts = [
-  [
+activities = [
     {
-      content: "My arrival at flinder's street",
-      user: 1,
-      trip: 1,
-
+      title: "Discover Melbourne",
+      description: "We're gonna explore the streets, drink coffee and discover the nightlife.",
+      price: 100,
+      location: "Melbourne, Australia",
+      url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      trip: Trip.first
     },
-    "https://images.unsplash.com/photo-1514395462725-fb4566210144?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
-  ],
-
-  [
     {
-      content: "I saw cute kangaroos in the outback",
-      user: 1,
-      trip: 1,
-
+      title: "Diving at the great barrier reef",
+      description: "A dive into the largest coral reef on earth",
+      price: 800,
+      location: "Cairns, Australia",
+      url: "https://www.australia.com/en/places/cairns-and-surrounds/guide-to-the-great-barrier-reef.html",
+      trip: Trip.first
     },
-    "https://images.unsplash.com/photo-1526515579900-98518e7862cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1041&q=80"
-  ],
-
-  [
     {
-      content: "Just arrived at Byron Bay! I'm ready to go surfing 😛",
-      user: 1,
-      trip: 1,
-
+      title: "Desert trip to Uluru",
+      description: "We can't do the climbing. But We'll admire this beautiful landscape anyway",
+      price: 200,
+      location: "Alice Springs, Australia",
+      url: "https://parksaustralia.gov.au/uluru/",
+      trip: Trip.first
     },
-    "https://images.unsplash.com/photo-1566761011348-57ccaa67ea69?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80"
-  ],
-
-  [
     {
-      content: "A beautiful view from the 12 apostles.",
-      user: 1,
-      trip: 1,
+      title: "Skidiving in Perth",
+      description: "I hope you're not affraid hahaha. This is crazy!",
+      price: 280,
+      location: "Perth, Australia",
+      url: "https://www.skydive.com.au/perth/",
+      trip: Trip.first
+    }
+  ]
 
-    },
-    "https://images.unsplash.com/photo-1596430222039-4a2d7b4cd767?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
-  ],
+Activity.create!(activities)
 
-  [
-    {
-      content: "A beautiful view from the 12 apostles.",
-      user: 1,
-      trip: 1,
+puts "Done ! 🍺"
 
-    },
-    "https://images.unsplash.com/photo-1596430222039-4a2d7b4cd767?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
-  ],
 
-  [
-    {
-      content: "I'm in a forest in Cairns. Now the adventure begins.",
-      user: 1,
-      trip: 1,
 
-    },
-    "https://images.unsplash.com/photo-1556592446-6113e4690ef7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1059&q=80"
-  ],
 
-  [
-    {
-      content: "Chillout time in Darwin.",
-      user: 1,
-      trip: 1,
-
-    },
-    "https://images.unsplash.com/photo-1579545564328-7d4aa4bc7df8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80"
-  ],
-
-  [
-    {
-      content: "Last step of my trip: Perth",
-      user: 1,
-      trip: 1,
-
-    },
-    "https://images.unsplash.com/photo-1524586410818-196d249560e4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1207&q=80"
-  ],
-]
