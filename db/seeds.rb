@@ -300,23 +300,23 @@ puts "Seeding reviews..."
 reviews = [
     {
       content: "You were amazing mate =)",
-      stars: '5'
+      stars: 5
     },
     {
       content: "You are such a beautiful person <3",
-      stars: '5',
+      stars: 5,
     },
     {
       content: "You suck man",
-      stars: '0',
+      stars: 0,
     },
     {
       content: "I had a very good time with you =)",
-      stars: '4',
+      stars: 4,
     },
     {
       content: "So many good memories with you my friend!!",
-      stars: '5',
+      stars: 5,
     }
   ]
 
@@ -324,14 +324,14 @@ reviews = [
 
   user = User.all.sample
   booking = Booking.all.sample
-
+  review = reviews.sample
  # on ne peut pas laisser de review sur la même personne pour le même booking
 
 # !!!! Il y a t'il une meilleure métode ??? car des creates peuvent échouer !
 
 # --on regarde dans tous les reviews deja créés, si cette paire existe, on en prend une autre?
 
-  Review.create(content: reviews.sample[:content], stars: reviews.sample[:content], user: user, booking: booking)
+  Review.create(content: review[:content], stars: review[:stars], user: user, booking: booking)
 
 
 end
