@@ -1,12 +1,15 @@
 require "open-uri"
 
 # Destroy all previous instances
+puts "Destroy previous instances..."
+
 Review.destroy_all
 Post.destroy_all
 Booking.destroy_all
 Trip.destroy_all
 User.destroy_all
 
+puts "Done !"
 # USERS CREATION =========================================
 puts "Seeding users..."
 users = [
@@ -422,6 +425,9 @@ posts.each do |post| iterated_post = Post.new(post.first)
   iterated_post.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   iterated_post.save!
 end
+
+puts "Done !"
+
 # # ACTIVITIES CREATION
 puts "Seeding activities..."
 
