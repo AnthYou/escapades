@@ -4,8 +4,9 @@ require "open-uri"
 Review.destroy_all
 Post.destroy_all
 Booking.destroy_all
-Trip.destroy_all
 User.destroy_all
+Trip.destroy_all
+Activity.destroy_all
 
 # USERS CREATION =========================================
 puts "Seeding users..."
@@ -270,7 +271,7 @@ puts "Done !"
 
 puts "Seeding bookings..."
 
-status = ["Pending", "Accepted", "Declined", "Canceled"]
+status = ["pending", "accepted", "declined", "cancelled"]
 
 10.times do
 # vérifie que que le trip n'est pas plein, sinon on en prend un autre au hasard
