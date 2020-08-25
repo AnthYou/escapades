@@ -48,14 +48,14 @@ ActiveRecord::Schema.define(version: 2020_08_25_092121) do
     t.index ["trip_id"], name: "index_activities_on_trip_id"
   end
 
-  create_table "bookings", force: :cascade do |t|
+  create_table "applications", force: :cascade do |t|
     t.bigint "trip_id", null: false
     t.bigint "user_id", null: false
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["trip_id"], name: "index_bookings_on_trip_id"
-    t.index ["user_id"], name: "index_bookings_on_user_id"
+    t.index ["trip_id"], name: "index_applications_on_trip_id"
+    t.index ["user_id"], name: "index_applications_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -71,11 +71,11 @@ ActiveRecord::Schema.define(version: 2020_08_25_092121) do
   create_table "reviews", force: :cascade do |t|
     t.text "content"
     t.integer "stars"
-    t.bigint "booking_id", null: false
+    t.bigint "application_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["booking_id"], name: "index_reviews_on_booking_id"
+    t.index ["application_id"], name: "index_reviews_on_application_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -112,11 +112,11 @@ ActiveRecord::Schema.define(version: 2020_08_25_092121) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "activities", "trips"
-  add_foreign_key "bookings", "trips"
-  add_foreign_key "bookings", "users"
+  add_foreign_key "applications", "trips"
+  add_foreign_key "applications", "users"
   add_foreign_key "posts", "trips"
   add_foreign_key "posts", "users"
-  add_foreign_key "reviews", "bookings"
+  add_foreign_key "reviews", "applications"
   add_foreign_key "reviews", "users"
   add_foreign_key "trips", "users"
 end
