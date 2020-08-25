@@ -1,0 +1,26 @@
+<%= link_to user_path(user), :action => 'go' do %>
+  <!-- USER CARD -->
+  <div class="usercard-container">
+    <div class="usercard-image" style="background-image: url('<%= cl_image_path user.photo.key %>');"></div>
+    <!-- BADGE -->
+    <div class="card-badges">
+      <% if @trip.user == user %>
+        <span class="badge badge-secondary py-2 px-3 font-weight-light" style="position: absolute; left: 20px; top:20px;">OWNER</span>
+      <% end %>
+    </div>
+    <div class="card-info">
+      <div class="usercard-top">
+        <h2 class="usercard-name"><%= user.first_name %> <%= user.last_name.upcase %></h2>
+        <!-- AVERAGE RATING -->
+        <div class="reviews">
+          <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
+          <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
+          <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
+          <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
+          <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
+        </div>
+      </div>
+      <div class="usercard-description"><%= user.description %></div>
+    </div>
+  </div>
+<% end %>
