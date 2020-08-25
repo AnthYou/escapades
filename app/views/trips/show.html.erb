@@ -42,11 +42,17 @@
 
   <h2 class="font-weight-bold text-center mt-5 mb-4">meet your dream team</h2>
 
-  <% @trip.bookings.each do |booking| %>
-    <% if booking.status == "accepted" %>
-      <%= booking.user %>
+  <div class="users-grid d-flex justify-content-between mt-5">
+    <!-- TRIP OWNER -->
+    <%= render 'shared/usercards', user: @trip.user %>
+
+    <!-- TRIP USERS -->
+    <% @trip.bookings.each do |booking| %>
+      <% if booking.status == "accepted" %>
+        <%= render 'shared/usercards', user: booking.user %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 
   <div class='text-center mt-5 mb-5'>
   <%= link_to 'Back to all trips', trips_path, class: "btn btn-travel-secondary mb-3 " %>

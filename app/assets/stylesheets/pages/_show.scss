@@ -19,6 +19,7 @@
 }
 
 .trip-banner h1 {
+  text-align: center;
   color: white;
 }
 
@@ -37,4 +38,38 @@
 
 .trip-description p {
   margin: 0px;
+}
+
+.users-grid {
+  flex-wrap: wrap;
+}
+
+// .users-grid {
+//   display: grid;
+//   grid-template-columns: repeat(3, 1fr);
+//   grid-gap: 16px;
+// }
+
+// @media (max-width: 768px) {
+//    .users-grid {
+//     display: grid;
+//     grid-template-columns: repeat(2, 1fr);
+//   }
+// }
+
+// @media (max-width: 576px) {
+//    .users-grid {
+//     display: grid;
+//     grid-template-columns: repeat(1, 1fr);
+//   }
+// }
+
+a {
+  text-decoration: none;
+  color: $my-black;
+}
+
+a:hover {
+  text-decoration: none;
+  color: $my-black;
 }
