@@ -1,11 +1,13 @@
 class TripsController < ApplicationController
-
   def index
     @trips = Trip.all
+    authorize @trips
   end
 
   def show
     @trip = Trip.find(params[:id])
+    authorize @trip
+  end
 
   def new
     @trip = Trip.new
