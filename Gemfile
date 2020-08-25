@@ -5,6 +5,7 @@ ruby '2.6.6'
 
 # OUR GEMS HERE ===========
 gem 'cloudinary', '~> 1.12.0'
+gem 'geocoder'
 
 # =========================
 

@@ -1,0 +1,41 @@
+.mapboxgl-popup {
+  max-width: 300px;
+}
+
+.mapboxgl-popup-content {
+  padding: 0px !important;
+  border-radius: 6px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+.container-card a {
+  color: white !important;
+  font-weight: bold;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+.container-card a:hover {
+  text-decoration: none;
+
+
+}
+.container-card a:active {
+  text-decoration: none;
+}
+
+.container-card {
+  width: 180px;
+  height: 120px;
+  background-position: center;
+  background-size: cover;
+}
+
+.mapboxgl-marker:hover {
+  cursor: pointer;
+}
+
+
+
