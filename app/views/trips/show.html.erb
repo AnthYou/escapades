@@ -1,1 +1,46 @@
-<h1> Show</h1>
+<div class="container mt-5 show-container">
+  <div class ="image">
+    <div class = "card-top d-flex align-items-center justify-content-center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @trip.photo.key, crop: :fill %>'); background-size: cover ; height: 400px;">
+      <h2 class="text-center textbanner p-2 " style ="color:white"><%=@trip.title%></h2>
+    </div>
+  </div>
+  <div class="row p-1 destination" style="justify-content: center; margin: 25px">
+    <h2 class="font-weight-bold">The trip</h2>
+  </div>
+  <div class="row p-4 description text-center " style="box-shadow:1px 1px 1px lightgrey; ">
+    <%= @trip.description %>
+  </div>
+
+  <div class="spec mt-5 mb-3">
+    <h2 class="text-center" style="font-weight:600;">Specs</h2>
+
+    <div class="icons my-3" style= "display:flex;justify-content: space-around">
+      <div class= "icon text-center">
+        <div style="font-size: 30px;">💵</div>
+        <p class="font-weight-bold text-center">Estimated</p>
+        <p class="text-center">$<%= @trip.budget_min %> and $<%= @trip.budget_max %></p>
+        </div>
+      <div class= "icon text-center">
+        <div style="font-size: 30px;">🛫</div>
+        <p class="font-weight-bold text-center">Departure date</p>
+        <p class= "text-center"><%= @trip.departure_date.strftime('%e %B %Y') %></p>
+      </div>
+      <div class= "icon text-center">
+        <div style="font-size: 30px;">🛬</div>
+        <p class="font-weight-bold text-center">Return date</p>
+        <p class= 'text-center'><%= @trip.return_date.strftime('%e %B %Y') %></p>
+      </div>
+      <div class= "icon text-center">
+        <div style="font-size: 30px;">👩‍👩‍👧‍👧</div>
+        <p class="font-weight-bold text-center">Capacity max</p>
+        <p class="text-center"><%= @trip.max_capacity %> people</p>
+      </div>
+    </div>
+  </div>
+
+
+  <h2 class="text-center mt-5 mb-4"><strong>Meet your dream team</strong></h2>
+  <div class='text-center mt-5 mb-5'>
+  <%= link_to 'Back to all trips', trips_path, class: "btn btn-primary mb-3 " %>
+  </div>
+</div>
