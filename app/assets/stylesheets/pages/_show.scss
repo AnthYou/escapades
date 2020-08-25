@@ -5,3 +5,36 @@
 .destination {
   margin: 25px;
 }
+
+// ANTHO
+
+.trip-banner {
+  border-radius: 20px;
+  background-size: cover;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.trip-banner h1 {
+  color: white;
+}
+
+
+.trip-banner p {
+  color: white;
+}
+
+.trip-description {
+  text-align: center;
+  margin: 0px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.trip-description p {
+  margin: 0px;
+}
