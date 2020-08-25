@@ -7,7 +7,14 @@
 
   <!--  BADGES -->
   <div class="card-badges">
-    <span class="badge badge-warning py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:20px;"><%= (trip.departure_date - Date.today).to_i %> days before departure</span>
+    <% days_to_departure = (trip.departure_date - Date.today).to_i %>
+    <% if days_to_departure <= 0 %>
+      <span class="badge badge-success py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:20px;"> Departed !</span>
+    <% elsif days_to_departure <= 7 %>
+      <span class="badge badge-warning py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:20px;"> <%= days_to_departure %> days before departure</span>
+    <% else %>
+      <span class="badge badge-info py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:20px;"> <%= days_to_departure%> days before departure</span>
+    <% end %>
 
     <!-- BADGE : FULL -->
   <!--    Display the full badge only when a trip max capacity is reached -->
@@ -33,10 +40,11 @@
 
   <!-- USER AVATARS -->
   <div class="users">
-    <li class="avatar list-inline-item" style="background-image: url(https://images.unsplash.com/photo-1543123820-ac4a5f77da38?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1362&q=80);"></li>
-    <li class="avatar list-inline-item" style="background-image: url(https://images.unsplash.com/photo-1543123820-ac4a5f77da38?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1362&q=80);"></li>
-    <li class="avatar list-inline-item" style="background-image: url(https://images.unsplash.com/photo-1543123820-ac4a5f77da38?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1362&q=80);"></li>
-    <li class="counter list-inline-item">+2</li>
+    <% trip.bookings.where(status: "accepted").each do |booking| %>
+     <li class="avatar list-inline-item" style="background-image: url('<%= cl_image_path booking.user.photo.key %>');"></li>
+    <% end %>
+    <!-- OWNER -->
+    <li class="avatar-owner list-inline-item" style="background-image: url('<%= cl_image_path trip.user.photo.key %>');"></li>
   </div>
 
   <!-- CARD INFO -->
@@ -46,6 +54,9 @@
       <p class="card-description"><%= trip.description %></p>
       <div class="card-details">
         <!-- AVERAGE RATING -->
+        <% average_rating = trip.bookings.where(status:"accepted") %>
+        <%= render "shared/stars", rating: average_rating %>
+
         <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
         <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
         <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
@@ -54,7 +65,7 @@
         <!-- NUMBER OF NIGHTS -->
         <p class="nb-nights"><%= (trip.return_date - trip.departure_date).to_i %> nights</p>
         <!-- PRICE RANGE -->
-        <p class="price-range">$1,000 - 1,200</p>
+        <p class="price-range">$ <%= trip.budget_min %> - <%= trip.budget_max %></p>
       </div>
     </div>
   </div>
