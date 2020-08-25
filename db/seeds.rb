@@ -3,7 +3,7 @@ require "open-uri"
 # Destroy all previous instances
 Review.destroy_all
 Post.destroy_all
-Application.destroy_all
+Booking.destroy_all
 Trip.destroy_all
 User.destroy_all
 
@@ -256,9 +256,9 @@ puts "Done !"
 
 
 
-# # APPLICATIONS CREATION ====================================
+# # BOOKINGS CREATION ====================================
 
-puts "Seeding applications..."
+puts "Seeding bookings..."
 
 status = ["Pending", "Accepted", "Declined", "Canceled"]
 
@@ -275,7 +275,7 @@ status = ["Pending", "Accepted", "Declined", "Canceled"]
     user = User.all.sample
   end
 
-  Application.create!(user: user, trip: trip, status: status.sample)
+  Booking.create!(user: user, trip: trip, status: status.sample)
 end
 
 puts "Done !"
@@ -287,25 +287,31 @@ reviews = [
     {
       content: "You were amazing mate =)",
       stars: '5',
-      application: Application.first,
+      booking: Booking.first,
       user: User.first
     },
     {
       content: "You are such a beautiful person <3",
       stars: '5',
-      application: Application.second,
+      booking: Booking.second,
       user: User.first
     },
     {
       content: "You suck man",
       stars: '0',
-      application: Application.third,
+      booking: Booking.third,
       user: User.first
     },
     {
       content: "I had a very good time with you =)",
       stars: '4',
-      application: Application.fourth,
+      booking: Booking.fourth,
+      user: User.first
+    },
+    {
+      content: "So many good memories with you my friend!!",
+      stars: '5',
+      booking: Booking.fifth,
       user: User.first
     }
   ]
