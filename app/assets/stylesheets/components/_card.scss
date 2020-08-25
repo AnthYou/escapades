@@ -1,7 +1,9 @@
+// TRIPCARD
+
 .card-container {
   position: relative;
   border-radius: 20px;
-  height: 400;
+  height: 400px;
   background-color: white;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
@@ -96,4 +98,47 @@ p.price-range {
 
 .card-badges span {
   border-radius: 20px;
+}
+
+
+// USERCARD
+
+.usercard-container {
+  position: relative;
+  height: 400px;
+  width: 300px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.usercard-image {
+  border-radius: 20px 20px 0px 0px;
+  position: relative;
+  background-size: cover;
+  height: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.usercard-description {
+  margin-top: 7px;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.usercard-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.usercard-top .list-inline-item {
+  margin-right: 0px;
+}
+
+.usercard-name {
+  font-size: 18px;
+  margin-bottom: 0px;
 }
