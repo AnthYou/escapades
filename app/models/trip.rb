@@ -4,7 +4,7 @@ class Trip < ApplicationRecord
   belongs_to :user
   has_many :bookings, dependent: :destroy
   has_many :users, through: :bookings
-  has_many :activities
+  has_many :activities, dependent: :destroy
   has_many :posts
   validates :title, presence: true
   validates :description, presence: true, length: { minimum: 30 }
