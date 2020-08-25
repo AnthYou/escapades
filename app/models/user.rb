@@ -6,5 +6,5 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :posts
   has_many :trips
-  has_many :applications
+  has_many :bookings
 end
