@@ -6,6 +6,14 @@
   <a href="#" class="btn btn-travel-primary">Click me</a>
   <a href="#" class="btn btn-travel-secondary">Click me</a>
 
+  <!-- MAPBOX -->
+    <h2 class="text-center mt-5 pb-5 font-weight-bold">Find your next trip</h2>
+      <div id="map"
+         style="width: 100%; height: 600px;"
+         data-markers="<%= @markers.to_json %>"
+         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+
   <!-- TRIP CARD -->
   <div class="card-container mt-5">
     <!-- IMAGE & TITLE -->

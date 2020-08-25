@@ -16,3 +16,6 @@
 .container-view {
   min-height: calc(100vh - #{$footer-height} - #{$navbar-height});
 }
+
+@import 'mapbox-gl/dist/mapbox-gl';
+@import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder';
