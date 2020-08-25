@@ -10,7 +10,17 @@ User.destroy_all
 # USERS CREATION =========================================
 puts "Seeding users..."
 users = [
-
+  [
+    {
+      email: "beargrylls@official.com",
+      password: 'ManvsWild!',
+      first_name: "Bear",
+      last_name: "Grylls",
+      description: "I am the guy from Man vs Wild",
+      birth_date: "07/06/1974".to_date,
+    },
+    "https://i.guim.co.uk/img/media/f8a09f6439b4cd6155eb0279fc223d51464d1888/0_86_4708_2825/master/4708.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=4892d97c7b94e7cbdaf1c19783f67d1d"
+  ],
   [
     {
       email: "moundir@official.com",
