@@ -1,7 +1,7 @@
 class Trip < ApplicationRecord
   has_one_attached :photo
   belongs_to :user
-  has_many :applications, dependent: :destroy
+  has_many :bookings, dependent: :destroy
   has_many :users, through: :applications
   has_many :activities
   has_many :posts
