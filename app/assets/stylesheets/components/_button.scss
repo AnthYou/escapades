@@ -1,0 +1,39 @@
+.btn-travel-primary {
+  padding: 10px 20px;
+  background-color: $my-orange;
+  color: white;
+  font-weight: 600;
+  border: 2px solid $my-orange;
+  border-radius: 20px;
+  box-shadow: 1px 1px 5px $my-orange-faded;
+}
+
+.btn-travel-primary:hover {
+  background-color: $my-orange;
+  color: white;
+  border: 2px solid white;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-travel-primary:active {
+  box-shadow: 1px 1px 5px $my-orange-faded;
+}
+
+.btn-travel-secondary {
+  padding: 10px 20px;
+  background-color: transparent;
+  color: $my-orange;
+  font-weight: light;
+  border: 2px solid $my-orange;
+  border-radius: 20px;
+}
+
+.btn-travel-secondary:hover {
+  background-color: transparent;
+  border: 2px solid $my-orange-faded;
+  color: $my-orange;
+}
+
+.btn-travel-secondary:active {
+  box-shadow: 1px 1px 5px $my-orange-faded;
+}
