@@ -2,8 +2,20 @@
   <div class="container d-flex flex-column justify-content-center align-items-center">
     <h1 class="mb-3">find the right trip with the right team.</h1>
     <!-- NB OF USERS -->
-    <p class="mb-3">there are <strong><%= User.count %></strong> buddies who are waiting for you!</p>
-    <%= link_to 'View all trips', trips_path, class: 'btn-travel-primary' %>
+    <p class="mb-3">there are <strong><%= User.count %></strong> buddies who are waiting for you! 🥳</p>
+    <%= form_tag trips_path, class: 'mt-3', method: :get do %>
+      <div class="d-flex align-items-center">
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          style: 'border-radius: 20px; height: 50px; width: 70vh;',
+          placeholder: "Type a destination..."
+        %>
+        <%= button_tag(type: "submit", class: "navbar-icon-bg-orange", style: 'margin-left: -45px; border: none;') do %>
+          <i class="fas fa-search"></i>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
 

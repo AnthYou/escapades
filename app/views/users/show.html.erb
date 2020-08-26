@@ -23,6 +23,26 @@
         <% end %>
       </div>
     </div>
+  <div class="bg-white p-4 rounded mb-3 text-center">
+    <% if @user.photo.attached? %>
+      <p> <%= cl_image_tag @user.photo.key, class: "avatar-dashboard" %> </p>
+    <% else %>
+      <p> <%= image_tag "https://icon-library.com/images/default-user-icon/default-user-icon-8.jpg", class: "avatar-dashboard" %> </p>
+    <% end %>
+    <% if @user == current_user %>
+      <h3>Welcome <strong><%= @user.first_name %> <%= @user.last_name %></strong></h3>
+    <% else %>
+      <h3><strong><%= @user.first_name %> <%= @user.last_name %></strong></h3>
+    <% end %>
+    <p> <%= ((Date.today - @user.date_of_birth) / 365).to_i %> years old </p>
+    <p> <%= @user.description %> </p>
+    <a href="#"> <i class="fab fa-instagram"></i> Follow me on instagram</a>
+    <% if @user == current_user %>
+    <br>
+    <%#= link_to "Go to dashboard", dashboard_user_path(current_user), class: "btn btn-travel mt-3"%>
+    <%= link_to "Edit my profile", edit_user_registration_path(current_user), class: "btn btn-travel-secondary mt-3"%>
+    <% end %>
+  </div>
 
     <div class="user-col-right">
       <h3 class= "text-center mb-3"> The <strong>places</strong> I have been to 🌎 </h3>

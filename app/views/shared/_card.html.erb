@@ -18,7 +18,7 @@
 
       <!-- BADGE : FULL -->
     <!--    Display the full badge only when a trip max capacity is reached -->
-      <% if trip.max_capacity == trip.num_of_bookings_accepted %>
+      <% if trip.full? %>
         <span class="badge badge-danger py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:55px;">FULL</span>
       <% end %>
 
@@ -41,7 +41,11 @@
     <!-- USER AVATARS -->
     <div class="users">
       <% trip.bookings.where(status: "accepted").each do |booking| %>
-       <li class="avatar list-inline-item" style="background-image: url('<%= cl_image_path booking.user.photo.key %>');"></li>
+        <% if booking.user.photo.attached? %>
+          <li class="avatar list-inline-item" style="background-image: url('<%= cl_image_path booking.user.photo.key %>');"></li>
+        <% else %>
+          <li class="avatar list-inline-item" style="background-image: url('https://icon-library.com/images/default-user-icon/default-user-icon-8.jpg');"></li>
+        <% end %>
       <% end %>
       <!-- OWNER -->
       <li class="avatar-owner list-inline-item" style="background-image: url('<%= cl_image_path trip.user.photo.key %>');"></li>

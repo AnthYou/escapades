@@ -2,8 +2,11 @@ class TripsController < ApplicationController
   def index
     @trips = policy_scope(Trip)
     authorize @trips
-
-    @trips = Trip.geocoded
+    if params[:query].present?
+      @trips = Trip.geocoded.search_by_destination(params[:query])
+    else
+      @trips = [Trip.undeparted.order(departure_date: :asc), Trip.departed].flatten
+    end
     @markers = @trips.map do |trip|
       {
         lat: trip.latitude,
