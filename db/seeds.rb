@@ -289,7 +289,7 @@ status = ["pending", "accepted", "declined", "cancelled"]
     user = User.all.sample
   end
 
-  Booking.create!(user: user, trip: trip, status: status.sample)
+  Booking.create!(user: user, trip: trip, status: "accepted")
 end
 
 puts "Done !"
@@ -300,39 +300,41 @@ puts "Seeding reviews..."
 reviews = [
     {
       content: "You were amazing mate =)",
-      stars: '5',
-      booking: Booking.first,
-      user: User.first
+      stars: 5
     },
     {
       content: "You are such a beautiful person <3",
-      stars: '5',
-      booking: Booking.second,
-      user: User.first
+      stars: 5,
     },
     {
       content: "You suck man",
-      stars: '0',
-      booking: Booking.third,
-      user: User.first
+      stars: 0,
     },
     {
       content: "I had a very good time with you =)",
-      stars: '4',
-      booking: Booking.fourth,
-      user: User.first
+      stars: 4,
     },
     {
       content: "So many good memories with you my friend!!",
-      stars: '5',
-      booking: Booking.fifth,
-      user: User.first
+      stars: 5,
     }
   ]
 
+20.times do
 
-Review.create!(reviews)
+  user = User.all.sample
+  booking = Booking.all.sample
+  review = reviews.sample
+ # on ne peut pas laisser de review sur la même personne pour le même booking
 
+# !!!! Il y a t'il une meilleure métode ??? car des creates peuvent échouer !
+
+# --on regarde dans tous les reviews deja créés, si cette paire existe, on en prend une autre?
+
+  Review.create(content: review[:content], stars: review[:stars], user: user, booking: booking)
+
+
+end
 
 puts "Done !"
 
@@ -379,17 +381,6 @@ posts = [
     },
     "https://images.unsplash.com/photo-1596430222039-4a2d7b4cd767?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
   ],
-
-  [
-    {
-      content: "A beautiful view from the 12 apostles.",
-      user: User.first,
-      trip: Trip.first,
-
-    },
-    "https://images.unsplash.com/photo-1596430222039-4a2d7b4cd767?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
-  ],
-
   [
     {
       content: "I'm in a forest in Cairns. Now the adventure begins.",
@@ -470,7 +461,3 @@ activities = [
 Activity.create!(activities)
 
 puts "Done ! 🍺"
-
-
-
-
