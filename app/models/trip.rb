@@ -23,9 +23,17 @@ class Trip < ApplicationRecord
   scope :departed, -> { where('departure_date <= ?', Date.today) }
   pg_search_scope :search_by_destination, against: :destination, using: { tsearch: { prefix: true } }
 
+  def full?
+    participants.count == max_capacity
+  end
+
   #compute the number of days left before departure
   def days_to_departure
     (departure_date - Date.today).to_i
+  end
+
+  def departed?
+    days_to_departure <= 0
   end
 
   # count the number of accepted bookings for a given trip
