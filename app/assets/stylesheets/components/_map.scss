@@ -1,5 +1,10 @@
+#map {
+  border-radius: 20px;
+}
+
 .mapboxgl-popup {
   max-width: 300px;
+
 }
 
 .mapboxgl-popup-content {
@@ -16,6 +21,7 @@
   display: block;
   margin-right: auto;
   margin-left: auto;
+
 }
 .container-card a:hover {
   text-decoration: none;
@@ -31,11 +37,19 @@
   height: 120px;
   background-position: center;
   background-size: cover;
+
 }
 
 .mapboxgl-marker:hover {
   cursor: pointer;
 }
 
-
+.container-card-activity {
+  width: 180px;
+  height: 120px;
+  background-position: center;
+  background-size: cover;
+  flex-direction: column;
+  padding: 10px;
+}
 
