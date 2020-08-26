@@ -1,4 +1,5 @@
 class Activity < ApplicationRecord
+  has_one_attached :photo
   geocoded_by :location
   belongs_to :trip
   validates :title, presence: true

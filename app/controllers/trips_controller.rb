@@ -5,7 +5,17 @@ class TripsController < ApplicationController
   end
 
   def show
+    @trips = Trip.all
     @trip = Trip.find(params[:id])
+    @activities = @trip.activities
+    @markers = @activities.map do |activity|
+      {
+        lat: activity.latitude,
+        lng: activity.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { activity: activity })
+      }
+    end
+
     authorize @trip
   end
 
