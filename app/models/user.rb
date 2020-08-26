@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_one_attached :photo
-  # validates :photo, presence: true
+  validates :photo, presence: true
   has_many :bookings
   has_many :trips, through: :booking
   # Include default devise modules. Others available are:
