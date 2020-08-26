@@ -289,7 +289,7 @@ status = ["pending", "accepted", "declined", "cancelled"]
     user = User.all.sample
   end
 
-  Booking.create!(user: user, trip: trip, status: status.sample)
+  Booking.create!(user: user, trip: trip, status: "accepted")
 end
 
 puts "Done !"
@@ -461,7 +461,3 @@ activities = [
 Activity.create!(activities)
 
 puts "Done ! 🍺"
-
-
-
-
