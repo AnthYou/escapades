@@ -7,7 +7,7 @@ class PagesController < ApplicationController
       {
         lat: trip.latitude,
         lng: trip.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { trip: trip })
+        infoWindow: render_to_string(partial: "shared/info_window_trips", locals: { trip: trip })
       }
     end
   end
