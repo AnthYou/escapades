@@ -1,42 +1,21 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1464207687429-7505649dae38?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2252&q=80);">
+  <div class="container d-flex flex-column justify-content-center align-items-center">
+    <h1 class="mb-3">find the right trip with the right team.</h1>
+    <!-- NB OF USERS -->
+    <p class="mb-3">there are <strong><%= User.count %></strong> buddies who are waiting for you!</p>
+    <%= link_to 'View all trips', trips_path, class: 'btn-travel-primary' %>
+  </div>
+</div>
+
+
 <div class="container mt-5">
 
-  <h1>Lorem ipsum, dolor.</h1>
-  <h2>Lorem ipsum dolor sit, amet.</h2>
-  <h3>Lorem, ipsum dolor sit amet consectetur, adipisicing.</h3>
-  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus, deleniti sunt itaque, molestiae, sit possimus, consequuntur quod ratione a doloribus harum rem aperiam incidunt distinctio porro reprehenderit ea illo assumenda.</p>
-  <a href="#" class="btn btn-travel-primary">Click me</a>
-  <a href="#" class="btn btn-travel-secondary">Click me</a>
-
-
   <!-- MAPBOX -->
-    <h2 class="text-center mt-5 pb-5 font-weight-bold">Find your next trip</h2>
-      <div id="map"
-         style="width: 100%; height: 600px;"
-         data-markers="<%= @markers.to_json %>"
-         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
-
-  <!-- USER CARD -->
-  <div class="usercard-container">
-    <div class="usercard-image" style="background-image: url(https://images.unsplash.com/photo-1543123820-ac4a5f77da38?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1362&q=80);"></div>
-    <!-- BADGE -->
-    <div class="card-badges">
-      <span class="badge badge-secondary py-2 px-3 font-weight-light" style="position: absolute; left: 20px; top:20px;">OWNER</span>
+  <h2 class="text-center mt-5 pb-5 font-weight-bold">there are <strong><%= Trip.count %></strong> trips to join</h2>
+    <div id="map"
+       style="width: 100%; height: 600px; border-radius: 20px;"
+       data-markers="<%= @markers.to_json %>"
+       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-    <div class="card-info">
-      <div class="usercard-top">
-        <h2 class="usercard-name">John DOE</h2>
-        <!-- AVERAGE RATING -->
-        <div class="reviews">
-          <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
-          <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
-          <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
-          <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
-          <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
-        </div>
-      </div>
-      <div class="usercard-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, veritatis.</div>
-    </div>
-  </div>
 
 </div>

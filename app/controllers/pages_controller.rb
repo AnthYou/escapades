@@ -2,12 +2,12 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
   def home
-    @trips = Trip.geocoded # returns flats with coordinates
+    @trips = Trip.geocoded
     @markers = @trips.map do |trip|
       {
         lat: trip.latitude,
         lng: trip.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { trip: trip })
+        infoWindow: render_to_string(partial: "shared/info_window_trips", locals: { trip: trip })
       }
     end
   end

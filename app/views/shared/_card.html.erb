@@ -1,6 +1,6 @@
 <%= link_to trip_path(trip), :action => 'go' do %>
   <!-- TRIP CARD -->
-  <div class="card-container mt-5">
+  <div class="card-container mb-5">
     <!-- IMAGE & TITLE -->
     <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path trip.photo.key%>');">
       <h2 class="card-title"> <%=trip.title%></h2>
