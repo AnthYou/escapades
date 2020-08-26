@@ -64,6 +64,11 @@ p.nb-nights {
   color: $my-orange;
 }
 
+.star-grey {
+  font-size: 12px;
+  color: $my-grey;
+}
+
 p.price-range {
   margin: 0px;
   font-weight: 600;
@@ -79,6 +84,14 @@ p.price-range {
   height: 50px;
   width: 50px;
   background-size: cover;
+}
+
+.avatar-owner {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  background-size: cover;
+  border: 1px solid $my-orange;
 }
 
 .users li.avatar {

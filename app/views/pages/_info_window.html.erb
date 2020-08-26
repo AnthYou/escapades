@@ -1,0 +1,4 @@
+<div class="container-card d-flex text-center align-items-center " style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path trip.photo.key %>')">
+  <%= link_to trip.title, trip_path(trip), style: 'font-size: 14px;', class: 'p-2' %>
+  <%#= cl_image_tag(trip.photo.key, :width=>200 , :height=> 100 , :crop=>"scale") %>
+</div>

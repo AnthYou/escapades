@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_one_attached :photo
   has_many :bookings
-  has_many :trips, through: :booking
+  has_many :trips
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -10,4 +10,17 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :trips, dependent: :destroy
   has_many :bookings, dependent: :destroy
+
+  # Compute the average rating for a given user. Return an integer
+  def user_average_rating
+    if reviews.first == nil
+      return nil
+    else
+      total = 0
+      reviews.each do |review|
+        total += review.stars
+      end
+    end
+    return (total / reviews.count).to_i
+  end
 end
