@@ -18,7 +18,7 @@
 
       <!-- BADGE : FULL -->
     <!--    Display the full badge only when a trip max capacity is reached -->
-      <% if trip.max_capacity == trip.num_of_bookings_accepted %>
+      <% if trip.full? %>
         <span class="badge badge-danger py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:55px;">FULL</span>
       <% end %>
 

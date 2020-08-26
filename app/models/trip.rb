@@ -17,9 +17,17 @@ class Trip < ApplicationRecord
   validates :max_capacity, presence: true, numericality: { greater_than: 1 }
   validates :photo, presence: true
 
+  def full?
+    participants.count == max_capacity
+  end
+
   #compute the number of days left before departure
   def days_to_departure
     (departure_date - Date.today).to_i
+  end
+
+  def departed?
+    days_to_departure <= 0
   end
 
   # count the number of accepted bookings for a given trip
