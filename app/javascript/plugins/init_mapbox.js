@@ -12,6 +12,10 @@ const addMarkersToMap = (map, markers) => {
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // add this
     const element = document.createElement('div');
     element.className = 'marker';
+    element.style.backgroundImage = `url('${marker.image_url}')`;
+    element.style.backgroundSize = 'contain';
+    element.style.width = '25px';
+    element.style.height = '25px';
 
     if (marker.step) {
       element.innerText = marker.step;
@@ -21,7 +25,7 @@ const addMarkersToMap = (map, markers) => {
       .addTo(map);
 
     } else  {
-      new mapboxgl.Marker()
+      new mapboxgl.Marker({color: 'orange'})
 
       .setLngLat([ marker.lng, marker.lat ])
       .setPopup(popup)

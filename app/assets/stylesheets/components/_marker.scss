@@ -1,3 +1,5 @@
+//CUSTOM MARKER FOR MAP2 ====
+
 #map2 .marker {
   background-color: orange;
   color: #FFFFFF;
@@ -32,4 +34,18 @@
   top: -17px !important;
   left: 1px !important;
   // will-change: transform;
+}
+
+//FIX POP UP POSITION BUG ON MAP2 ====
+
+#map2 .mapboxgl-popup-anchor-bottom {
+  padding-bottom: 30px;
+}
+
+#map2 .mapboxgl-popup-anchor-right {
+  padding-right: 4px;
+}
+
+#map2 .mapboxgl-popup-anchor-left {
+  padding-left: 4px;
 }
