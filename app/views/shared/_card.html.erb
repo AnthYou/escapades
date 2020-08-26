@@ -7,23 +7,22 @@
 
   <!--  BADGES -->
   <div class="card-badges">
-    <% days_to_departure = (trip.departure_date - Date.today).to_i %>
-    <% if days_to_departure <= 0 %>
+    <% if trip.days_to_departure <= 0 %>
       <span class="badge badge-success py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:20px;"> Departed !</span>
-    <% elsif days_to_departure <= 7 %>
-      <span class="badge badge-warning py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:20px;"> <%= days_to_departure %> days before departure</span>
+    <% elsif trip.days_to_departure <= 7 %>
+      <span class="badge badge-warning py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:20px;"> <%= trip.days_to_departure %> days before departure</span>
     <% else %>
-      <span class="badge badge-info py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:20px;"> <%= days_to_departure%> days before departure</span>
+      <span class="badge badge-info py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:20px;"> <%= trip.days_to_departure%> days before departure</span>
     <% end %>
 
     <!-- BADGE : FULL -->
   <!--    Display the full badge only when a trip max capacity is reached -->
-    <% if trip.max_capacity == trip.bookings.where(status: "accepted").count %>
+    <% if trip.max_capacity == trip.num_of_bookings_accepted %>
       <span class="badge badge-danger py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:55px;">FULL</span>
     <% end %>
 
   <!-- BADGE : BOOKING-STATUS -->
-   <!--    Find the booking / current_user association -->
+    <!-- Find the booking between current user and a given trip. Can be nil or an instance -->
     <% current_user_trip_booking = trip.bookings.where(user_id: current_user.id).first %>
     <% if current_user_trip_booking %>
     <!-- Display the accepted tag only when current_user is accepted in a trip -->
@@ -54,8 +53,8 @@
       <p class="card-description"><%= trip.description %></p>
       <div class="card-details">
         <!-- AVERAGE RATING -->
-        <% average_rating = trip.bookings.where(status:"accepted") %>
-        <%= render "shared/stars", rating: average_rating %>
+        <%# average_rating = trip.bookings.where(status:"accepted") %>
+        <%#= render "shared/stars", rating: average_rating %>
 
         <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
         <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>

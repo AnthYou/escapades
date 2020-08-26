@@ -10,4 +10,17 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :trips, dependent: :destroy
   has_many :bookings, dependent: :destroy
+
+  # Compute the average rating for a given user. Return an integer
+  def user_average_rating
+    total = 0
+    reviews.each do |review|
+      total += review.stars
+    end
+    if reviews.count.zero?
+      return 0
+    else
+      return (total / reviews.count).to_i
+    end
+  end
 end
