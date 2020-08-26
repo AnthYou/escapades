@@ -1,4 +1,6 @@
 class Trip < ApplicationRecord
+  geocoded_by :destination
+  after_validation :geocode, if: :will_save_change_to_destination?
   has_one_attached :photo
   belongs_to :user
   has_many :bookings, dependent: :destroy
@@ -51,4 +53,5 @@ class Trip < ApplicationRecord
     end
     return total / participants.count
   end
+
 end
