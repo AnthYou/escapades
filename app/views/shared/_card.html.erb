@@ -1,72 +1,72 @@
-<!-- TRIP CARD -->
-<div class="card-container mt-5">
-  <!-- IMAGE & TITLE -->
-  <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path trip.photo.key%>');">
-    <h2 class="card-title"> <%=trip.title%></h2>
-  </div>
+<%= link_to trip_path(trip), :action => 'go' do %>
+  <!-- TRIP CARD -->
+  <div class="card-container mt-5">
+    <!-- IMAGE & TITLE -->
+    <div class="card-image" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path trip.photo.key%>');">
+      <h2 class="card-title"> <%=trip.title%></h2>
+    </div>
 
-  <!--  BADGES -->
-  <div class="card-badges">
-    <% if trip.days_to_departure <= 0 %>
-      <span class="badge badge-success py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:20px;"> Departed !</span>
-    <% elsif trip.days_to_departure <= 7 %>
-      <span class="badge badge-warning py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:20px;"> <%= trip.days_to_departure %> days before departure</span>
-    <% else %>
-      <span class="badge badge-info py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:20px;"> <%= trip.days_to_departure%> days before departure</span>
-    <% end %>
-
-    <!-- BADGE : FULL -->
-  <!--    Display the full badge only when a trip max capacity is reached -->
-    <% if trip.max_capacity == trip.num_of_bookings_accepted %>
-      <span class="badge badge-danger py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:55px;">FULL</span>
-    <% end %>
-
-  <!-- BADGE : BOOKING-STATUS -->
-    <!-- Find the booking between current user and a given trip. Can be nil or an instance -->
-    <% current_user_trip_booking = trip.bookings.where(user_id: current_user.id).first %>
-    <% if current_user_trip_booking %>
-    <!-- Display the accepted tag only when current_user is accepted in a trip -->
-      <% if current_user_trip_booking.status == "accepted" %>
-        <span class="badge badge-success py-2 px-3 font-weight-light" style="position: absolute; left: 20px; top:20px;">Accepted</span>
+    <!--  BADGES -->
+    <div class="card-badges">
+      <% if trip.days_to_departure <= 0 %>
+        <span class="badge badge-success py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:20px;"> Departed !</span>
+      <% elsif trip.days_to_departure <= 7 %>
+        <span class="badge badge-warning py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:20px;"> <%= trip.days_to_departure %> days before departure</span>
+      <% else %>
+        <span class="badge badge-info py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:20px;"> <%= trip.days_to_departure%> days before departure</span>
       <% end %>
-    <!-- Display the pending tag only when current_user's trip booking status is pending -->
-      <% if current_user_trip_booking.status == "pending" %>
-        <span class="badge badge-info py-2 px-3 font-weight-light" style="position: absolute; left: 20px; top:20px;">Pending</span>
+
+      <!-- BADGE : FULL -->
+    <!--    Display the full badge only when a trip max capacity is reached -->
+      <% if trip.max_capacity == trip.num_of_bookings_accepted %>
+        <span class="badge badge-danger py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:55px;">FULL</span>
       <% end %>
-    <!-- Else (cancelled, rejected => show no tag)-->
-    <% end %>
-  </div>
 
-  <!-- USER AVATARS -->
-  <div class="users">
-    <% trip.bookings.where(status: "accepted").each do |booking| %>
-     <li class="avatar list-inline-item" style="background-image: url('<%= cl_image_path booking.user.photo.key %>');"></li>
-    <% end %>
-    <!-- OWNER -->
-    <li class="avatar-owner list-inline-item" style="background-image: url('<%= cl_image_path trip.user.photo.key %>');"></li>
-  </div>
+    <!-- BADGE : BOOKING-STATUS -->
+      <!-- Find the booking between current user and a given trip. Can be nil or an instance -->
+      <% current_user_trip_booking = trip.bookings.where(user_id: current_user.id).first %>
+      <% if current_user_trip_booking %>
+      <!-- Display the accepted tag only when current_user is accepted in a trip -->
+        <% if current_user_trip_booking.status == "accepted" %>
+          <span class="badge badge-success py-2 px-3 font-weight-light" style="position: absolute; left: 20px; top:20px;">Accepted</span>
+        <% end %>
+      <!-- Display the pending tag only when current_user's trip booking status is pending -->
+        <% if current_user_trip_booking.status == "pending" %>
+          <span class="badge badge-info py-2 px-3 font-weight-light" style="position: absolute; left: 20px; top:20px;">Pending</span>
+        <% end %>
+      <!-- Else (cancelled, rejected => show no tag)-->
+      <% end %>
+    </div>
 
-  <!-- CARD INFO -->
-  <div class="card-info">
-    <h3 class="card-destination"><%= trip.destination %></h3>
-    <div class="card-bottom">
-      <p class="card-description"><%= trip.description %></p>
-      <div class="card-details">
-        <!-- AVERAGE RATING -->
-        <%# average_rating = trip.bookings.where(status:"accepted") %>
-        <%#= render "shared/stars", rating: average_rating %>
+    <!-- USER AVATARS -->
+    <div class="users">
+      <% trip.bookings.where(status: "accepted").each do |booking| %>
+       <li class="avatar list-inline-item" style="background-image: url('<%= cl_image_path booking.user.photo.key %>');"></li>
+      <% end %>
+      <!-- OWNER -->
+      <li class="avatar-owner list-inline-item" style="background-image: url('<%= cl_image_path trip.user.photo.key %>');"></li>
+    </div>
 
-        <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
-        <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
-        <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
-        <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
-        <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
-        <!-- NUMBER OF NIGHTS -->
-        <p class="nb-nights"><%= (trip.return_date - trip.departure_date).to_i %> nights</p>
-        <!-- PRICE RANGE -->
-        <p class="price-range">$ <%= trip.budget_min %> - <%= trip.budget_max %></p>
+    <!-- CARD INFO -->
+    <div class="card-info">
+      <h3 class="card-destination"><%= trip.destination %></h3>
+      <div class="card-bottom">
+        <p class="card-description"><%= trip.description %></p>
+        <div class="card-details">
+          <!-- AVERAGE RATING -->
+          <% trip.trip_average_rating.times do %>
+            <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
+          <% end %>
+          <% (5 - trip.trip_average_rating).times do %>
+            <li class="list-inline-item star-grey"><i class="fas fa-star"></i></li>
+          <% end %>
+          <!-- NUMBER OF NIGHTS -->
+          <p class="nb-nights"><%= (trip.return_date - trip.departure_date).to_i %> nights</p>
+          <!-- PRICE RANGE -->
+          <p class="price-range">$ <%= trip.budget_min %> - <%= trip.budget_max %></p>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>
 

@@ -13,14 +13,14 @@ class User < ApplicationRecord
 
   # Compute the average rating for a given user. Return an integer
   def user_average_rating
-    total = 0
-    reviews.each do |review|
-      total += review.stars
-    end
-    if reviews.count.zero?
-      return 0
+    if reviews.first == nil
+      return nil
     else
-      return (total / reviews.count).to_i
+      total = 0
+      reviews.each do |review|
+        total += review.stars
+      end
     end
+    return (total / reviews.count).to_i
   end
 end

@@ -45,13 +45,16 @@ class Trip < ApplicationRecord
     return participants
   end
 
-  # Compute the average rating for a given trip (for all accepted users and the owner). Return an integer
+  # Compute the average rating  for a given trip (for all accepted users and the owner), exludes nil ratings. Return an integer
   def trip_average_rating
     total = 0
+    clear_for_average_computing = []
     participants.each do |participant|
-      total += participant.user_average_rating
+      if participant.user_average_rating != nil
+        clear_for_average_computing << participant
+        total += participant.user_average_rating
+      end
     end
-    return total / participants.count
+    return total / clear_for_average_computing.count
   end
-
 end
