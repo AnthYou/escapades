@@ -2,6 +2,13 @@
   border-radius: 20px;
 }
 
+#trips-index #map {
+  width: 50% !important;
+  position: sticky;
+  top: 94px;
+}
+
+
 .mapboxgl-popup {
   max-width: 300px;
 
@@ -52,4 +59,13 @@
   flex-direction: column;
   padding: 10px;
 }
+
+@media (max-width: 995px) {
+  #trips-index #map {
+    width: 100% !important;
+    position: relative;
+    top: 0;
+  }
+}
+
 

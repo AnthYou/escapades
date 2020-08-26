@@ -5,13 +5,13 @@
     <p><%= @trip.destination %></p>
   </div>
 
-  <h2 class="text-center font-weight-bold mb-4">about the trip</h2>
+  <h2 class="text-center font-weight-bold mb-5">About the trip</h2>
   <div class="trip-description">
     <p><%= @trip.description %></p>
   </div>
 
   <div class="spec mt-5">
-    <h2 class="text-center font-weight-bold mb-4" style="font-weight:600;">specs</h2>
+    <h2 class="text-center font-weight-bold mb-5" style="font-weight:600;">Specs</h2>
     <div class="trip-description">
       <div class="icons my-3" style= "display:flex;justify-content: space-around">
         <div class= "icon text-center">
@@ -47,9 +47,9 @@
       </div>
 
 
-  <h2 class="font-weight-bold text-center mt-5 mb-4">meet your dream team</h2>
+  <h2 class="font-weight-bold text-center mt-5 mb-4">Meet your dream team</h2>
 
-  <div class="users-grid d-flex justify-content-between mt-5">
+  <div class="users-grid d-flex justify-content-around mt-5">
     <!-- TRIP OWNER -->
     <%= render 'shared/usercards', user: @trip.user %>
 
