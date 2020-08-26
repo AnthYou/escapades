@@ -13,11 +13,16 @@
         <h2 class="usercard-name"><%= user.first_name %> <%= user.last_name.upcase %></h2>
         <!-- AVERAGE RATING -->
         <div class="reviews">
-          <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
-          <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
-          <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
-          <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
-          <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
+            <% if user.user_average_rating != nil  %>
+              <% user.user_average_rating.times do %>
+                <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
+              <% end %>
+              <% (5 - user.user_average_rating).times do %>
+                <li class="list-inline-item star-grey"><i class="fas fa-star"></i></li>
+              <% end %>
+            <% else %>
+              <li class="list-inline-item"> No review </li>
+            <% end %>
         </div>
       </div>
       <div class="usercard-description"><%= user.description %></div>
