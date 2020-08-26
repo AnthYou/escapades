@@ -11,14 +11,13 @@ class TripsController < ApplicationController
       {
         lat: trip.latitude,
         lng: trip.longitude,
-        step: '',
         infoWindow: render_to_string(partial: "shared/info_window_trips", locals: { trip: trip })
       }
     end
   end
 
   def show
-    @trips = Trip.all
+
     @trip = Trip.find(params[:id])
     @activities = @trip.activities
     @markers = @activities.map.with_index do |activity, i|
@@ -31,6 +30,7 @@ class TripsController < ApplicationController
     end
 
     authorize @trip
+
   end
 
   def new
