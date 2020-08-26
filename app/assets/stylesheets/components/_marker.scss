@@ -1,5 +1,5 @@
-.marker {
-  background-color: red;
+#map2 .marker {
+  background-color: orange;
   color: #FFFFFF;
   width: 25px;
   height: 25px;
@@ -11,7 +11,7 @@
   align-items: center;
 }
 
-.marker:after {
+#map2 .marker:after {
   content: '';
   // width: 5px;
   // height: 5px;
@@ -23,11 +23,11 @@
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
 
-  border-top: 8px solid #f00;
+  border-top: 8px solid orange;
 }
 
 
-.mapboxgl-marker {
+#map2 .mapboxgl-marker {
   // position: absolute;
   top: -17px !important;
   left: 1px !important;

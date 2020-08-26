@@ -12,13 +12,22 @@ const addMarkersToMap = (map, markers) => {
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // add this
     const element = document.createElement('div');
     element.className = 'marker';
+
     if (marker.step) {
       element.innerText = marker.step;
-    }
-    new mapboxgl.Marker(element)
+      new mapboxgl.Marker(element)
       .setLngLat([ marker.lng, marker.lat ])
       .setPopup(popup)
       .addTo(map);
+
+    } else  {
+      new mapboxgl.Marker()
+
+      .setLngLat([ marker.lng, marker.lat ])
+      .setPopup(popup)
+      .addTo(map);
+    }
+
   });
 
   // markers.forEach((marker) => {
@@ -75,7 +84,7 @@ const drawRoute = (map, markers) => {
         'line-cap': 'round'
         },
         'paint': {
-        'line-color': 'blue',
+        'line-color': 'orange',
         'line-width': 3,
         'line-opacity': 0.6
         }
