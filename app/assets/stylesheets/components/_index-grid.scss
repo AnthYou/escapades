@@ -1,0 +1,12 @@
+#trips-index .cards-grid {
+    width: 45%;
+    grid-template-columns: 1fr;
+}
+
+@media (max-width: 995px) {
+  #trips-index {
+    .cards-grid {
+      width: 100%;
+    }
+  }
+}

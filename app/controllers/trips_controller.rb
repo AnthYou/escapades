@@ -2,6 +2,15 @@ class TripsController < ApplicationController
   def index
     @trips = policy_scope(Trip)
     authorize @trips
+
+    @trips = Trip.geocoded
+    @markers = @trips.map do |trip|
+      {
+        lat: trip.latitude,
+        lng: trip.longitude,
+        infoWindow: render_to_string(partial: "shared/info_window_trips", locals: { trip: trip })
+      }
+    end
   end
 
   def show
@@ -12,7 +21,7 @@ class TripsController < ApplicationController
       {
         lat: activity.latitude,
         lng: activity.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { activity: activity })
+        infoWindow: render_to_string(partial: "shared/info_window_activity", locals: { activity: activity })
       }
     end
 
