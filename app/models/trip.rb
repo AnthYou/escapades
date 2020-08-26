@@ -16,6 +16,12 @@ class Trip < ApplicationRecord
   validates :return_date, presence: true
   validates :max_capacity, presence: true, numericality: { greater_than: 1 }
   validates :photo, presence: true
+  validate :end_date_after_start_date
+
+  include PgSearch::Model
+  scope :undeparted, -> { where('departure_date > ?', Date.today) }
+  scope :departed, -> { where('departure_date <= ?', Date.today) }
+  pg_search_scope :search_by_destination, against: :destination, using: { tsearch: { prefix: true } }
 
   def full?
     participants.count == max_capacity
@@ -64,5 +70,15 @@ class Trip < ApplicationRecord
       end
     end
     return total / clear_for_average_computing.count
+  end
+
+  private
+
+  def end_date_after_start_date
+    return if return_date.blank? || departure_date.blank?
+
+    if return_date < departure_date
+      errors.add(:return_date, "must be after the departure date")
+    end
   end
 end

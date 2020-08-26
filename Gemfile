@@ -6,7 +6,7 @@ ruby '2.6.6'
 # OUR GEMS HERE ===========
 gem 'cloudinary', '~> 1.12.0'
 gem 'geocoder'
-
+gem 'pg_search', '~> 2.3.0'
 # =========================
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -8,6 +8,19 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    <%= form_tag trips_path, class: 'mt-5 mb-5', method: :get do %>
+    <div class="d-flex align-items-center">
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        style: 'border-radius: 20px; height: 50px; width: 33vh;',
+        placeholder: "Type a destination..."
+      %>
+      <%= button_tag(type: "submit", class: "navbar-icon-bg-orange", style: 'margin-left: -45px; border: none;') do %>
+        <i class="fas fa-search"></i>
+      <% end %>
+    </div>
+  <% end %>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
