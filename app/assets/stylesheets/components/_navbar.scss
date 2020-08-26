@@ -1,6 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: linear-gradient(to top, rgba(44,172,214,0), #ffffff);
+  height: $navbar-height;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -8,5 +9,37 @@
 }
 
 .navbar-lewagon .navbar-brand img {
+  width: 150px;
+}
+
+.navbar-icon-bg-orange {
+  background-color: $my-orange;
+  height: 40px;
   width: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.navbar-icon-bg-orange i {
+  color: white;
+  font-size: 20px;
+}
+
+.navbar-icon-bg-black {
+  background-color: $my-black;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.navbar-icon-bg-black i {
+  color: white;
+  font-size: 20px;
 }
