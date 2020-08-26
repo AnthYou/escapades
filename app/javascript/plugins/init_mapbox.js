@@ -23,6 +23,38 @@ const addMarkersToMap = (map, markers) => {
   });
 };
 
+const drawRoute = (map, markers) => {
+    const coords = markers.map(marker => [marker.lng, marker.lat])
+    console.log(coords)
+    map.on('load', function() {
+    map.addSource('route', {
+      'type': 'geojson',
+      'data': {
+        'type': 'Feature',
+        'properties': {},
+        'geometry': {
+          'type': 'LineString',
+          'coordinates': coords
+        }
+      }
+    });
+
+    map.addLayer({
+      'id': 'route',
+      'type': 'line',
+      'source': 'route',
+      'layout': {
+      'line-join': 'round',
+      'line-cap': 'round'
+      },
+      'paint': {
+      'line-color': '#888',
+      'line-width': 8
+      }
+    });
+  });
+}
+
 const initMapbox = () => {
 
   // MAP IN HOME
@@ -34,10 +66,9 @@ const initMapbox = () => {
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10'
     });
+
     const markers = JSON.parse(mapElement.dataset.markers);
-
     addMarkersToMap(map, markers)
-
     fitMapToMarkers(map, markers);
     map.addControl(new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
@@ -46,25 +77,27 @@ const initMapbox = () => {
     }));
   }
 
-  const mapElement2 = document.getElementById('map2');
+  // MAP IN TRIP SHOW
+   const mapElement2 = document.getElementById('map2');
 
-  if (mapElement2) {
-    mapboxgl.accessToken = mapElement2.dataset.mapboxApiKey;
-    const map2 = new mapboxgl.Map({
-      container: 'map2',
-      style: 'mapbox://styles/mapbox/streets-v10'
-    });
-    const markers = JSON.parse(mapElement2.dataset.markers);
+   if (mapElement2) {
+     mapboxgl.accessToken = mapElement2.dataset.mapboxApiKey;
+     const map2 = new mapboxgl.Map({
+       container: 'map2',
+       style: 'mapbox://styles/mapbox/streets-v10'
+     });
+     const markers = JSON.parse(mapElement2.dataset.markers);
 
-    addMarkersToMap(map2, markers)
+     addMarkersToMap(map2, markers)
+     drawRoute(map2, markers);
 
-    fitMapToMarkers(map2, markers);
-    map2.addControl(new MapboxGeocoder({
-      accessToken: mapboxgl.accessToken,
-      language: 'en-US',
-      mapboxgl: mapboxgl
-    }));
-  }
+     fitMapToMarkers(map2, markers);
+     map2.addControl(new MapboxGeocoder({
+       accessToken: mapboxgl.accessToken,
+       language: 'en-US',
+       mapboxgl: mapboxgl
+     }));
+   }
 
 };
 
