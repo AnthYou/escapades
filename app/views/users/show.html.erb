@@ -18,7 +18,7 @@
         <a href="#"> <i class="fab fa-instagram"></i> Follow me on instagram</a>
         <% if @user == current_user %>
         <br>
-        <%#= link_to "Go to dashboard", dashboard_user_path(current_user), class: "btn btn-travel mt-3"%>
+        <%= link_to "Go to dashboard", dashboard_user_path(current_user), class: "btn btn-travel mt-3"%>
         <%= link_to "Edit my profile", edit_user_registration_path(current_user), class: "btn btn-travel-secondary mt-3"%>
         <% end %>
       </div>
@@ -36,7 +36,7 @@
   </div>
 
   <div class="reviews">
-    <h2 style="text-align:center">Reviews</h2>
+    <h2 style="text-align:center; font-weight: 600;">Reviews</h2>
     <% @user_reviews.each do |review|%>
       <div class ="review" style="background-color: white; border-radius: 4px; ">
         <div class="photo">
@@ -44,7 +44,9 @@
         </div>
         <div style="margin: 10px">
           <div class="stars">
-            <p><%= review.stars %></p>
+            <% review.stars.times do %>
+              <i class="fas fa-star" style="color:#f2a365;"></i>
+            <% end %>
           </div>
           <div class="review-content">
             <p><%= review.content %></p>
@@ -52,5 +54,8 @@
         </div>
       </div>
     <% end %>
+  <div style="text-align: center; margin-top: 50px">
+    <%= link_to "Leave a review", new_user_review_path(@user), class: "btn btn-primary"%>
+  </div>
   </div>
 </div>

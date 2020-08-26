@@ -12,4 +12,11 @@ class UsersController < ApplicationController
     end
     authorize @user
   end
+
+  def dashboard
+    @trips = Trip.all
+    @user = current_user
+    @trips_admin = @trips.where(user_id: @user.id)
+    authorize @user
+  end
 end
