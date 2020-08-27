@@ -17,9 +17,15 @@
       <% end %>
 
       <!-- BADGE : FULL -->
-    <!--    Display the full badge only when a trip max capacity is reached -->
+      <!-- Display the full badge only when a trip max capacity is reached -->
       <% if trip.full? %>
         <span class="badge badge-danger py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:55px;">FULL</span>
+      <% end %>
+
+      <!-- BADGE : OWNER -->
+      <!-- Display the owner badge only when current_user is the owner of the trip -->
+      <% if trip.user == current_user %>
+        <span class="badge badge-secondary py-2 px-3 font-weight-light" style="position: absolute; left: 20px; top:20px;">OWNER</span>
       <% end %>
 
       <% if user_signed_in? %>
