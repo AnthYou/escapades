@@ -55,20 +55,16 @@
 
 <!-- TRIP ACTIVITIES -->
   <h2 class="font-weight-bold text-center mt-5 mb-4">Trip activities</h2>
-
-
         <%= render 'shared/activity_cards', trip: @trip %>
 
-
-  </div>
-
+<!-- TRIP USERS -->
   <h2 class="font-weight-bold text-center mt-5 mb-4">Meet your dream team</h2>
 
   <div class="users-grid d-flex justify-content-around mt-5">
     <!-- TRIP OWNER -->
     <%= render 'shared/usercards', user: @trip.user %>
 
-    <!-- TRIP USERS -->
+
     <% @trip.bookings.each do |booking| %>
       <% if booking.status == "accepted" %>
         <%= render 'shared/usercards', user: booking.user %>
