@@ -27,13 +27,17 @@ class Trip < ApplicationRecord
     participants.count == max_capacity
   end
 
+  def departed?
+    days_to_departure <= 0
+  end
+
+  def joinable?
+    !full? && !departed?
+  end
+
   #compute the number of days left before departure
   def days_to_departure
     (departure_date - Date.today).to_i
-  end
-
-  def departed?
-    days_to_departure <= 0
   end
 
   # count the number of accepted bookings for a given trip
@@ -69,7 +73,11 @@ class Trip < ApplicationRecord
         total += participant.user_average_rating
       end
     end
-    return total / clear_for_average_computing.count
+    if clear_for_average_computing.count == 0
+      return 0
+    else
+      return total / clear_for_average_computing.count
+    end
   end
 
   private

@@ -2,7 +2,7 @@
   <div class="container d-flex flex-column justify-content-center align-items-center">
     <h1 class="mb-3">find the right trip with the right team.</h1>
     <!-- NB OF USERS -->
-    <p class="mb-3">there are <strong><%= User.count %></strong> buddies who are waiting for you! 🥳</p>
+    <p class="mb-3">there are <strong> <%= pluralize Trip.all.select{|trip| trip.joinable?}.count, "trip" %></strong> & <strong><%= User.count %> buddies </strong> waiting for you! 🥳</p>
     <%= form_tag trips_path, class: 'mt-3', method: :get do %>
       <div class="d-flex align-items-center">
         <%= text_field_tag :query,
@@ -23,7 +23,7 @@
 <div class="container mt-5">
 
   <!-- MAPBOX -->
-  <h2 class="text-center mt-5 pb-5 font-weight-bold">there are <strong><%= Trip.count %></strong> trips to join</h2>
+  <h2 class="text-center mt-5 pb-5 font-weight-bold"><strong> <%= pluralize Trip.all.select{|trip| trip.joinable?}.count, "trip" %></strong> to join</h2>
     <div id="map"
        style="width: 100%; height: 600px; border-radius: 20px;"
        data-markers="<%= @markers.to_json %>"

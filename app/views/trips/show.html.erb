@@ -5,9 +5,15 @@
     <p><%= @trip.destination %></p>
     <% if @trip.full? || @trip.departed? %>
     <% else %>
-    <div class='text-center mt-5'>
-      <%= link_to 'Join this trip', new_trip_booking_path(@trip), class: "btn btn-travel-primary mb-3 " %>
-    </div>
+      <% if @trip.participants.include?(current_user)  %>
+        <div class='text-center mt-5'>
+          <p> You already joined this trip !</p>
+        </div>
+      <% else %>
+        <div class='text-center mt-5'>
+          <%= link_to 'Join this trip', new_trip_booking_path(@trip), class: "btn btn-travel-primary mb-3 " %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 
