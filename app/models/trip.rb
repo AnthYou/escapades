@@ -76,7 +76,7 @@ class Trip < ApplicationRecord
     if clear_for_average_computing.count == 0
       return 0
     else
-      return total / clear_for_average_computing.count
+      return (total.to_f / clear_for_average_computing.count).ceil
     end
   end
 
