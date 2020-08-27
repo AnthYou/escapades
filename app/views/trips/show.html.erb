@@ -9,11 +9,15 @@
         <%= link_to 'Manage my trip', dashboard_path, class: 'btn-travel-primary' %>
       <% elsif @trip.participants.include?(current_user)  %>
         <div class='text-center mt-5'>
-          <p> You already joined this trip !</p>
+          <p> You already joined this trip!</p>
+        </div>
+      <% elsif @trip.users.include?(current_user) %>
+        <div class="text-center mt-5">
+          <p> You already applied to this trip!</p>
         </div>
       <% else %>
-        <div class='text-center mt-5'>
-          <%= link_to 'Join this trip', new_trip_booking_path(@trip), class: "btn btn-travel-primary mb-3 " %>
+        <div class='text-center mt-3'>
+          <button type="button" class="btn btn-travel-primary" data-toggle="modal" data-target="#joinModal">Join this trip</button>
         </div>
       <% end %>
     <% end %>
@@ -96,16 +100,43 @@
       </div>
     <% elsif @trip.participants.include?(current_user)  %>
       <div class='text-center mt-5'>
-        <p> You already joined this trip !</p>
+        <p> You already joined this trip!</p>
+      </div>
+    <% elsif @trip.users.include?(current_user) %>
+      <div class="text-center mt-5">
+        <p> You already applied to this trip!</p>
       </div>
     <% else %>
       <div class='text-center mt-5'>
-        <%= link_to 'Join this trip', new_trip_booking_path(@trip), class: "btn btn-travel-primary mb-3 " %>
+        <button type="button" class="btn btn-travel-primary mb-3" data-toggle="modal" data-target="#joinModal">Join this trip</button>
       </div>
     <% end %>
   <% end %>
   <div class='text-center mb-5'>
     <%= link_to 'Back to all trips', trips_path, class: "btn btn-travel-secondary mb-3 " %>
   </div>
+
+  <!-- MODAL JOIN A TRIP -->
+  <div class="modal fade" id="joinModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Thank you for choosing this trip!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [ @trip, @booking ] do |f| %>
+          <%= f.input :description, required: true, label: "Please tell us why you want to join this trip" %>
+          <%= f.submit "Submit your application", class: "btn btn-travel-primary mt-3" %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-travel-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 </div>

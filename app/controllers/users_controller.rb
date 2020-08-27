@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @trips = Trip.all
     @user = current_user
     @trips_admin = @trips.where(user_id: @user.id)
-    @current_trips = @trips.departed.select { |trip| trip.participants.include?(@user) && Date.today <= trip.return_date }
+    @current_trips = @user.bookings.select { |booking| booking.status == 'accepted' }.map { |booking| booking.trip }
     @past_trips = @trips.departed.select { |trip| trip.participants.include?(@user) && Date.today > trip.return_date }
     authorize @user
   end

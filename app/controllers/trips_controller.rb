@@ -39,6 +39,7 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+    @booking = Booking.new
     @activities = @trip.activities
     @markers = @activities.map.with_index do |activity, i|
       {
@@ -50,7 +51,6 @@ class TripsController < ApplicationController
     end
 
     authorize @trip
-
   end
 
   def new
