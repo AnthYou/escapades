@@ -8,7 +8,7 @@
       <p> <%= image_tag "https://icon-library.com/images/default-user-icon/default-user-icon-8.jpg", class: "avatar-dashboard" %> </p>
     <% end %>
     <h3>Welcome <strong><%= @user.first_name %> <%= @user.last_name %></strong></h3>
-    <%= link_to "My profile", user_path(current_user), class: "btn btn-travel mt-3"%>
+    <%= link_to "My profile", user_path(current_user), class: "btn btn-travel-primary mt-3"%>
     <%= link_to "Edit my profile", edit_user_registration_path(current_user), class: "btn btn-travel-secondary mt-3"%>
   </div>
 
