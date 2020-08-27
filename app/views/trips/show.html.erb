@@ -11,13 +11,15 @@
     <% end %>
   </div>
 
-  <h2 class="text-center font-weight-bold mb-5">About the trip</h2>
+<!-- DESCRIPTION -->
+  <h2 class="text-center font-weight-bold mb-5">about the trip</h2>
   <div class="trip-description">
     <p><%= @trip.description %></p>
   </div>
 
+<!-- SPECS -->
   <div class="spec mt-5">
-    <h2 class="text-center font-weight-bold mb-5" style="font-weight:600;">Specs</h2>
+    <h2 class="text-center font-weight-bold mb-5" style="font-weight:600;">specs</h2>
     <div class="trip-description">
       <div class="icons my-3" style= "display:flex;justify-content: space-around">
         <div class= "icon text-center">
@@ -45,7 +47,7 @@
   </div>
 
 <!-- MAPBOX -->
-    <h2 class="text-center mt-5 pb-5 font-weight-bold">Trip itinerary</h2>
+    <h2 class="text-center mt-5 pb-5 font-weight-bold">trip itinerary</h2>
       <div id="map2"
          style="width: 100%; height: 600px;"
          data-markers="<%= @markers.to_json %>"
@@ -54,11 +56,11 @@
 
 
 <!-- TRIP ACTIVITIES -->
-  <h2 class="font-weight-bold text-center mt-5 mb-4">Trip activities</h2>
+  <h2 class="font-weight-bold text-center mt-5 mb-4">trip activities</h2>
         <%= render 'shared/activity_cards', trip: @trip %>
 
 <!-- TRIP USERS -->
-  <h2 class="font-weight-bold text-center mt-5 mb-4">Meet your dream team</h2>
+  <h2 class="font-weight-bold text-center mt-5 mb-4">meet your dream team</h2>
 
   <div class="users-grid d-flex justify-content-around mt-5">
     <!-- TRIP OWNER -->
