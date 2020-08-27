@@ -1,0 +1,5 @@
+<div class="cards-grid">
+  <% trip.activities.each do |activity| %>
+    <%= render "shared/activity_card", activity: activity%>
+  <% end %>
+</div>
