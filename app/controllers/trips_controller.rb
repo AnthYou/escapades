@@ -2,11 +2,30 @@ class TripsController < ApplicationController
   def index
     @trips = policy_scope(Trip)
     authorize @trips
+
     if params[:query].present?
-      @trips = Trip.geocoded.search_by_destination(params[:query])
-    else
-      @trips = [Trip.undeparted.order(departure_date: :asc), Trip.departed].flatten
+       trip_ids = Trip.geocoded.search_by_destination(params[:query]).pluck(:id)
+       @trips   = Trip.where(id: trip_ids)
     end
+
+    query = <<~SQL
+      trips.*,
+      CASE WHEN departure_date >= current_date THEN 1
+           ELSE 2
+      END AS departure_status_order,
+      CASE WHEN COUNT(bookings.id) + 1 < max_capacity THEN 1
+           ELSE 2
+      END AS capacity_order,
+      COUNT(bookings.id) as accepted_bookings_count
+    SQL
+
+    # TODO: REMOVE THE + 1 PLEASEEEE
+    @trips = @trips
+             .select(query)
+             .joins("LEFT OUTER JOIN bookings ON bookings.trip_id = trips.id AND bookings.status = 'accepted'")
+             .group("trips.id")
+             .order(:departure_status_order, :capacity_order, departure_date: :asc)
+
     @markers = @trips.map do |trip|
       {
         lat: trip.latitude,

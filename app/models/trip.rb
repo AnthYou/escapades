@@ -27,7 +27,7 @@ class Trip < ApplicationRecord
     participants.count == max_capacity
   end
 
-  #compute the number of days left before departure
+  # compute the number of days left before departure
   def days_to_departure
     (departure_date - Date.today).to_i
   end
@@ -50,7 +50,7 @@ class Trip < ApplicationRecord
     return mates
   end
 
-# return an array of a given trip's participants (INCLUDING owner)
+  # return an array of a given trip's participants (INCLUDING owner)
   def participants
     participants = [user]
     bookings.where(status: "accepted").each do |booking|
