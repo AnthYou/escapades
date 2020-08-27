@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   # Compute the average rating for a given user. Return an integer
   def user_average_rating
-    if reviews.first == nil
+    if reviews.first.nil?
       return nil
     else
       total = 0

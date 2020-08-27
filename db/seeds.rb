@@ -260,10 +260,12 @@ trips = [
   ]
 ]
 
-trips.each do |trip| iterated_trip = Trip.new(trip.first)
+trips.each do |trip|
+  iterated_trip = Trip.new(trip.first)
   file = URI.open(trip.last)
   iterated_trip.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   iterated_trip.save!
+  Booking.create(trip_id: iterated_trip.id, user_id: iterated_trip.user.id, status:'accepted')
 end
 
 puts "Done !"
@@ -279,7 +281,7 @@ status = ["pending", "accepted", "declined", "cancelled"]
 10.times do
 # vérifie que que le trip n'est pas plein, sinon on en prend un autre au hasard
   trip = Trip.all.sample
-  until trip.max_capacity > trip.users.count + 1
+  until trip.max_capacity > trip.users.count
       trip = Trip.all.sample
   end
 

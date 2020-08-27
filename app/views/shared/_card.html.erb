@@ -48,15 +48,15 @@
 
     <!-- USER AVATARS -->
     <div class="users">
-      <% trip.bookings.where(status: "accepted").each do |booking| %>
+      <% trip.bookings.where(status: "accepted").reverse.each do |booking| %>
         <% if booking.user.photo.attached? %>
-          <li class="avatar list-inline-item" style="background-image: url('<%= cl_image_path booking.user.photo.key %>');"></li>
+          <li class="avatar <%= 'avatar-owner' if booking.user == trip.user %> list-inline-item" style="background-image: url('<%= cl_image_path booking.user.photo.key %>');"></li>
         <% else %>
-          <li class="avatar list-inline-item" style="background-image: url('https://icon-library.com/images/default-user-icon/default-user-icon-8.jpg');"></li>
+          <li class="avatar <%= 'avatar-owner' if booking.user == trip.user %> list-inline-item" style="background-image: url('https://icon-library.com/images/default-user-icon/default-user-icon-8.jpg');"></li>
         <% end %>
       <% end %>
       <!-- OWNER -->
-      <li class="avatar-owner list-inline-item" style="background-image: url('<%= cl_image_path trip.user.photo.key %>');"></li>
+      <!-- <li class="avatar-owner list-inline-item" style="background-image: url('<%= cl_image_path trip.user.photo.key %>');"></li> -->
     </div>
 
     <!-- CARD INFO -->
