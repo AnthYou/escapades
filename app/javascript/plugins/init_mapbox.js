@@ -12,7 +12,6 @@ const addMarkersToMap = (map, markers) => {
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // add this
     const element = document.createElement('div');
     element.className = 'marker';
-    element.style.backgroundImage = `url('${marker.image_url}')`;
     element.style.backgroundSize = 'contain';
     element.style.width = '25px';
     element.style.height = '25px';
@@ -133,11 +132,7 @@ const initMapbox = () => {
      drawRoute(map2, markers);
 
      fitMapToMarkers(map2, markers);
-     map2.addControl(new MapboxGeocoder({
-       accessToken: mapboxgl.accessToken,
-       language: 'en-US',
-       mapboxgl: mapboxgl
-     }));
+
    }
 };
 
