@@ -6,5 +6,5 @@
       <%= link_to 'Add a new post', new_user_post_path(@user), class: "btn btn-travel-primary mb-3" %>
     <% end %>
   </div>
-  <%= render 'shared/post_cards_grid', user: @user, post: @user.posts %>
+  <%= render 'shared/post_cards_grid', user: @user, posts: @user.posts %>
 </div>
