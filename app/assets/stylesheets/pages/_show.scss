@@ -6,6 +6,17 @@
   margin: 25px;
 }
 
+.review {
+  display:flex;
+  margin: 10px;
+  box-shadow: 4px;
+}
+
+
+.photo img {
+  height: 100px;
+  border-radius: 4px;
+}
 // ANTHO
 
 .trip-banner {
@@ -72,4 +83,9 @@ a {
 a:hover {
   text-decoration: none;
   color: $my-black;
+}
+
+// SHOW USER
+.user-col-right {
+    width: 75%;
 }
