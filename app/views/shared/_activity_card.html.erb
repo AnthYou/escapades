@@ -14,6 +14,7 @@
 
           <!-- NUMBER OF NIGHTS -->
 
+          <p class="nb-nights"><%= (activity.end_date - activity.start_date).to_i %> nights</p>
           <!-- PRICE  -->
           <p class="price-range">$ <%= activity.price %></p>
         </div>
