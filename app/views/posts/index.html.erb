@@ -3,7 +3,7 @@
   <div class= "text-center mb-3 mt-3">
     <%= link_to 'Back to profile', user_path(@user), class: "btn btn-travel-secondary mb-3" %>
   </div>
-  <div class ="cards">
+  <div class ="posts-grid">
     <% @user.posts.each do |post| %>
     <div class="card mb-3 w-45">
       <% if post.photo.attached? %>
