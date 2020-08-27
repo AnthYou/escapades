@@ -17,7 +17,6 @@ class TripsController < ApplicationController
   end
 
   def show
-
     @trip = Trip.find(params[:id])
     @activities = @trip.activities
     @markers = @activities.map.with_index do |activity, i|
