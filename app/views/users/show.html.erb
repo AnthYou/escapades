@@ -67,25 +67,13 @@
     </div>
   </div>
   <div class="posts">
-    <h2 style="text-align:center; font-weight: 600;">Last posts</h2>
-    <div class ="posts-grid">
-      <% @user.posts.last(3).each do |post| %>
-        <div class="card mb-3 w-45">
-          <% if post.photo.attached? %>
-            <img class="card-img-top" src="<%= cl_image_path post.photo.key %>" alt="Card image cap">
-          <% else %>
-            <img class="card-img-top" src="https://www.ecloudvalley.com/wp-content/uploads/2020/01/%E6%96%B0%E4%B8%96%E4%BB%A3-AWS-%E8%A8%97%E7%AE%A1%E6%9C%8D%E5%8B%99%E6%8F%90%E4%BE%9B%E5%95%86%EF%BC%88MSP%EF%BC%89%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F.jpg" alt="Card image cap">
-          <% end %>
-          <div class="card-body">
-            <h5 class="card-title text-dark text-left">Trip: <%= post.trip.title %></h5>
-            <p class="card-text"><%= post.content %></p>
-            <p class="card-text"><small class="text-muted">comment (0)</small></p>
-          </div>
-        </div>
+    <h2 style="text-align:center; font-weight: 600">Last posts</h2>
+      <%= render 'shared/post_cards_grid', user: @user, posts: @user.posts.last(3) %>
+    <div class= "text-center mt-3">
+      <%= link_to 'See all posts', user_posts_path(@user), class: "btn btn-travel-secondary mb-3" %>
+      <% if @user == current_user %>
+        <%= link_to 'Add a new post', new_user_post_path(@user), class: "btn btn-travel-primary mb-3" %>
       <% end %>
-    </div>
-    <div class= "text-center">
-      <%= link_to 'See all posts', user_posts_path(@user), class: "btn btn-travel-primary mb-3" %>
     </div>
   </div>
 </div>
