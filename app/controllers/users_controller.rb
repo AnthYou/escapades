@@ -19,4 +19,9 @@ class UsersController < ApplicationController
     @trips_admin = @trips.where(user_id: @user.id)
     authorize @user
   end
+
+  private
+  def user_params
+    params.require(:user).permit( :email, :password, :first_name, :last_name, :description, :date_of_birth)
+  end
 end
