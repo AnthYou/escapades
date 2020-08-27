@@ -17,18 +17,19 @@ class TripsController < ApplicationController
   end
 
   def show
-    @trips = Trip.all
     @trip = Trip.find(params[:id])
     @activities = @trip.activities
-    @markers = @activities.map do |activity|
+    @markers = @activities.map.with_index do |activity, i|
       {
         lat: activity.latitude,
         lng: activity.longitude,
+        step: i + 1,
         infoWindow: render_to_string(partial: "shared/info_window_activity", locals: { activity: activity })
       }
     end
 
     authorize @trip
+
   end
 
   def new

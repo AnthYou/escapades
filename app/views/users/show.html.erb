@@ -2,7 +2,7 @@
 <!--   PERSONAL INFO -->
   <div class="bg-white p-4 rounded mb-3 text-center d-flex" >
     <div class="user-col-left">
-      <div class="user-info p-3" style="background-color: rgba(255, 255, 255, 0.4); border-radius: 20px; box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);position: relative;left: -10px;top: 155px;">
+      <div class="user-info p-3" style="background-color: rgba(255, 255, 255, 0.4); border-radius: 20px; box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); position: relative; left: -10px; top: 155px;">
         <% if @user.photo.attached? %>
           <p> <%= cl_image_tag @user.photo.key, class: "avatar" %> </p>
         <% else %>
@@ -23,7 +23,6 @@
         <% end %>
       </div>
     </div>
-
     <div class="user-col-right">
       <h3 class= "text-center mb-3"> The <strong>places</strong> I have been to 🌎 </h3>
       <!--   MAP OF THE WORLD : static for now -->
@@ -55,7 +54,7 @@
       </div>
     <% end %>
   <div style="text-align: center; margin-top: 50px">
-    <%= link_to "Leave a review", new_user_review_path(@user), class: "btn btn-primary"%>
+    <%= link_to "Leave a review", new_user_review_path(@user), class: "btn btn-travel-primary"%>
   </div>
   </div>
 </div>
