@@ -429,6 +429,8 @@ activities = [
       title: "Discover Melbourne",
       description: "We're gonna explore the streets, drink coffee and discover the nightlife.",
       price: 100,
+      start_date: "21/08/2020".to_date,
+      end_date: "28/08/2020".to_date,
       location: "Melbourne, Australia",
       url: "https://www.visitmelbourne.com/",
       trip: Trip.first
@@ -440,6 +442,8 @@ activities = [
       title: "Diving at the great barrier reef",
       description: "A dive into the largest coral reef on earth",
       price: 800,
+      start_date: "29/08/2020".to_date,
+      end_date: "04/09/2020".to_date,
       location: "Cairns, Australia",
       url: "https://www.australia.com/en/places/cairns-and-surrounds/guide-to-the-great-barrier-reef.html",
       trip: Trip.first
@@ -451,6 +455,8 @@ activities = [
       title: "Desert trip to Uluru",
       description: "We can't do the climbing. But We'll admire this beautiful landscape anyway",
       price: 200,
+      start_date: "05/09/2020".to_date,
+      end_date: "20/09/2020".to_date,
       location: "Alice Springs, Australia",
       url: "https://parksaustralia.gov.au/uluru/",
       trip: Trip.first
@@ -462,6 +468,8 @@ activities = [
       title: "Skidiving in Perth",
       description: "I hope you're not affraid hahaha. This is crazy!",
       price: 280,
+      start_date: "21/09/2020".to_date,
+      end_date: "22/09/2020".to_date,
       location: "Perth, Australia",
       url: "https://www.skydive.com.au/perth/",
       trip: Trip.first

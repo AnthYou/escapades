@@ -37,3 +37,10 @@
 .btn-travel-secondary:active {
   box-shadow: 1px 1px 5px $my-orange-faded;
 }
+
+#new-activity-btn {
+  position: absolute;
+    z-index: 1;
+    right: 180px;
+    top: 1330px;
+}
