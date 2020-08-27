@@ -5,7 +5,9 @@
     <p><%= @trip.destination %></p>
     <% if @trip.full? || @trip.departed? %>
     <% else %>
-      <% if @trip.participants.include?(current_user)  %>
+      <% if @trip.user == current_user %>
+        <%= link_to 'Manage my trip', dashboard_path, class: 'btn-travel-primary' %>
+      <% elsif @trip.participants.include?(current_user)  %>
         <div class='text-center mt-5'>
           <p> You already joined this trip !</p>
         </div>
@@ -82,7 +84,11 @@
 
   <% if @trip.full? || @trip.departed? %>
   <% else %>
-    <% if @trip.participants.include?(current_user)  %>
+    <% if @trip.user == current_user %>
+      <div class="text-center mt-5 mb-3">
+        <%= link_to 'Manage my trip', dashboard_path, class: 'btn-travel-primary' %>
+      </div>
+    <% elsif @trip.participants.include?(current_user)  %>
       <div class='text-center mt-5'>
         <p> You already joined this trip !</p>
       </div>

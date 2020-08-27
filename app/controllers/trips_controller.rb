@@ -1,4 +1,6 @@
 class TripsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:home, :index, :show]
+
   def index
     @trips = policy_scope(Trip)
     authorize @trips

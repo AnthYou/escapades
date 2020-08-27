@@ -1,34 +1,54 @@
 <div class = "container mt-3">
 
   <div class="bg-white p-4 rounded mb-3 text-center">
-    <h1 class="text-center mb-3"><strong>Dashboard</strong></h1>
+    <h1 class="text-center mb-3"><strong>my dashboard</strong></h1>
     <% if @user.photo.attached? %>
       <p> <%= cl_image_tag @user.photo.key, class: "avatar-dashboard" %> </p>
     <% else %>
       <p> <%= image_tag "https://icon-library.com/images/default-user-icon/default-user-icon-8.jpg", class: "avatar-dashboard" %> </p>
     <% end %>
-    <h3>Welcome <strong><%= @user.first_name %> <%= @user.last_name %></strong></h3>
+    <h3>welcome <strong><%= @user.first_name %> <%= @user.last_name %></strong></h3>
     <%= link_to "My profile", user_path(current_user), class: "btn btn-travel-primary mt-3"%>
     <%= link_to "Edit my profile", edit_user_registration_path(current_user), class: "btn btn-travel-secondary mt-3"%>
   </div>
 
   <!--   My trips -->
   <div class="bg-white p-4 rounded mb-3">
-    <h2 class="text-center mb-3">My <strong>trips</strong> ✈️</h2>
+    <h2 class="text-center mb-4">my <strong>trips</strong> (<%= @trips_admin.count %>) ✈️</h2>
     <% if @trips_admin == [] %>
-      <p class="text-center">You haven't created a trip yet</p>
+      <p class="text-center">You have not created a trip yet</p>
     <% else %>
-      <%= render 'layouts/tripcards_admin' %>
+        <%= render 'shared/cards-grid', trips: @trips_admin %>
     <% end %>
   </div>
 
   <!--   My Applications -->
   <div class="bg-white p-4 rounded mb-3">
-    <h2 class="text-center mb-3">My <strong>applications</strong> 🔔</h2>
-    <% if @user.trips == [] %>
-      <p class="text-center">You haven't applied to a trip yet</p>
+    <h2 class="text-center mb-4">my <strong>applications</strong> (<%= @trips.select { |trip| trip.bookings.include?(@user) }.count %>) 🔔</h2>
+    <% if @user.bookings == [] %>
+      <p class="text-center">You have not applied to a trip yet</p>
     <% else %>
-      <%= render 'layouts/tripcards_user' %>
+      <%= render 'shared/cards-grid', trips: @trips.select { |trip| trip.bookings.include?(@user) } %>
+    <% end %>
+  </div>
+
+  <!--   My current trips -->
+  <div class="bg-white p-4 rounded mb-3">
+    <h2 class="text-center mb-4">my <strong>current trips</strong> (<%= @current_trips.count %>) 😍</h2>
+    <% if @current_trips == [] %>
+      <p class="text-center">You have not current trip for the moment</p>
+    <% else %>
+        <%= render 'shared/cards-grid', trips: @current_trips %>
+    <% end %>
+  </div>
+
+  <!--   My past trips -->
+  <div class="bg-white p-4 rounded mb-3">
+    <h2 class="text-center mb-4">my <strong>past trips</strong> (<%= @past_trips.count %>) 😄</h2>
+    <% if @past_trips == [] %>
+      <p class="text-center">You have not past trip for the moment</p>
+    <% else %>
+        <%= render 'shared/cards-grid', trips: @past_trips %>
     <% end %>
   </div>
 
