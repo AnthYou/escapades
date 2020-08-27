@@ -56,12 +56,18 @@
 }
 
 .container-card-activity {
+  color: white !important;
   width: 180px;
   height: 120px;
   background-position: center;
   background-size: cover;
   flex-direction: column;
   padding: 10px;
+}
+
+.container-card-activity a {
+  color: white !important;
+  font-weight: bold;
 }
 
 @media (max-width: 995px) {
