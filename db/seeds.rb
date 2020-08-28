@@ -184,7 +184,7 @@ trips = [
       departure_date: "21/07/2020".to_date,
       return_date: "23/08/2020".to_date,
       max_capacity: 6,
-      user: User.all.sample
+      user: User.first
     },
     "https://images.unsplash.com/photo-1529108190281-9a4f620bc2d8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1023&q=80"
   ],
@@ -260,6 +260,7 @@ trips = [
   ]
 ]
 
+
 trips.each do |trip|
   iterated_trip = Trip.new(trip.first)
   file = URI.open(trip.last)
@@ -278,7 +279,7 @@ puts "Seeding bookings..."
 
 status = ["pending", "accepted", "declined", "cancelled"]
 
-10.times do
+7.times do
 # vérifie que que le trip n'est pas plein, sinon on en prend un autre au hasard
   trip = Trip.all.sample
   until trip.max_capacity > trip.users.count
@@ -293,6 +294,7 @@ status = ["pending", "accepted", "declined", "cancelled"]
 
   Booking.create!(user: user, trip: trip, status: "accepted")
 end
+
 
 puts "Done !"
 
