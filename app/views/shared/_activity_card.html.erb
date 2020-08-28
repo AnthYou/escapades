@@ -14,7 +14,6 @@
         <div class="card-details">
 
           <!-- NUMBER OF NIGHTS -->
-
           <p class="nb-nights">From: <%= activity.start_date.strftime('%B %e') %></p>
           <p class="nb-nights">To: <%= activity.end_date.strftime('%B %e') %></p>
           <p class="nb-nights"> <strong> <%= (activity.end_date - activity.start_date).to_i %> days </strong></p>
