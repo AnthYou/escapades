@@ -12,7 +12,6 @@ class ReviewsController < ApplicationController
     @booking = Booking.find(params[:booking_id])
     @review.booking = @booking
     @review.user = current_user
-    # raise
     if @review.save
       redirect_to user_path(@booking.user)
     else
