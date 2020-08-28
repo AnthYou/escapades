@@ -12,4 +12,8 @@ class ReviewPolicy < ApplicationPolicy
   def new?
     return true
   end
+
+  def destroy?
+    record.user == user
+  end
 end

@@ -1,9 +1,19 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @reviews = Review.all
-    @user_reviews = @reviews.where(user_id: @user.id)
+    # @reviews = Review.all
+    # # @user_reviews = @reviews.where(booking.trip.user_id= @user.id)
+    # @user_reviews = []
+    # @user.bookings.each do |booking|
+    #   booking.reviews.each do |review|
+    #     @user_reviews << review
+    #   end
+    # end
+
+    @user_reviews = @user.received_reviews
+
     @trips = Trip.where(user_id: @user.id)
+
     @markers = @trips.map do |trip|
       {
         lat: trip.latitude,

@@ -39,7 +39,8 @@ class TripsController < ApplicationController
   def show
     @user = current_user
     @trip = Trip.find(params[:id])
-    @booking = Booking.new
+    @booking = @trip.bookings.where(user_id: current_user.id).last if user_signed_in?
+    @new_booking = Booking.new
     @activities = @trip.activities
     @markers = @activities.map.with_index do |activity, i|
       {

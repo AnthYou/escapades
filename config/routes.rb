@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     resources :posts, only: [ :new, :create, :index ]
   end
 
+  resources :reviews, only: [:destroy]
+
   resources :users, only: [:show]
   get "/dashboard", to: "users#dashboard", as: :dashboard
 end
