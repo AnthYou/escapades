@@ -4,14 +4,17 @@
     <h1><%=@trip.title%></h1>
     <p><%= @trip.destination %></p>
     <% if @trip.full? || @trip.departed? %>
+    <div class='text-center mt-5'>
+      <p> Trip is full or has already departed !</p>
+    </div>
     <% else %>
       <% if @trip.user == current_user %>
         <%= link_to 'Manage my trip', dashboard_path, class: 'btn-travel-primary' %>
-      <% elsif @trip.participants.include?(current_user)  %>
+      <% elsif current_user.accepted_in?(@trip.id) %>
         <div class='text-center mt-5'>
           <p> You already joined this trip!</p>
         </div>
-      <% elsif @trip.users.include?(current_user) %>
+      <% elsif current_user.applied_for?(@trip.id) %>
         <div class="text-center mt-5">
           <p> You already applied to this trip!</p>
         </div>
@@ -59,7 +62,7 @@
   </div>
 
 <!-- MAPBOX -->
-    <h2 class="text-center mt-5 pb-5 font-weight-bold">trip activities</h2>
+    <h2 class="text-center mt-5 pb-5 font-weight-bold">trip's activities</h2>
 
     <div class="container-card2 d-flex">
       <% if @user == @trip.user %>
@@ -75,7 +78,7 @@
     </div>
 
 <!-- TRIP ACTIVITIES -->
-  <h2 class="font-weight-bold text-center mt-5 mb-4">trip activities</h2>
+  <h2 class="font-weight-bold text-center mt-5 mb-4">trip's activities</h2>
         <%= render 'shared/activity_cards', trip: @trip %>
 
 <!-- TRIP USERS -->
@@ -93,17 +96,34 @@
     <% end %>
   </div>
 
+  <h2 class="font-weight-bold text-center mt-5 mb-4">trip's posts</h2>
+  <% if @trip.posts.first == nil %>
+    <p class= 'text-center'> No post available</p>
+  <% else %>
+    <%= render 'shared/post_cards_grid', posts: @trip.posts.last(3) %>
+  <% end %>
+  <div class= "text-center mt-3">
+    <%= link_to 'See all posts', trip_posts_path(@trip), class: "btn btn-travel-secondary mb-3" %>
+    <% if current_user.accepted_in?(@trip) %>
+      <%= link_to 'Add a new post', new_user_post_path(@current_user), class: "btn btn-travel-secondary mb-3" %>
+    <% end %>
+  </div>
+
+
   <% if @trip.full? || @trip.departed? %>
+    <div class='text-center mt-5'>
+      <p> Trip is full or has already departed !</p>
+    </div>
   <% else %>
     <% if @trip.user == current_user %>
       <div class="text-center mt-5 mb-3">
         <%= link_to 'Manage my trip', dashboard_path, class: 'btn-travel-primary' %>
       </div>
-    <% elsif @trip.participants.include?(current_user)  %>
+    <% elsif current_user.accepted_in?(@trip.id)%>
       <div class='text-center mt-5'>
         <p> You already joined this trip!</p>
       </div>
-    <% elsif @trip.users.include?(current_user) %>
+    <% elsif current_user.applied_for?(@trip.id) %>
       <div class="text-center mt-5">
         <p> You already applied to this trip!</p>
       </div>

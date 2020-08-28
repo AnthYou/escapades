@@ -23,5 +23,14 @@ class User < ApplicationRecord
     end
     return (total.to_f / reviews.count).ceil
   end
+
+  # Return true if an user is accepted in a trip
+  def accepted_in?(trip_id)
+    bookings.select{|booking| booking.status == "accepted"}.map{|booking| booking.trip.id}.include?(trip_id)
+  end
+
+  def applied_for?(trip_id)
+    bookings.select{|booking| booking.status == "pending"}.map{|booking| booking.trip.id}.include?(trip_id)
+  end
 end
 
