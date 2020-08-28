@@ -15,15 +15,15 @@ class User < ApplicationRecord
 
   # Compute the average rating for a given user. Return an integer
   def user_average_rating
-    if reviews.first.nil?
+    if received_reviews.first.nil?
       return nil
     else
       total = 0
-      reviews.each do |review|
+      received_reviews.each do |review|
         total += review.stars
       end
     end
-    return (total.to_f / reviews.count).ceil
+    return (total.to_f / received_reviews.count).ceil
   end
 
   # Return true if an user is accepted in a trip
