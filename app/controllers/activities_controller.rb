@@ -1,7 +1,9 @@
 class ActivitiesController < ApplicationController
+
   def new
     @activity = Activity.new
     @trip = Trip.find(params[:trip_id])
+    @activity.trip = @trip
     authorize @activity
   end
 

@@ -5,7 +5,11 @@ class ActivityPolicy < ApplicationPolicy
     end
   end
 
+  def new?
+    record.trip.user == user
+  end
+
   def create?
-    true
+    new?
   end
 end
