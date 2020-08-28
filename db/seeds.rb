@@ -181,9 +181,9 @@ trips = [
       destination: "Melbourne, Australia",
       budget_min: 1500,
       budget_max: 2500,
-      departure_date: "20/08/2020".to_date,
-      return_date: "29/09/2020".to_date,
-      max_capacity: 4,
+      departure_date: "21/07/2020".to_date,
+      return_date: "23/08/2020".to_date,
+      max_capacity: 6,
       user: User.all.sample
     },
     "https://images.unsplash.com/photo-1529108190281-9a4f620bc2d8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1023&q=80"
@@ -197,7 +197,7 @@ trips = [
       budget_max: 2000,
       departure_date: "20/12/2020".to_date,
       return_date: "5/01/2021".to_date,
-      max_capacity: 4,
+      max_capacity: 6,
       user: User.all.sample
     },
     "https://images.unsplash.com/photo-1534430480872-3498386e7856?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
@@ -211,7 +211,7 @@ trips = [
       budget_max: 3000,
       departure_date: "20/08/2020".to_date,
       return_date: "17/09/2020".to_date,
-      max_capacity: 4,
+      max_capacity: 6,
       user: User.all.sample
     },
     "https://www.decisionsdurables.com/wp-content/uploads/2017/03/la_reunion_vue_du_ciel02_-_credit_irt_-_serge_gelabert_dts_12_2014.jpg"
@@ -225,7 +225,7 @@ trips = [
       budget_max: 400,
       departure_date: "22/08/2020".to_date,
       return_date: "31/08/2020".to_date,
-      max_capacity: 4,
+      max_capacity: 6,
       user: User.all.sample
     },
     "https://images.unsplash.com/photo-1565622832101-358788927c53?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
@@ -239,7 +239,7 @@ trips = [
       budget_max: 850,
       departure_date: "28/08/2020".to_date,
       return_date: "31/08/2020".to_date,
-      max_capacity: 2,
+      max_capacity: 4,
       user: User.all.sample
     },
     "https://images.unsplash.com/photo-1546946590-5d739771abc4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1512&q=80"
@@ -253,7 +253,7 @@ trips = [
       budget_max: 700,
       departure_date: "04/09/2020".to_date,
       return_date: "07/09/2020".to_date,
-      max_capacity: 2,
+      max_capacity: 3,
       user: User.all.sample
     },
     "https://images.unsplash.com/photo-1547448415-e9f5b28e570d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
@@ -435,8 +435,8 @@ activities = [
       title: "Discover Melbourne",
       description: "We're gonna explore the streets, drink coffee and discover the nightlife.",
       price: 100,
-      start_date: "21/08/2020".to_date,
-      end_date: "28/08/2020".to_date,
+      start_date: "21/07/2020".to_date,
+      end_date: "28/07/2020".to_date,
       location: "Melbourne, Australia",
       url: "https://www.visitmelbourne.com/",
       trip: Trip.first
@@ -448,8 +448,8 @@ activities = [
       title: "Diving at the great barrier reef",
       description: "A dive into the largest coral reef on earth",
       price: 800,
-      start_date: "29/08/2020".to_date,
-      end_date: "04/09/2020".to_date,
+      start_date: "29/07/2020".to_date,
+      end_date: "04/08/2020".to_date,
       location: "Cairns, Australia",
       url: "https://www.australia.com/en/places/cairns-and-surrounds/guide-to-the-great-barrier-reef.html",
       trip: Trip.first
@@ -461,8 +461,8 @@ activities = [
       title: "Desert trip to Uluru",
       description: "We can't do the climbing. But We'll admire this beautiful landscape anyway",
       price: 200,
-      start_date: "05/09/2020".to_date,
-      end_date: "20/09/2020".to_date,
+      start_date: "05/08/2020".to_date,
+      end_date: "20/08/2020".to_date,
       location: "Alice Springs, Australia",
       url: "https://parksaustralia.gov.au/uluru/",
       trip: Trip.first
@@ -471,11 +471,11 @@ activities = [
   ],
   [
     {
-      title: "Skidiving in Perth",
+      title: "Skydiving in Perth",
       description: "I hope you're not affraid hahaha. This is crazy!",
       price: 280,
-      start_date: "21/09/2020".to_date,
-      end_date: "22/09/2020".to_date,
+      start_date: "21/08/2020".to_date,
+      end_date: "22/08/2020".to_date,
       location: "Perth, Australia",
       url: "https://www.skydive.com.au/perth/",
       trip: Trip.first
