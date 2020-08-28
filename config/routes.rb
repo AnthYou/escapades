@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :trips, only: [ :index, :create, :new, :show] do
     resources :bookings, only: [:new, :create]
     resources :activities, only: [:new, :create]
+    resources :posts, only: [:index]
   end
 
   resources :bookings, only: [] do

@@ -1,8 +1,13 @@
 class PostsController < ApplicationController
   def index
     @posts = policy_scope(Post)
-    @user = User.find(params[:user_id])
+    if params[:user_id] != nil
+      @user = User.find(params[:user_id])
+    end
     authorize @posts
+    if params[:trip_id] != nil
+      @trip = Trip.find(params[:trip_id])
+    end
   end
 
   def new
