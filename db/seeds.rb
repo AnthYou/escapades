@@ -323,18 +323,22 @@ reviews = [
 20.times do
 
   user = User.all.sample
-  booking = Booking.all.sample
+
+  booking = Booking.all.where.not(user: user).sample
   review = reviews.sample
- # on ne peut pas laisser de review sur la même personne pour le même booking
+
 
 # !!!! Il y a t'il une meilleure métode ??? car des creates peuvent échouer !
 
 # --on regarde dans tous les reviews deja créés, si cette paire existe, on en prend une autre?
 
-  Review.create(content: review[:content], stars: review[:stars], user: user, booking: booking)
+ # on ne peut pas laisser de review sur la même personne pour le même booking
+  new_review = Review.new(content: review[:content], stars: review[:stars], user: user, booking: booking)
 
+  new_review.save
 
 end
+
 
 puts "Done !"
 
