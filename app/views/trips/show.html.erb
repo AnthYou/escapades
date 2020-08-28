@@ -51,7 +51,7 @@
 
     <div class="container-card2 d-flex">
       <% if @user == @trip.user %>
-      <div id="new-activity-btn" style="text-align: center; margin-top: 50px">
+        <div id="new-activity-btn" style="text-align: center; margin-top: 50px">
         <%= link_to "Add an activity", new_trip_activity_path(@trip), class: "btn btn-travel-primary"%>
       </div>
       <% end %>
