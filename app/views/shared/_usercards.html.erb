@@ -9,9 +9,13 @@
     <!-- BADGE -->
   <div class="card-badges">
     <% if @trip.user == user %>
-      <span class="badge badge-secondary py-2 px-3 font-weight-light" style="position: absolute; left: 20px; top:20px;">OWNER</span>
+      <span class="badge badge-secondary py-2 px-3 font-weight-light" style="position: absolute; left: 20px; top: 20px;">OWNER</span>
     <% end %>
+    <% if booking && current_user_booking && current_user_booking.status == "accepted" && @trip.return_date < Date.today && booking.user != current_user %>
+          <%= link_to "Leave a review", new_booking_review_path(booking), class: "badge badge-primary py-2 px-3 font-weight-light", style: "color: white; position: absolute; right: 10px; bottom: 120px;" %>
+      <% end %>
   </div>
+
   <div class="card-info">
     <div class="usercard-top">
       <h2 class="usercard-name"><%= user.first_name %> <%= user.last_name%></h2>
@@ -31,9 +35,6 @@
     </div>
     <div class="usercard-description">
       <%= user.description %>
-      <% if booking && current_user_booking && current_user_booking.status == "accepted" && @trip.departure_date < Date.today && booking.user != current_user %>
-          <%= link_to "Leave a review", new_booking_review_path(booking), class: "btn btn-travel-secondary mt-3"%>
-      <% end %>
     </div>
   </div>
 </div>
