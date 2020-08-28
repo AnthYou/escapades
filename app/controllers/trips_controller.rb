@@ -15,13 +15,12 @@ class TripsController < ApplicationController
       CASE WHEN departure_date >= current_date THEN 1
            ELSE 2
       END AS departure_status_order,
-      CASE WHEN COUNT(bookings.id) + 1 < max_capacity THEN 1
+      CASE WHEN COUNT(bookings.id) < max_capacity THEN 1
            ELSE 2
       END AS capacity_order,
       COUNT(bookings.id) as accepted_bookings_count
     SQL
 
-    # TODO: REMOVE THE + 1 PLEASEEEE
     @trips = @trips
              .select(query)
              .joins("LEFT OUTER JOIN bookings ON bookings.trip_id = trips.id AND bookings.status = 'accepted'")
@@ -63,6 +62,7 @@ class TripsController < ApplicationController
     @trip.user = current_user
     authorize @trip
     if @trip.save
+      Booking.create(trip_id: @trip.id, user_id: current_user.id, status: 'accepted')
       redirect_to trip_path(@trip)
     else
       render :new

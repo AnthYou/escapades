@@ -45,18 +45,9 @@ class Trip < ApplicationRecord
     bookings.where(status: "accepted").count
   end
 
-  # return an array of a given trip's participants (EXCLUDING owner)
-  def mates
-    mates = []
-    bookings.where(status: "accepted").each do |booking|
-      mates << booking.user
-    end
-    return mates
-  end
-
   # return an array of a given trip's participants (INCLUDING owner)
   def participants
-    participants = [user]
+    participants = []
     bookings.where(status: "accepted").each do |booking|
       participants << booking.user
     end
