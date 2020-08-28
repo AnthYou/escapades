@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :trips, only: [ :index, :create, :new, :show] do
     resources :bookings, only: [:new, :create]
+    resources :activities, only: [:new, :create]
+    resources :posts, only: [:index]
   end
 
   resources :bookings, only: [] do
@@ -10,7 +12,8 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show] do
-    # resources :reviews, only: [ :new, :create ]
+    resources :reviews, only: [ :new, :create, :show ]
+    resources :posts, only: [ :new, :create, :index ]
   end
 
   resources :reviews, only: [:destroy]

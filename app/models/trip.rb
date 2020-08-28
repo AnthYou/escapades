@@ -35,7 +35,7 @@ class Trip < ApplicationRecord
     !full? && !departed?
   end
 
-  #compute the number of days left before departure
+  # compute the number of days left before departure
   def days_to_departure
     (departure_date - Date.today).to_i
   end
@@ -45,18 +45,9 @@ class Trip < ApplicationRecord
     bookings.where(status: "accepted").count
   end
 
-  # return an array of a given trip's participants (EXCLUDING owner)
-  def mates
-    mates = []
-    bookings.where(status: "accepted").each do |booking|
-      mates << booking.user
-    end
-    return mates
-  end
-
-# return an array of a given trip's participants (INCLUDING owner)
+  # return an array of a given trip's participants (INCLUDING owner)
   def participants
-    participants = [user]
+    participants = []
     bookings.where(status: "accepted").each do |booking|
       participants << booking.user
     end
@@ -76,7 +67,7 @@ class Trip < ApplicationRecord
     if clear_for_average_computing.count == 0
       return 0
     else
-      return total / clear_for_average_computing.count
+      return (total.to_f / clear_for_average_computing.count).ceil
     end
   end
 

@@ -260,10 +260,12 @@ trips = [
   ]
 ]
 
-trips.each do |trip| iterated_trip = Trip.new(trip.first)
+trips.each do |trip|
+  iterated_trip = Trip.new(trip.first)
   file = URI.open(trip.last)
   iterated_trip.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   iterated_trip.save!
+  Booking.create(trip_id: iterated_trip.id, user_id: iterated_trip.user.id, status:'accepted')
 end
 
 puts "Done !"
@@ -279,7 +281,7 @@ status = ["pending", "accepted", "declined", "cancelled"]
 10.times do
 # vérifie que que le trip n'est pas plein, sinon on en prend un autre au hasard
   trip = Trip.all.sample
-  until trip.max_capacity > trip.users.count + 1
+  until trip.max_capacity > trip.users.count
       trip = Trip.all.sample
   end
 
@@ -424,40 +426,64 @@ puts "Done !"
 puts "Seeding activities..."
 
 activities = [
+  [
     {
       title: "Discover Melbourne",
       description: "We're gonna explore the streets, drink coffee and discover the nightlife.",
       price: 100,
+      start_date: "21/08/2020".to_date,
+      end_date: "28/08/2020".to_date,
       location: "Melbourne, Australia",
-      url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      url: "https://www.visitmelbourne.com/",
       trip: Trip.first
     },
+    "https://www.visitmelbourne.com/-/media/images/melbourne/destinations/hosier-lane_mel_u_1150x863.jpg?h=600&iar=1&mh=600&mw=800&w=800&ts=20160819210519&hash=0CDCB7187E606E03F09EEB11D05B42A8"
+  ],
+  [
     {
       title: "Diving at the great barrier reef",
       description: "A dive into the largest coral reef on earth",
       price: 800,
+      start_date: "29/08/2020".to_date,
+      end_date: "04/09/2020".to_date,
       location: "Cairns, Australia",
       url: "https://www.australia.com/en/places/cairns-and-surrounds/guide-to-the-great-barrier-reef.html",
       trip: Trip.first
     },
+    "https://s7ap1.scene7.com/is/image/destqueensland/teq/consumer/global/images/destinations/great-barrier-reef/blog-images/editorial-hero-banner/2019_GBR_OrpheusIsland_DivingAndSnorkeling_139623.jpg?fit=wrap&fmt=webp&qlt=40&wid=1200"
+  ],
+  [
     {
       title: "Desert trip to Uluru",
       description: "We can't do the climbing. But We'll admire this beautiful landscape anyway",
       price: 200,
+      start_date: "05/09/2020".to_date,
+      end_date: "20/09/2020".to_date,
       location: "Alice Springs, Australia",
       url: "https://parksaustralia.gov.au/uluru/",
       trip: Trip.first
     },
+    "https://s1.at.atcdn.net/wp-content/uploads/2018/09/Uluru_hero-768x369.jpg"
+  ],
+  [
     {
       title: "Skidiving in Perth",
       description: "I hope you're not affraid hahaha. This is crazy!",
       price: 280,
+      start_date: "21/09/2020".to_date,
+      end_date: "22/09/2020".to_date,
       location: "Perth, Australia",
       url: "https://www.skydive.com.au/perth/",
       trip: Trip.first
-    }
-  ]
+    },
+    "https://media-cdn.tripadvisor.com/media/photo-s/16/a7/53/4b/tandem-skydive-in-the.jpg"
+  ],
+]
 
-Activity.create!(activities)
+activities.each do |activity| iterated_activity = Activity.new(activity.first)
+  file = URI.open(activity.last)
+  iterated_activity.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  iterated_activity.save!
+end
 
 puts "Done ! 🍺"

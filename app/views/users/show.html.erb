@@ -2,9 +2,9 @@
 <!--   PERSONAL INFO -->
   <div class="bg-white p-4 rounded mb-3 text-center d-flex" >
     <div class="user-col-left">
-      <div class="user-info p-3" style="background-color: rgba(255, 255, 255, 0.4); border-radius: 20px; box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); position: relative; left: -10px; top: 155px;">
+      <div class="user-info p-3" style="background-color: rgba(255, 255, 255, 0.4); border-radius: 20px; box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); position: relative; left: -10px;">
         <% if @user.photo.attached? %>
-          <p> <%= cl_image_tag @user.photo.key, class: "avatar" %> </p>
+          <p> <%= cl_image_tag @user.photo.key, class: "avatar-xl" %> </p>
         <% else %>
           <p> <%= image_tag "https://icon-library.com/images/default-user-icon/default-user-icon-8.jpg", class: "avatar-dashboard" %> </p>
         <% end %>
@@ -15,16 +15,25 @@
         <% end %>
         <p> <%= ((Date.today - @user.date_of_birth) / 365).to_i %> years old </p>
         <p> <%= @user.description %> </p>
-        <a href="#"> <i class="fab fa-instagram"></i> Follow me on instagram</a>
-        <% if @user == current_user %>
-        <br>
-        <%= link_to "Go to dashboard", dashboard_path, class: "btn btn-travel mt-3"%>
-        <%= link_to "Edit my profile", edit_user_registration_path(current_user), class: "btn btn-travel-secondary mt-3"%>
-        <% end %>
+      </div>
+      <% if @user == current_user %>
+        <div class="user-info p-3 d-flex justify-content-center align-items-center" style="background-color: rgba(255, 255, 255, 0.4); border-radius: 20px; box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); position: relative; left: -10px;">
+            <br>
+            <%= link_to "Go to dashboard", dashboard_path, class: "btn btn-travel"%>
+            <%= link_to "Edit my profile", edit_user_registration_path(current_user), class: "btn btn-travel-secondary "%>
+        </div>
+      <% end %>
+       <div class="user-info p-3" style="background-color: rgba(255, 255, 255, 0.4); border-radius: 20px; box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); position: relative; left: -10px;">
+          <ul style= "margin: 0px; padding-left: 0px">
+            <li style= "list-style-type: none; margin-bottom: 3px;"> <a href="#"> <i class="fab fa-instagram"></i> Follow me on instagram</a> </li>
+            <li style= "list-style-type: none; margin-bottom: 3px;"> <a href="#"> <i class="fab fa-facebook"></i> Follow me on facebook</a> </li>
+            <li style= "list-style-type: none; margin-bottom: 3px;"> <a href="#"> <i class="fas fa-globe"></i></i> Visit my website</a> </li>
+          </ul>
       </div>
     </div>
+
     <div class="user-col-right">
-      <h3 class= "text-center mb-3"> The <strong>places</strong> I have been to 🌎 </h3>
+     <!--  <h3 class= "text-center mb-3"> The <strong>places</strong> I have been to 🌎 </h3> -->
       <!--   MAP OF THE WORLD : static for now -->
       <div id="map"
           style="width: 100%; height: 600px;"
@@ -67,9 +76,25 @@
         </div>
       </div>
     <% end %>
-  <div style="text-align: center; margin-top: 50px">
-    <%#= link_to "Leave a review", new_user_review_path(@user), class: "btn btn-travel-primary"%>
+    <div style="text-align: center; margin-top: 50px">
+      <%#= link_to "Leave a review", new_user_review_path(@user), class: "btn btn-travel-primary"%>
+    </div>
   </div>
+
+
+  <div class="posts">
+    <h2 style="text-align:center; font-weight: 600">Last posts</h2>
+    <% if current_user.posts.first == nil %>
+        <p class= 'text-center'> No post available</p>
+    <% else %>
+      <%= render 'shared/post_cards_grid', user: @user, posts: @user.posts.last(3) %>
+    <% end %>
+    <div class= "text-center mt-3">
+      <%= link_to 'See all posts', user_posts_path(@user), class: "btn btn-travel-secondary mb-3" %>
+      <% if @user == current_user %>
+        <%= link_to 'Add a new post', new_user_post_path(@user), class: "btn btn-travel-primary mb-3" %>
+      <% end %>
+    </div>
   </div>
 </div>
 

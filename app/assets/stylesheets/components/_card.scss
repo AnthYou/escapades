@@ -79,7 +79,7 @@ p.price-range {
 .users {
   position: absolute;
   top: 240px;
-  right: 55px;
+  right: 40px;
 }
 
 .users .avatar {
@@ -156,4 +156,13 @@ p.price-range {
 .usercard-name {
   font-size: 18px;
   margin-bottom: 0px;
+}
+
+ // ACTIVITY CARD
+.card-container a {
+  color: white;
+}
+
+.card-container a:hover {
+  color: white;
 }

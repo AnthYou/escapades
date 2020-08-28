@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-offset-12 mb-5">
+      <h2>Add a new post</h2>
+      <%= simple_form_for [ @user, @post ] do |f| %>
+      <p>Your trips :</p>
+      <ul>
+       <% @user.bookings.select{|booking| booking.status == "accepted"}.each do |booking| %>
+        <li><%= booking.trip.id %> - <%= booking.trip.title %></li>
+      <% end %>
+      </ul>
+        <%= f.input :trip_id, as: :select, collection: @user.bookings.select{|booking| booking.status == "accepted"}.map{|booking| booking.trip.id} %>
+        <%= f.input :content, as: :text %>
+        <%= f.input :photo, as: :file, required: true %>
+        <%= f.submit "Submit post", class: "btn btn-travel-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
