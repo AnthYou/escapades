@@ -1,6 +1,6 @@
 <% if params[:user_id] != nil %>
   <div class="container">
-    <h1 class="text-center mt-4"> All <%=@user.first_name%>' s posts </h1>
+    <h1 class="text-center mt-4">All <%= @user.first_name %>'s posts</h1>
     <div class= "text-center mb-3 mt-3">
       <%= link_to 'Back to profile', user_path(@user), class: "btn btn-travel-secondary mb-3" %>
       <% if @user == current_user %>
@@ -8,7 +8,7 @@
       <% end %>
     </div>
     <% if current_user.posts.first == nil %>
-        <p class= 'text-center'> No post available</p>
+        <p class= 'text-center'>No post available</p>
     <% else %>
       <%= render 'shared/post_cards_grid', user: @user, posts: @user.posts %>
     <% end %>
@@ -17,12 +17,12 @@
 
 <% if params[:trip_id] != nil %>
   <div class="container">
-    <h1 class="text-center mt-4"> All trip's posts </h1>
+    <h1 class="text-center mt-4">All trip's posts</h1>
     <div class= "text-center mb-3 mt-3">
       <%= link_to 'Back to trip', trip_path(@trip), class: "btn btn-travel-secondary mb-3" %>
     </div>
     <% if @trip.posts.first == nil %>
-        <p class= 'text-center'> No post available</p>
+        <p class= 'text-center'>No post available</p>
     <% else %>
       <%= render 'shared/post_cards_grid', posts: @trip.posts %>
     <% end %>
