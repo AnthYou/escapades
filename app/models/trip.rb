@@ -27,13 +27,17 @@ class Trip < ApplicationRecord
     participants.count == max_capacity
   end
 
-  #compute the number of days left before departure
-  def days_to_departure
-    (departure_date - Date.today).to_i
-  end
-
   def departed?
     days_to_departure <= 0
+  end
+
+  def joinable?
+    !full? && !departed?
+  end
+
+  # compute the number of days left before departure
+  def days_to_departure
+    (departure_date - Date.today).to_i
   end
 
   # count the number of accepted bookings for a given trip
@@ -41,18 +45,9 @@ class Trip < ApplicationRecord
     bookings.where(status: "accepted").count
   end
 
-  # return an array of a given trip's participants (EXCLUDING owner)
-  def mates
-    mates = []
-    bookings.where(status: "accepted").each do |booking|
-      mates << booking.user
-    end
-    return mates
-  end
-
-# return an array of a given trip's participants (INCLUDING owner)
+  # return an array of a given trip's participants (INCLUDING owner)
   def participants
-    participants = [user]
+    participants = []
     bookings.where(status: "accepted").each do |booking|
       participants << booking.user
     end
@@ -69,7 +64,11 @@ class Trip < ApplicationRecord
         total += participant.user_average_rating
       end
     end
-    return total / clear_for_average_computing.count
+    if clear_for_average_computing.count == 0
+      return 0
+    else
+      return (total.to_f / clear_for_average_computing.count).ceil
+    end
   end
 
   private

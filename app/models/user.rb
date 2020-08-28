@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   # Compute the average rating for a given user. Return an integer
   def user_average_rating
-    if reviews.first == nil
+    if reviews.first.nil?
       return nil
     else
       total = 0
@@ -21,7 +21,16 @@ class User < ApplicationRecord
         total += review.stars
       end
     end
-    return (total / reviews.count).to_i
+    return (total.to_f / reviews.count).ceil
+  end
+
+  # Return true if an user is accepted in a trip
+  def accepted_in?(trip_id)
+    bookings.select{|booking| booking.status == "accepted"}.map{|booking| booking.trip.id}.include?(trip_id)
+  end
+
+  def applied_for?(trip_id)
+    bookings.select{|booking| booking.status == "pending"}.map{|booking| booking.trip.id}.include?(trip_id)
   end
 end
 

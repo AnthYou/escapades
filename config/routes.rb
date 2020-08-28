@@ -4,14 +4,18 @@ Rails.application.routes.draw do
   resources :trips, only: [ :index, :create, :new, :show] do
     resources :bookings, only: [:new, :create]
     resources :activities, only: [:new, :create]
+    resources :posts, only: [:index]
+  end
+
+  resources :bookings, only: [] do
+    resources :reviews, only: [ :new, :create ]
   end
 
   resources :users, only: [:show] do
-    resources :reviews, only: [ :new, :create ]
+    resources :reviews, only: [ :new, :create, :show ]
+    resources :posts, only: [ :new, :create, :index ]
   end
-  resources :users, only: [:show] do
-    member do
-      get :dashboard
-    end
-  end
+
+  resources :users, only: [:show]
+  get "/dashboard", to: "users#dashboard", as: :dashboard
 end

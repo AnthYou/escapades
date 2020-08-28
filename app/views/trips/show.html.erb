@@ -4,10 +4,25 @@
     <h1><%=@trip.title%></h1>
     <p><%= @trip.destination %></p>
     <% if @trip.full? || @trip.departed? %>
-    <% else %>
     <div class='text-center mt-5'>
-      <%= link_to 'Join this trip', new_trip_booking_path(@trip), class: "btn btn-travel-primary mb-3 " %>
+      <p> Trip is full or has already departed !</p>
     </div>
+    <% else %>
+      <% if @trip.user == current_user %>
+        <%= link_to 'Manage my trip', dashboard_path, class: 'btn-travel-primary' %>
+      <% elsif current_user.accepted_in?(@trip.id) %>
+        <div class='text-center mt-5'>
+          <p> You already joined this trip!</p>
+        </div>
+      <% elsif current_user.applied_for?(@trip.id) %>
+        <div class="text-center mt-5">
+          <p> You already applied to this trip!</p>
+        </div>
+      <% else %>
+        <div class='text-center mt-3'>
+          <button type="button" class="btn btn-travel-primary" data-toggle="modal" data-target="#joinModal">Join this trip</button>
+        </div>
+      <% end %>
     <% end %>
   </div>
 
@@ -47,11 +62,12 @@
   </div>
 
 <!-- MAPBOX -->
-    <h2 class="text-center mt-5 pb-5 font-weight-bold">trip activities</h2>
+    <h2 class="text-center mt-5 pb-5 font-weight-bold">trip's activities</h2>
 
     <div class="container-card2 d-flex">
       <% if policy(@trip).add_activity? %>
       <div id="new-activity-btn" style="text-align: center; margin-top: 50px">
+
         <%= link_to "Add an activity", new_trip_activity_path(@trip), class: "btn btn-travel-primary"%>
       </div>
       <% end %>
@@ -63,7 +79,7 @@
     </div>
 
 <!-- TRIP ACTIVITIES -->
-  <h2 class="font-weight-bold text-center mt-5 mb-4">trip activities</h2>
+  <h2 class="font-weight-bold text-center mt-5 mb-4">trip's activities</h2>
         <%= render 'shared/activity_cards', trip: @trip %>
 
 <!-- TRIP USERS -->
@@ -71,7 +87,7 @@
 
   <div class="users-grid d-flex justify-content-around mt-5">
     <!-- TRIP OWNER -->
-    <%= render 'shared/usercards', user: @trip.user %>
+    <%#= render 'shared/usercards', user: @trip.user %>
 
 
     <% @trip.bookings.each do |booking| %>
@@ -81,20 +97,68 @@
     <% end %>
   </div>
 
-  <% if @trip.full? || @trip.departed? %>
+  <h2 class="font-weight-bold text-center mt-5 mb-4">trip's posts</h2>
+  <% if @trip.posts.first == nil %>
+    <p class= 'text-center'> No post available</p>
   <% else %>
-    <% if @trip.participants.include?(current_user)  %>
+    <%= render 'shared/post_cards_grid', posts: @trip.posts.last(3) %>
+  <% end %>
+  <div class= "text-center mt-3">
+    <%= link_to 'See all posts', trip_posts_path(@trip), class: "btn btn-travel-secondary mb-3" %>
+    <% if current_user.accepted_in?(@trip) %>
+      <%= link_to 'Add a new post', new_user_post_path(@current_user), class: "btn btn-travel-secondary mb-3" %>
+    <% end %>
+  </div>
+
+
+  <% if @trip.full? || @trip.departed? %>
+    <div class='text-center mt-5'>
+      <p> Trip is full or has already departed !</p>
+    </div>
+  <% else %>
+    <% if @trip.user == current_user %>
+      <div class="text-center mt-5 mb-3">
+        <%= link_to 'Manage my trip', dashboard_path, class: 'btn-travel-primary' %>
+      </div>
+    <% elsif current_user.accepted_in?(@trip.id)%>
       <div class='text-center mt-5'>
-        <p> You already joined this trip !</p>
+        <p> You already joined this trip!</p>
+      </div>
+    <% elsif current_user.applied_for?(@trip.id) %>
+      <div class="text-center mt-5">
+        <p> You already applied to this trip!</p>
       </div>
     <% else %>
       <div class='text-center mt-5'>
-        <%= link_to 'Join this trip', new_trip_booking_path(@trip), class: "btn btn-travel-primary mb-3 " %>
+        <button type="button" class="btn btn-travel-primary mb-3" data-toggle="modal" data-target="#joinModal">Join this trip</button>
       </div>
     <% end %>
   <% end %>
   <div class='text-center mb-5'>
     <%= link_to 'Back to all trips', trips_path, class: "btn btn-travel-secondary mb-3 " %>
   </div>
+
+  <!-- MODAL JOIN A TRIP -->
+  <div class="modal fade" id="joinModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Thank you for choosing this trip!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [ @trip, @booking ] do |f| %>
+          <%= f.input :description, required: true, label: "Please tell us why you want to join this trip" %>
+          <%= f.submit "Submit your application", class: "btn btn-travel-primary mt-3" %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-travel-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 </div>

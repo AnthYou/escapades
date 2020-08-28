@@ -15,14 +15,13 @@
 
 .mapboxgl-popup {
   max-width: 300px;
-
 }
 
 .mapboxgl-popup-content {
   padding: 0px !important;
   border-radius: 6px;
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 
@@ -68,8 +67,6 @@
 .container-card-activity a {
   color: white !important;
   font-weight: bold;
-
-
 }
 
 @media (max-width: 995px) {

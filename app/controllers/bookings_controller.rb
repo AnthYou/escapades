@@ -1,9 +1,9 @@
 class BookingsController < ApplicationController
-  def new
-    @booking = Booking.new
-    authorize @booking
-    @trip = Trip.find(params[:trip_id])
-  end
+  # def new
+  #   @booking = Booking.new
+  #   authorize @booking
+  #   @trip = Trip.find(params[:trip_id])
+  # end
 
   def create
     @user = current_user
@@ -12,6 +12,7 @@ class BookingsController < ApplicationController
     @trip = Trip.find(params[:trip_id])
     @booking.trip = @trip
     @booking.user = @user
+    @booking.status = 'pending'
     if @booking.save
       redirect_to trip_path(@trip)
     else
