@@ -21,7 +21,7 @@ class User < ApplicationRecord
         total += review.stars
       end
     end
-    return (total / reviews.count).to_i
+    return (total.to_f / reviews.count).ceil
   end
 end
 
