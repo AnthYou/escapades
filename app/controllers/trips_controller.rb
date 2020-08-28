@@ -12,7 +12,7 @@ class TripsController < ApplicationController
 
     query = <<~SQL
       trips.*,
-      CASE WHEN departure_date >= current_date THEN 1
+      CASE WHEN departure_date > current_date THEN 1
            ELSE 2
       END AS departure_status_order,
       CASE WHEN COUNT(bookings.id) < max_capacity THEN 1
