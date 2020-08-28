@@ -1,15 +1,15 @@
 class ActivitiesController < ApplicationController
-    def new
+  def new
     @activity = Activity.new
-    authorize @activity
     @trip = Trip.find(params[:trip_id])
+    authorize @activity
   end
 
   def create
     @activity = Activity.new(activity_params)
-    authorize @activity
     @trip = Trip.find(params[:trip_id])
     @activity.trip = @trip
+    authorize @activity
 
     if @activity.save
       redirect_to trip_path(@trip)
