@@ -18,6 +18,7 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+    @booking = @trip.bookings.where(user_id: current_user.id).last
     @activities = @trip.activities
     @markers = @activities.map.with_index do |activity, i|
       {

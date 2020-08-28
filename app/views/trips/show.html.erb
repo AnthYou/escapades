@@ -63,13 +63,16 @@
 
   <div class="users-grid d-flex justify-content-around mt-5">
     <!-- TRIP OWNER -->
-    <%= render 'shared/usercards', user: @trip.user %>
+    <%= render 'shared/usercards', user: @trip.user,booking: nil, current_user_booking: @booking%>
+
 
     <!-- TRIP USERS -->
     <% @trip.bookings.each do |booking| %>
-      <% if booking.status == "accepted" %>
-        <%= render 'shared/usercards', user: booking.user %>
-      <% end %>
+      <div class="card-and-review">
+        <% if booking.status == "accepted" %>
+          <%= render 'shared/usercards', user: booking.user, booking: booking, current_user_booking: @booking %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 
@@ -85,7 +88,7 @@
       </div>
     <% end %>
   <% end %>
-  <div class='text-center mb-5'>
+  <div class='text-center my-5'>
     <%= link_to 'Back to all trips', trips_path, class: "btn btn-travel-secondary mb-3 " %>
   </div>
 

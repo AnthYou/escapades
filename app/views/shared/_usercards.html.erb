@@ -30,6 +30,12 @@
       </div>
     </div>
     <div class="usercard-description"><%= user.description %></div>
+    <% if booking && current_user_booking && current_user_booking.status == "accepted" && @trip.departure_date < Date.today && booking.user != current_user %>
+      <div class="leave-review">
+        <%= link_to "Leave a review", new_booking_review_path(booking), class: "btn btn-travel-secondary mt-3"%>
+      </div>
+  <% end %>
   </div>
 </div>
 <% end %>
+

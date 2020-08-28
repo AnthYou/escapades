@@ -39,16 +39,30 @@
     <% @user_reviews.each do |review|%>
       <div class ="review" style="background-color: white; border-radius: 4px; ">
         <div class="photo">
-          <%= cl_image_tag review.booking.trip.user.photo.key %>
+          <%= cl_image_tag review.user.photo.key %>
         </div>
         <div style="margin: 10px">
           <div class="stars">
-            <% review.stars.times do %>
-              <i class="fas fa-star" style="color:#f2a365;"></i>
+            <% if @user.user_average_rating != nil  %>
+              <% @user.user_average_rating.times do %>
+                <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
+              <% end %>
+            <% (5 - @user.user_average_rating).times do %>
+              <li class="list-inline-item star-grey"><i class="fas fa-star"></i></li>
+              <% end %>
+            <% else %>
+              <li class="list-inline-item"> No review </li>
             <% end %>
           </div>
           <div class="review-content">
-            <p><%= review.content %></p>
+              <p><%= review.content %></p>
+              <% if policy(review).destroy? %>
+                <%= link_to "Remove",
+                          review_path(review),
+                          method: :delete,
+                          data: { confirm: "Are you sure?" }, class: "btn btn-travel-primary mb-3" %>
+
+              <% end %>
           </div>
         </div>
       </div>
@@ -58,3 +72,4 @@
   </div>
   </div>
 </div>
+
