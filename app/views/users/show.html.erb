@@ -70,7 +70,7 @@
             <div class="d-flex">
               <%= cl_image_tag review.user.photo.key, class: 'avatar' %>
               <div>
-                <p class="reviewer-info-name"><%= review.user.first_name %> <%= review.user.last_name %></p>
+                <p class="reviewer-info-name">from <strong><%= review.user.first_name %> <%= review.user.last_name %></strong></p>
                 <p class="reviewer-info-date"><%= review.created_at.strftime("%b %e, %l:%M %p") %></p>
               </div>
             </div>
@@ -85,7 +85,7 @@
                 <% end %>
             </div>
             <div class="review-content">
-                <p><%= review.content %></p>
+                <p style="font-size: 14px; font-weight: 300;"><%= review.content %></p>
             </div>
           </div>
         </div>
