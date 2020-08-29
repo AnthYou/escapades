@@ -1,7 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: linear-gradient(to top, rgba(255, 255, 255, 0), #ffffff);
   height: $navbar-height;
+  background-color: white;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -42,4 +42,25 @@
 .navbar-icon-bg-black i {
   color: white;
   font-size: 20px;
+}
+
+#pages-home .container-view {
+  margin-top: 0px;
+}
+
+.login-white .navbar-nav .nav-link {
+  color: white;
+}
+
+.navbar-white {
+  background-color: white;
+  transition: background 0.35s ease;
+}
+
+.hide-searchbar .container form {
+  display: none;
+}
+
+.linear-gradient {
+  background: linear-gradient(to top, rgba(255, 255, 255, 0), #ffffff);
 }

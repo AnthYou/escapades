@@ -31,11 +31,13 @@ import "../plugins/flatpickr";
 // import { initSelect2 } from '../components/init_select2';
 import { initMapbox } from '../plugins/init_mapbox';
 import { initFlatpickr } from "../plugins/flatpickr";
+import { initUpdateNavbarOnScroll } from "../components/navbar_home";
 
 document.addEventListener('turbolinks:load', () => {
 
   initMapbox();
   initFlatpickr();
+  initUpdateNavbarOnScroll();
   // Call your functions here, e.g:
   // initSelect2();
 });
