@@ -5,7 +5,7 @@
     <p><%= @trip.destination %></p>
     <% if @trip.full? || @trip.departed? %>
     <div class='text-center mt-5'>
-      <p> Trip is full or has already departed !</p>
+      <p> Trip is full or has already departed!</p>
     </div>
     <% else %>
       <% if user_signed_in? %>
@@ -104,14 +104,14 @@
 
   <!-- TRIP'S POST  -->
 
-  <h2 class="font-weight-bold text-center mt-5 mb-4">trip's posts</h2>
-  <div class= "posts bg-white rounded p-3 ">
+  <h2 class="font-weight-bold text-center mt-5 mb-4">trip posts</h2>
+  <div class="posts bg-white rounded p-3 ">
     <% if @trip.posts.first == nil %>
-      <p class= 'text-center'> No post available</p>
+      <p class='text-center'> No post available</p>
     <% else %>
       <%= render 'shared/post_cards_grid', posts: @trip.posts %>
     <% end %>
-    <div class= "text-center mt-3">
+    <div class="text-center mt-3">
       <% if user_signed_in? && current_user.accepted_in?(@trip.id) %>
         <%= link_to 'Add a new post', new_trip_post_path(@trip), class: "btn btn-travel-secondary mb-3" %>
       <% end %>
