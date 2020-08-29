@@ -2,18 +2,28 @@
   <div class="row justify-content-center">
     <div class="col-sm-offset-12 mb-5 bg-white p-5 rounded">
       <h2 class ="text-center mb-3">Add a new post</h2>
+
       <%= simple_form_for [ @user, @post ] do |f| %>
-      <p>Your trips :</p>
-      <ul>
-       <% @user.bookings.select{|booking| booking.status == "accepted"}.each do |booking| %>
-        <li><%= booking.trip.id %> - <%= booking.trip.title %></li>
-      <% end %>
-      </ul>
-        <%= f.input :trip_id, as: :select, collection: @user.bookings.select{|booking| booking.status == "accepted"}.map{|booking| booking.trip.id} %>
-        <%= f.input :content, as: :text %>
-        <%= f.input :photo, as: :file, required: true %>
-        <%= f.submit "Submit post", class: "btn btn-travel-primary" %>
+        <% if params[:trip_id] %>
+          <p>Add a new post for your trip : <strong><%= Trip.find(params[:trip_id]).title %></strong></p>
+          <%= hidden_field_tag :trip_id, params[:trip_id] %>
+          <%= f.input :content, as: :text %>
+          <%= f.input :photo, as: :file, required: true %>
+          <%= f.submit "Submit post", class: "btn btn-travel-primary" %>
+        <% else %>
+          <p>Your trips :</p>
+          <ul>
+           <% @user.bookings.select{|booking| booking.status == "accepted"}.each do |booking| %>
+            <li><%= booking.trip.id %> - <%= booking.trip.title %></li>
+          <% end %>
+          </ul>
+          <%= f.input :trip_id, as: :select, collection: @user.bookings.select{|booking| booking.status == "accepted"}.map{|booking| booking.trip.id} %>
+          <%= f.input :content, as: :text %>
+          <%= f.input :photo, as: :file, required: true %>
+          <%= f.submit "Submit post", class: "btn btn-travel-primary" %>
+        <% end %>
       <% end %>
     </div>
   </div>
 </div>
+

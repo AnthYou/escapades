@@ -89,10 +89,9 @@
     <% if current_user.posts.first == nil %>
         <p class= 'text-center'> No post available</p>
     <% else %>
-      <%= render 'shared/post_cards_grid', user: @user, posts: @user.posts.last(3) %>
+      <%= render 'shared/post_cards_grid', user: @user, posts: @user.posts %>
     <% end %>
     <div class= "text-center mt-3">
-      <%= link_to 'See all posts', user_posts_path(@user), class: "btn btn-travel-secondary mb-3" %>
       <% if @user == current_user %>
         <%= link_to 'Add a new post', new_user_post_path(@user), class: "btn btn-travel-primary mb-3" %>
       <% end %>

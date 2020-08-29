@@ -102,19 +102,23 @@
     <% end %>
   </div>
 
+  <!-- TRIP'S POST  -->
+
   <h2 class="font-weight-bold text-center mt-5 mb-4">trip's posts</h2>
-  <% if @trip.posts.first == nil %>
-    <p class= 'text-center'> No post available</p>
-  <% else %>
-    <%= render 'shared/post_cards_grid', posts: @trip.posts.last(3) %>
-  <% end %>
-  <div class= "text-center mt-3">
-    <%= link_to 'See all posts', trip_posts_path(@trip), class: "btn btn-travel-secondary mb-3" %>
-    <% if user_signed_in? && current_user.accepted_in?(@trip) %>
-      <%= link_to 'Add a new post', new_user_post_path(@current_user), class: "btn btn-travel-secondary mb-3" %>
+  <div class= "posts bg-white rounded p-3 ">
+    <% if @trip.posts.first == nil %>
+      <p class= 'text-center'> No post available</p>
+    <% else %>
+      <%= render 'shared/post_cards_grid', posts: @trip.posts %>
     <% end %>
+    <div class= "text-center mt-3">
+      <% if user_signed_in? && current_user.accepted_in?(@trip.id) %>
+        <%= link_to 'Add a new post', new_trip_post_path(@trip), class: "btn btn-travel-secondary mb-3" %>
+      <% end %>
+    </div>
   </div>
 
+<!-- TRIP'S STATUS AND CTAs -->
 
   <% if @trip.full? || @trip.departed? %>
     <div class='text-center mt-5'>

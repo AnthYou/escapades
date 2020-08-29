@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :trips, only: [ :index, :create, :new, :show] do
     resources :bookings, only: [:new, :create]
     resources :activities, only: [:new, :create]
-    resources :posts, only: [:index]
+    resources :posts, only: [:index, :create, :new, :show]
   end
 
   resources :bookings, only: [] do
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show] do
     resources :reviews, only: [ :new, :create, :show ]
-    resources :posts, only: [ :new, :create, :index ]
+    resources :posts, only: [:index, :create, :new, :show]
   end
 
   resources :reviews, only: [:destroy]
