@@ -1,0 +1,11 @@
+<div class="container mt-5 show-container text-center">
+  <div class="trip-banner mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @post.photo.key, crop: :fill %>');">
+  </div>
+  <div class="post-content bg-white p-3 mb-3 rounded">
+    <p style= "margin-bottom: 0px;"> <%= @post.content %> </p>
+  </div>
+  <div>
+    <p>By:  <strong> <%= User.find(@post.user_id).first_name %> <%= User.find(@post.user_id).last_name %> </strong> </p>
+    <p>Published on: <%= @post.created_at.strftime('%b %e, %l:%M %p') %> </p>
+  </div>
+</div>
