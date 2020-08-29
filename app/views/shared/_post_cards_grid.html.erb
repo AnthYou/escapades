@@ -1,4 +1,4 @@
- <div class ="posts-grid">
+ <div class="posts-grid">
     <% posts.each do |post| %>
     <!-- Need to add black opacity and limit the max caracters with .. -->
       <%= link_to trip_post_path(post.trip.id, post.id), :action => 'go' do %>
@@ -6,7 +6,7 @@
             <img src="<%= cl_image_path post.photo.key, crop: :fill %>" class="card-img" alt="...">
             <div class="card-img-overlay">
               <p class="card-text"><strong><%= post.content %></strong></p>
-              <p class="card-text">By:  <strong> <%= User.find(post.user_id).first_name %> <%= User.find(post.user_id).last_name %> </strong></p>
+              <p class="card-text">By: <strong><%= User.find(post.user_id).first_name %> <%= User.find(post.user_id).last_name %></strong></p>
               <p class="card-text">Published on: <%= post.created_at.strftime('%b %e, %l:%M %p') %></p>
             </div>
         </div>
