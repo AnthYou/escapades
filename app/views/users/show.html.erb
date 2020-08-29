@@ -43,26 +43,39 @@
     </div>
   </div>
 
-  <div class="reviews">
-    <h2 style="text-align:center; font-weight: 600;">Reviews</h2>
+  <div class="reviews mt-5">
+    <h2 style="text-align:center; font-weight: 600; margin-bottom: 20px;">Reviews</h2>
     <% if @user.received_reviews == [] %>
-      <p class="text-center">You did not received a review yet.</p>
+      <p class="text-center mt-4">You did not received a review yet.</p>
     <% else %>
       <% @user.received_reviews.each do |review|%>
-        <div class ="review" style="background-color: white; border-radius: 4px; position: relative; ">
+        <div class="row review mb-3">
           <% if policy(review).destroy? %>
-            <%= link_to "Remove",
-                      review_path(review),
+            <%= link_to "+", review_path(review),
+                      remote: true,
                       method: :delete,
-                      data: { confirm: "Are you sure?" }, class: "btn btn-travel-secondary mb-3", style: 'position: absolute; top: 10px; right: 10px;' %>
+                      data: { confirm: "Are you sure?" }, class: 'delete-review' %>
           <% end %>
-          <div class="photo">
-
-            <%= cl_image_tag review.user.photo.key %>
-
-            <%#= cl_image_tag review.booking.user.photo.key %>
+          <div class="col review-trip p-4">
+            <div class="d-flex">
+              <%= cl_image_tag review.booking.trip.photo.key, class: 'avatar-square' %>
+              <div class="review-trip-info">
+                <p class="reviewer-info-name"><%= review.booking.trip.title %></p>
+                <p class="reviewer-info-date">from <%= review.booking.trip.departure_date.strftime("%b %d, %Y") %></p>
+                <p class="reviewer-info-date">to <%= review.booking.trip.return_date.strftime("%b %d, %Y") %></p>
+              </div>
+            </div>
           </div>
-          <div style="margin: 10px">
+          <div class="col reviewer-info p-4">
+            <div class="d-flex">
+              <%= cl_image_tag review.user.photo.key, class: 'avatar' %>
+              <div>
+                <p class="reviewer-info-name"><%= review.user.first_name %> <%= review.user.last_name %></p>
+                <p class="reviewer-info-date"><%= review.created_at.strftime("%b %e, %l:%M %p") %></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 p-3">
             <div class="stars">
                 <% review.stars.times do %>
                   <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>

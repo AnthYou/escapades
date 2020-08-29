@@ -7,16 +7,43 @@
 }
 
 .review {
-  display:flex;
-  margin: 10px;
-  box-shadow: 4px;
+  border-radius: 20px;
+  position: relative;
+  background-color: white;
 }
 
-
-.photo img {
-  height: 100px;
-  border-radius: 4px;
+.reviewer {
+  display: flex;
 }
+
+.reviewer .review-trip {
+  display: flex;
+}
+
+.reviewer-info-name {
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 10px;
+  margin-bottom: 0px;
+}
+
+.reviewer-info-date {
+  font-size: 12px;
+  font-weight: 300;
+  margin-left: 10px;
+  margin-bottom: 0px;
+}
+
+a.delete-review {
+  transform: rotate(45deg);
+  font-weight: 600;
+  color: $my-blue;
+  position: absolute;
+  z-index: 1;
+  top: 10px;
+  right: 15px;
+}
+
 // ANTHO
 
 .trip-banner {
