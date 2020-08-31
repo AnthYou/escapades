@@ -5,7 +5,8 @@
       <%= simple_form_for [ @trip ] do |f| %>
         <%= f.input :title %>
         <%= f.input :description, as: :text %>
-        <%= f.input :destination %>
+        <%= f.input :country, input_html: { class: 'trip_country' } %>
+        <%= f.input :city, input_html: { class: 'trip_city' } %>
         <div class="row">
           <div class="col">
             <%= f.input :budget_min %>

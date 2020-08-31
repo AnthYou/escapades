@@ -6,7 +6,7 @@
     <div class="trip-banner mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png');">
   <% end %>
     <h1><%=@trip.title%></h1>
-    <p><%= @trip.destination %></p>
+    <p><%= @trip.city ? @trip.city : @trip.country %></p>
     <% if @trip.full? || @trip.departed? %>
       <div class='text-center mt-5'>
         <p> Trip is full or has already departed!</p>

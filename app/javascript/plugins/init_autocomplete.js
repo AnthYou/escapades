@@ -1,16 +1,36 @@
 import places from 'places.js';
 
 const initAutocomplete = () => {
-  const addressInput = document.getElementById('flat_address');
-  if (addressInput) {
-    places({ container: addressInput });
-  }
+  const countryInputs = document.querySelectorAll('input.trip_country');
+  const cityInputs = document.querySelectorAll('input.trip_city');
+
+  countryInputs.forEach((countryInput) => {
+    places({
+      container: countryInput,
+      templates: {
+        suggestion: function(suggestion) {
+          return suggestion.highlight.name;
+        }
+      }
+    }).configure({
+      type: 'country'
+    });
+  })
+
+  cityInputs.forEach((cityInput) => {
+    places({
+      container: cityInput,
+      templates: {
+        suggestion: function(suggestion) {
+          return suggestion.highlight.name;
+        }
+      }
+    }).configure({
+      type: 'city',
+      aroundLatLngViaIP: false
+    });
+  })
+
 };
 
-const map = new mapboxgl.Map({
-  container: 'map',
-  style: 'mapbox://styles/pdunleav/cjofefl7u3j3e2sp0ylex3cyb' // <-- use your own!
-});
-
 export { initAutocomplete };
-
