@@ -35,10 +35,9 @@ import { initUpdateNavbarOnScroll } from "../components/navbar_home";
 import { initPolaroidsRotation } from "../components/postcards";
 
 document.addEventListener('turbolinks:load', () => {
-
+  initUpdateNavbarOnScroll();
   initMapbox();
   initFlatpickr();
-  initUpdateNavbarOnScroll();
   initPolaroidsRotation();
   // Call your functions here, e.g:
   // initSelect2();
