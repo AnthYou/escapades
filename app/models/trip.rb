@@ -24,7 +24,7 @@ class Trip < ApplicationRecord
   pg_search_scope :search_by_country, against: :country, using: { tsearch: { prefix: true } }
 
   def address
-    [city, country].compact.join(', ')
+    city.presence || country
   end
 
   def full?
