@@ -5,11 +5,10 @@ const initExpander = () => {
     var zindex = 10;
     const array = document.querySelectorAll(".activity-card")
 
-    $(".activity-card").each(function(){
+    $("div.activity-card").each(function(){
       $(this).on("click",function(e){
         e.preventDefault();
         var isShowing = false;
-        console.log(this)
 
         if ($(this).hasClass("show")) {
           isShowing = true

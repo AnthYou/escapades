@@ -9,6 +9,9 @@
             <% else %>
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png">
             <% end %>
+            <div style= "position: absolute; top:10px; right:10px">
+              <%= image_tag "pin.png", width: 90, class: 'mb-3' %>
+            </div>
           </div>
           <div class="polaroid__content-caption">
             <p class= "polaroid__content-caption-text"><%= post.content.truncate(125) %></p>
@@ -25,5 +28,3 @@
     <% end %>
   </div>
 </div>
-
-
