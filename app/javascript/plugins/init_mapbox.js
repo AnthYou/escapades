@@ -32,35 +32,15 @@ const addMarkersToMap = (map, markers) => {
     }
 
   });
-
-  // markers.forEach((marker) => {
-  //   const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // add this
-  //   const pin = new mapboxgl.Marker()
-  //     .setLngLat([ marker.lng, marker.lat ])
-  //     .setPopup(popup)
-  //     .addTo(map);
-  //     console.log(pin);
-  //     pin.innerHTML = '<p>${marker.step}</p>';
-  // });
-
-
 };
 
-const drawRoute = (map, markers) => {
+
+//DESSINER DES LIGNES DROITES ENTRES LES POINTS ACTIVITIES (trajet avion) ===========
+const drawRouteLines = (map, markers) => {
     const coords = markers.map(marker => [marker.lng, marker.lat])
     console.log(coords)
     // console.log(buildMarkers(map, markers))
     map.on('load', function() {
-    //   map.addSource("my_markers", {
-    //     type: "geojson",
-    //     data: buildMarkers(map, markers)
-    //   })
-    //   .addLayer({
-    //     id: "markersLayer",
-    //     type: "symbol",
-    //     source: "my_markers"
-    //   })
-
       map.addSource('route', {
         'type': 'geojson',
         'data': {
@@ -94,6 +74,61 @@ const drawRoute = (map, markers) => {
       });
   });
 }
+
+
+
+
+//DESSINER LES TRAJETS ROUTES entre TOUTES les activities (call API) ===========
+const drawRouteDriving = (map, markers) => {
+    const mapElement = document.getElementById('map2');
+    const apiKey = mapElement.dataset.mapboxApiKey;
+    const coords = markers.map(marker => [marker.lng, marker.lat])
+    console.log(coords);
+    const coords_string = coords.join(";")
+    console.log(coords_string);
+    const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${coords_string}?geometries=geojson&access_token=${apiKey}`
+    fetch(url)
+      .then(response => response.json())
+      .then((data) => {
+        const route = data.routes[0].geometry.coordinates;
+        map.on('load', function() {
+          map.addSource('route', {
+            'type': 'geojson',
+            'data': {
+              'type': 'Feature',
+              'properties': {},
+              'geometry': {
+                'type': 'LineString',
+                'coordinates': route
+              },
+            'properties': {
+              'marker-color': '#3bb2d0',
+              'marker-size': 'large',
+              'marker-symbol': 'rocket'
+              }
+            }
+        });
+
+      map.addLayer({
+        'id': 'route',
+        'type': 'line',
+        'source': 'route',
+        'layout': {
+        'line-join': 'round',
+        'line-cap': 'round'
+        },
+        'paint': {
+        'line-color': 'orange',
+        'line-width': 3,
+        'line-opacity': 0.6
+        }
+      });
+  });
+      });
+}
+
+
+
 
 const initMapbox = () => {
 
@@ -129,7 +164,7 @@ const initMapbox = () => {
      const markers = JSON.parse(mapElement2.dataset.markers);
 
      addMarkersToMap(map2, markers)
-     drawRoute(map2, markers);
+     drawRouteDriving(map2, markers);
 
      fitMapToMarkers(map2, markers);
 
