@@ -57,23 +57,27 @@
                       data: { confirm: "Are you sure?" }, class: 'delete-review' %>
           <% end %>
           <div class="col review-trip p-4">
-            <div class="d-flex">
-              <%= cl_image_tag review.booking.trip.photo.key, class: 'avatar-square' %>
-              <div class="review-trip-info">
-                <p class="reviewer-info-name"><%= review.booking.trip.title %></p>
-                <p class="reviewer-info-date">from <%= review.booking.trip.departure_date.strftime("%b %d, %Y") %></p>
-                <p class="reviewer-info-date">to <%= review.booking.trip.return_date.strftime("%b %d, %Y") %></p>
+            <%= link_to trip_path(review.booking.trip), :action => 'go' do  %>
+              <div class="d-flex">
+                <%= cl_image_tag review.booking.trip.photo.key, class: 'avatar-square' %>
+                <div class="review-trip-info">
+                  <p class="reviewer-info-name"><%= review.booking.trip.title %></p>
+                  <p class="reviewer-info-date">from <%= review.booking.trip.departure_date.strftime("%b %d, %Y") %></p>
+                  <p class="reviewer-info-date">to <%= review.booking.trip.return_date.strftime("%b %d, %Y") %></p>
+                </div>
               </div>
-            </div>
+            <% end %>
           </div>
           <div class="col reviewer-info p-4">
-            <div class="d-flex">
-              <%= cl_image_tag review.user.photo.key, class: 'avatar' %>
-              <div>
-                <p class="reviewer-info-name">from <strong><%= review.user.first_name %> <%= review.user.last_name %></strong></p>
-                <p class="reviewer-info-date"><%= review.created_at.strftime("%b %e, %l:%M %p") %></p>
+            <%= link_to user_path(review.user), :action => 'go' do  %>
+              <div class="d-flex">
+                <%= cl_image_tag review.user.photo.key, class: 'avatar' %>
+                <div>
+                  <p class="reviewer-info-name">from <strong><%= review.user.first_name %> <%= review.user.last_name %></strong></p>
+                  <p class="reviewer-info-date"><%= review.created_at.strftime("%b %e, %l:%M %p") %></p>
+                </div>
               </div>
-            </div>
+            <% end %>
           </div>
           <div class="col-6 p-3">
             <div class="stars">
