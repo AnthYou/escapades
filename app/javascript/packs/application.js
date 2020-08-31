@@ -31,8 +31,10 @@ import "../plugins/flatpickr";
 // import { initSelect2 } from '../components/init_select2';
 import { initMapbox } from '../plugins/init_mapbox';
 import { initStarRating } from '../plugins/init_star_rating';
+
 import { initFlatpickr } from "../plugins/flatpickr";
 import { initUpdateNavbarOnScroll } from "../components/navbar_home";
+
 
 document.addEventListener('turbolinks:load', () => {
 
