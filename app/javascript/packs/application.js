@@ -31,6 +31,7 @@ import "../plugins/flatpickr";
 // import { initSelect2 } from '../components/init_select2';
 import { initMapbox } from '../plugins/init_mapbox';
 import { initFlatpickr } from "../plugins/flatpickr";
+import { initExpander } from "../plugins/expander";
 import { initUpdateNavbarOnScroll } from "../components/navbar_home";
 import { initPolaroidsRotation } from "../components/postcards";
 
@@ -39,6 +40,7 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initFlatpickr();
   initPolaroidsRotation();
+  initExpander();
   // Call your functions here, e.g:
   // initSelect2();
 });
