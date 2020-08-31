@@ -6,7 +6,7 @@ class TripsController < ApplicationController
     authorize @trips
 
     if params[:query].present?
-      trip_ids = Trip.geocoded.search_by_destination(params[:query]).pluck(:id)
+      trip_ids = Trip.geocoded.search_by_country(params[:query]).pluck(:id)
       @trips   = Trip.where(id: trip_ids)
     end
 
