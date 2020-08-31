@@ -1,24 +1,26 @@
 <div class="container my-5">
-  <div class="form p-5 m-3 bg-white">
-    <h2 class="text-center mb-5">Create a new activity</h2>
-    <%= simple_form_for [ @trip, @activity ] do |f| %>
-      <%= f.input :title %>
-      <%= f.input :description, as: :text %>
-      <%= f.input :location %>
-      <%= f.input :price, as: :integer %>
-      <div class="row">
-        <div class="col">
-          <%= f.input :start_date, as: :date %>
+  <div class="row justify-content-center">
+    <div class="col-sm-offset-12 mb-5 bg-white p-5 rounded">
+      <h2 class="text-center mb-5">Create a new activity</h2>
+      <%= simple_form_for [ @trip, @activity ] do |f| %>
+        <%= f.input :title %>
+        <%= f.input :description, as: :text %>
+        <%= f.input :location %>
+        <%= f.input :price, as: :integer %>
+        <div class="row">
+          <div class="col">
+            <%= f.input :start_date, as: :string, input_html: {class: "departure_date_flatpickr"} %>
+          </div>
+          <div class="col">
+            <%= f.input :end_date, as: :string, input_html: {class: "return_date_flatpickr"} %>
+          </div>
         </div>
-        <div class="col">
-          <%= f.input :end_date, as: :date %>
-        </div>
-      </div>
-      <%= f.input :url %>
-      <%= f.input :photo, as: :file, required: true %>
-      <%= f.submit "Submit Trip", class: "btn btn-primary" %>
-    <% end %>
-    <hr>
-    <%= link_to 'Back', trips_path, class: "btn-travel-secondary mt-2" %>
+        <%= f.input :url %>
+        <%= f.input :photo, as: :file, required: true %>
+        <%= f.submit "Submit activity", class: "btn btn-travel-primary" %>
+      <% end %>
+      <hr>
+      <%= link_to 'Back', trips_path, class: "btn-travel-secondary mt-2" %>
+    </div>
   </div>
 </div>

@@ -34,7 +34,7 @@
         <% current_user_trip_booking = trip.bookings.where(user_id: current_user.id).first %>
         <% if current_user_trip_booking %>
         <!-- Display the accepted tag only when current_user is accepted in a trip -->
-          <% if current_user_trip_booking.status == "accepted" %>
+          <% if current_user_trip_booking.status == "accepted" && trip.user != current_user %>
             <span class="badge badge-success py-2 px-3 font-weight-light" style="position: absolute; left: 20px; top:20px;">Accepted</span>
           <% end %>
         <!-- Display the pending tag only when current_user's trip booking status is pending -->

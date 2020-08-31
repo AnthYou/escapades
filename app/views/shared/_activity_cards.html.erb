@@ -1,5 +1,5 @@
 <div class="cards-grid">
-  <% trip.activities.each do |activity| %>
-    <%= render "shared/activity_card", activity: activity%>
+  <% trip.activities.each_with_index do |activity, index| %>
+    <%= render "shared/activity_card", activity: activity, index: index%>
   <% end %>
 </div>
