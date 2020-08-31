@@ -15,7 +15,6 @@ class PostsController < ApplicationController
     authorize @post
   end
 
-
   def new
     @post = Post.new
     @user = current_user
@@ -34,7 +33,8 @@ class PostsController < ApplicationController
         render :new
       end
     else
-      @post.trip_id = params[:post][:trip_id]
+      @post.trip_id = Booking.find(params[:post][:trip_id]).trip.id
+      @post.save
       if @post.save
         redirect_to user_path(current_user.id)
       else
@@ -46,6 +46,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content, :photo, :trip_id)
+    params.require(:post).permit(:content, :photo, :trip)
   end
 end

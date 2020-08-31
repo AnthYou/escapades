@@ -57,10 +57,43 @@
   transition: background 0.35s ease;
 }
 
+.navbar-searchbar {
+  width: 33vh;
+  transition: all 0.3s ease;
+  input#query {
+    border-radius: 30px;
+    height: 50px;
+  }
+  &.hide-searchbar {
+    transition: all 0s ease;
+    width: 0;
+     input#query {
+      padding: 0;
+      border: 0;
+     }
+     button {
+      height: 0;
+      width: 0;
+      display: none;
+      i {
+        font-size: 0;
+      }
+     }
+  }
+}
+
 .hide-searchbar .container form {
-  display: none;
+  transition: all 1s ease-out;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
 }
 
 .linear-gradient {
   background: linear-gradient(to top, rgba(255, 255, 255, 0), #ffffff);
+}
+
+.navbar-white .container form {
+  opacity: 1;
+  height: auto;
 }
