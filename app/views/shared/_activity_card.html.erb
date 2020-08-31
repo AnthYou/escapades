@@ -17,7 +17,7 @@
     </div>
     <div class="activity-card-flap flap1">
       <div class="activity-card-description mb-2">
-          <p class="mb-0 "><strong>From: <%= activity.start_date.strftime('%B %e') %> to: <%= activity.end_date.strftime('%B %e') %> (<%= pluralize (activity.end_date - activity.start_date).to_i, "day" %>)</strong></p>
+          <p class="mb-0 "><strong><%= activity.start_date.strftime('%B %e') %> <i class="fas fa-arrow-right"></i> <%= activity.end_date.strftime('%B %e') %> (<%= pluralize (activity.end_date - activity.start_date).to_i, "day" %>)</strong></p>
           <p><strong>$ <%= activity.price %></strong></p>
           <%= activity.description %>
       </div>
