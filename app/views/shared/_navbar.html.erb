@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top <%= 'linear-gradient login-white' if controller_name == 'pages' && action_name == 'home' %>">
   <div class="container">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "escapades-logo.png" %>
@@ -9,11 +9,10 @@
     </button>
 
     <%= form_tag trips_path, class: 'mt-5 mb-5', method: :get do %>
-    <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center navbar-searchbar <%= 'hide-searchbar' if controller_name == 'pages' && action_name == 'home' %>">
       <%= text_field_tag :query,
         params[:query],
         class: "form-control",
-        style: 'border-radius: 30px; height: 50px; width: 33vh;',
         placeholder: "Type a destination..."
       %>
       <%= button_tag(type: "submit", class: "navbar-icon-bg-orange", style: 'margin-left: -45px; border: none;') do %>

@@ -1,27 +1,28 @@
 const initUpdateNavbarOnScroll = () => {
   const homepage = document.getElementById('pages-home');
   const navbar = document.querySelector('.navbar');
+  const navbarSearchbar = document.querySelector('.navbar-searchbar');
+
+  // These lines below are used to get the Banner title and searchbar positions but it doesnt work all the time if you use it as breakpoints
+
+  // const bannerSearchbarPosition = document.querySelector(".banner #query_banner").offsetTop;
+  // const bannerTitlePosition = document.querySelector(".banner h1").offsetTop;
+
   if (homepage) {
-    navbar.classList.remove('navbar-white');
-    navbar.classList.add('hide-searchbar');
-    navbar.classList.add('login-white');
-    navbar.classList.add('linear-gradient');
     window.addEventListener('scroll', () => {
-      if (window.scrollY >= (window.innerHeight)) {
-        navbar.classList.add('navbar-white');
-        navbar.classList.remove('hide-searchbar');
+
+      if (window.scrollY >= 150) {
+        navbar.classList.remove('linear-gradient');
         navbar.classList.remove('login-white');
-        navbar.classList.remove('linear-gradient');
-      } else if  (window.scrollY >= (window.innerHeight)/4) {
-        navbar.classList.add('navbar-white');
-        navbar.classList.add('hide-searchbar');
-        navbar.classList.add('login-white');
-        navbar.classList.remove('linear-gradient');
       } else {
-        navbar.classList.remove('navbar-white');
-        navbar.classList.add('hide-searchbar');
-        navbar.classList.add('login-white');
         navbar.classList.add('linear-gradient');
+        navbar.classList.add('login-white');
+      }
+
+      if (window.scrollY >= 300) {
+        navbarSearchbar.classList.remove('hide-searchbar');
+      } else {
+        navbarSearchbar.classList.add('hide-searchbar');
       }
     });
   }
