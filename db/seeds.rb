@@ -178,7 +178,7 @@ trips = [
     {
       title: "Road trip in Australia",
       description:" Amazing road trip for backpackers and nature lovers. We're gonna start our trip Melbourne and then go to Cairns and finally finish our journey in Darwin" ,
-      destination: "Melbourne, Australia",
+      country: "Australia",
       budget_min: 1500,
       budget_max: 2500,
       departure_date: "21/07/2020".to_date,
@@ -192,7 +192,8 @@ trips = [
     {
       title: "Experience a magical christmas in New York",
       description: "This christmas we'll go to New York. I'd like to with 3 people to discover the big apple",
-      destination: "New York, USA",
+      country: "United States of America",
+      city: "New York, United States of America",
       budget_min: 1000,
       budget_max: 2000,
       departure_date: "20/12/2020".to_date,
@@ -206,7 +207,8 @@ trips = [
     {
       title: "Discover the Reunion Island",
       description:"Come with me to La Reunion! La Reunion Island is a French department in the Indian Ocean. It is famous for its volcanic interior covered with tropical forest, its coral reefs and its beaches." ,
-      destination:"Saint-Denis, La Reunion" ,
+      country: "France",
+      city: "Saint-Denis, La Réunion, France",
       budget_min: 1500,
       budget_max: 3000,
       departure_date: "20/08/2020".to_date,
@@ -219,8 +221,9 @@ trips = [
   [
     {
       title: "Horsing and chilling in Camargue",
-      description:"The Camargue Regional Natural Park is located on the shores of the Mediterranean, inside the Rhône delta, mainly between the two arms of the river.",
-      destination:"Camargue, France" ,
+      description: "The Camargue Regional Natural Park is located on the shores of the Mediterranean, inside the Rhône delta, mainly between the two arms of the river.",
+      country: "France",
+      city: "Arles, Provence-Alpes-Côte d'Azur, France",
       budget_min: 350,
       budget_max: 400,
       departure_date: "22/08/2020".to_date,
@@ -234,7 +237,8 @@ trips = [
     {
       title: "Week End to Rome",
       description: "I want to go to Italy with someone cheerful. I plan to see the main tourist spots as well as good restaurants.",
-      destination: "Rome, Italy",
+      country: "Italy",
+      city: "Roma, Lazio, Italy",
       budget_min: 350,
       budget_max: 850,
       departure_date: "28/08/2020".to_date,
@@ -248,7 +252,7 @@ trips = [
     {
       title: "From Russia with Love",
       description: "Dream weekend at the motherland. Russia, the largest nation in the world, borders European and Asian countries, as well as the Pacific and Arctic Oceans.",
-      destination: "Moscow, Russia",
+      country: "Russia",
       budget_min: 200,
       budget_max: 700,
       departure_date: "04/09/2020".to_date,

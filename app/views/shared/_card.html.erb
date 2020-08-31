@@ -61,7 +61,7 @@
 
     <!-- CARD INFO -->
     <div class="card-info">
-      <h3 class="card-destination"><%= trip.destination %></h3>
+      <h3 class="card-destination"><%= trip.city ? trip.city : trip.country %></h3>
       <div class="card-bottom">
         <p class="card-description"><%= trip.description %></p>
         <div class="card-details">

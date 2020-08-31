@@ -6,7 +6,7 @@ class TripsController < ApplicationController
     authorize @trips
 
     if params[:query].present?
-       trip_ids = Trip.geocoded.search_by_destination(params[:query]).pluck(:id)
+       trip_ids = Trip.geocoded.search_by_country(params[:query]).pluck(:id)
        @trips   = Trip.where(id: trip_ids)
     end
 
@@ -74,6 +74,6 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:title, :description, :destination, :budget_min, :budget_max, :max_capacity, :return_date, :departure_date, :photo)
+    params.require(:trip).permit(:title, :description, :country, :city, :budget_min, :budget_max, :max_capacity, :return_date, :departure_date, :photo)
   end
 end
