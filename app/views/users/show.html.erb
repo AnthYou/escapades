@@ -62,11 +62,11 @@
         </div>
         <div style="margin: 10px">
           <div class="stars">
-            <% if @user.user_average_rating != nil  %>
-              <% @user.user_average_rating.times do %>
+            <% if review.stars != nil  %>
+              <% review.stars.times do %>
                 <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
               <% end %>
-            <% (5 - @user.user_average_rating).times do %>
+            <% (5 - review.stars).times do %>
               <li class="list-inline-item star-grey"><i class="fas fa-star"></i></li>
               <% end %>
             <% else %>

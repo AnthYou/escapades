@@ -15,6 +15,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to user_path(@booking.user)
     else
+      flash[:alert] = "Something went wrong."
       render :new
     end
   end
