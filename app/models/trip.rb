@@ -1,6 +1,6 @@
 class Trip < ApplicationRecord
-  geocoded_by :destination
-  after_validation :geocode, if: :will_save_change_to_destination?
+  geocoded_by :address
+  after_validation :geocode #, if: :will_save_change_to_address?
   has_one_attached :photo
   belongs_to :user
   has_many :bookings, dependent: :destroy
@@ -9,7 +9,7 @@ class Trip < ApplicationRecord
   has_many :posts
   validates :title, presence: true
   validates :description, presence: true, length: { minimum: 30 }
-  validates :destination, presence: true
+  validates :country, presence: true
   validates :budget_min, presence: true
   validates :budget_max, presence: true
   validates :departure_date, presence: true
@@ -21,7 +21,11 @@ class Trip < ApplicationRecord
   include PgSearch::Model
   scope :undeparted, -> { where('departure_date > ?', Date.today) }
   scope :departed, -> { where('departure_date <= ?', Date.today) }
-  pg_search_scope :search_by_destination, against: :destination, using: { tsearch: { prefix: true } }
+  pg_search_scope :search_by_country, against: :country, using: { tsearch: { prefix: true } }
+
+  def address
+    city.presence || country
+  end
 
   def full?
     participants.count == max_capacity
