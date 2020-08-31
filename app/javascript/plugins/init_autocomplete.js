@@ -1,8 +1,9 @@
 import places from 'places.js';
 
 const initAutocomplete = () => {
-  const countryInputs = document.querySelectorAll('.trip_country');
-  const cityInputs = document.querySelectorAll('.trip_city');
+  const countryInputs = document.querySelectorAll('input.trip_country');
+  const cityInputs = document.querySelectorAll('input.trip_city');
+
   countryInputs.forEach((countryInput) => {
     places({
       container: countryInput,
@@ -15,6 +16,7 @@ const initAutocomplete = () => {
       type: 'country'
     });
   })
+
   cityInputs.forEach((cityInput) => {
     places({
       container: cityInput,
@@ -28,6 +30,7 @@ const initAutocomplete = () => {
       aroundLatLngViaIP: false
     });
   })
+
 };
 
 export { initAutocomplete };
