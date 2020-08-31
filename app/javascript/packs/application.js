@@ -39,7 +39,9 @@ import { initUpdateNavbarOnScroll } from "../components/navbar_home";
 document.addEventListener('turbolinks:load', () => {
 
   initMapbox();
+
   initStarRating();
+
   initFlatpickr();
   initUpdateNavbarOnScroll();
   // Call your functions here, e.g:
