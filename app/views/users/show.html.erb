@@ -100,19 +100,18 @@
     </div>
   </div>
 
-
-  <h2 class="font-weight-bold text-center mt-5 mb-4">trip posts</h2>
-    <div class="posts bg-white rounded p-3 ">
-    <% if current_user.posts.first == nil %>
-        <p class= 'text-center'> No post available</p>
-    <% else %>
-      <%= render 'shared/post_cards_grid', user: @user, posts: @user.posts %>
+  <h2 style="text-align:center; font-weight: 600; margin-bottom: 20px;">Trip's posts</h2>
+  <div class="posts bg-white rounded p-3 ">
+  <% if current_user.posts.first == nil %>
+      <p class= 'text-center'> No post available</p>
+  <% else %>
+    <%= render 'shared/post_cards_grid_tripshow', posts: current_user.posts %>
+  <% end %>
+  <div class= "text-center mt-3">
+    <% if @user == current_user %>
+      <%= link_to 'Add a new post', new_user_post_path(@user), class: "btn btn-travel-primary mb-3" %>
     <% end %>
-    <div class= "text-center mt-3">
-      <% if @user == current_user %>
-        <%= link_to 'Add a new post', new_user_post_path(@user), class: "btn btn-travel-primary mb-3" %>
-      <% end %>
-    </div>
   </div>
+</div>
 </div>
 

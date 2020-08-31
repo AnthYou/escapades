@@ -104,9 +104,9 @@
   <h2 class="font-weight-bold text-center mt-5 mb-4">trip posts</h2>
   <div class="posts bg-white rounded p-3 ">
     <% if @trip.posts.first == nil %>
-      <p class='text-center'> No post available</p>
+      <p class='text-center'>No post available</p>
     <% else %>
-      <%= render 'shared/post_cards_grid', posts: @trip.posts %>
+      <%= render 'shared/post_cards_grid_tripshow', posts: @trip.posts %>
     <% end %>
     <div class="text-center mt-3">
       <% if user_signed_in? && current_user.accepted_in?(@trip.id) %>
