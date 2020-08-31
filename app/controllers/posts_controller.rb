@@ -10,6 +10,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    @post = Post.find(params[:id])
+    authorize @post
+  end
+
   def new
     @post = Post.new
     @user = current_user
@@ -20,17 +25,27 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     authorize @post
     @post.user_id = current_user.id
-    # @post.save
-    if @post.save!
-      redirect_to user_posts_path(current_user.id)
+    if params[:trip_id]
+      @post.trip_id = params[:trip_id]
+      if @post.save
+        redirect_to trip_path(params[:trip_id])
+      else
+        render :new
+      end
     else
-      render :new
+      @post.trip_id = Booking.find(params[:post][:trip_id]).trip.id
+      @post.save
+      if @post.save
+        redirect_to user_path(current_user.id)
+      else
+        render :new
+      end
     end
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:content, :photo, :trip_id)
+    params.require(:post).permit(:content, :photo, :trip)
   end
 end

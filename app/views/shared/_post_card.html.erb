@@ -1,0 +1,16 @@
+<div class="container mt-5 show-container text-center">
+  <% if post.photo.attached? %>
+    <div class="trip-banner mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path post.photo.key, crop: :fill %>');">
+    </div>
+  <% else %>
+    <div class="trip-banner mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png');">
+    </div>
+  <% end %>
+  <div class="post-content bg-white p-3 mb-3 rounded">
+    <p style= "margin-bottom: 0px;"> <%= post.content %> </p>
+  </div>
+  <div>
+    <p>By:<strong> <%= User.find(post.user_id).first_name %> <%= User.find(post.user_id).last_name %></strong></p>
+    <p>Published on: <%= post.created_at.strftime('%b %e, %l:%M %p') %> </p>
+  </div>
+</div>
