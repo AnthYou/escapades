@@ -8,9 +8,9 @@
     <h1><%=@trip.title%></h1>
     <p><%= @trip.destination %></p>
     <% if @trip.full? || @trip.departed? %>
-    <div class='text-center mt-5'>
-      <p> Trip is full or has already departed!</p>
-    </div>
+      <div class='text-center mt-5'>
+        <p> Trip is full or has already departed!</p>
+      </div>
     <% else %>
       <% if user_signed_in? %>
         <% if @trip.user == current_user %>
@@ -47,7 +47,7 @@
           <div style="font-size: 30px;">💵</div>
           <p class="font-weight-bold text-center">Estimated</p>
           <p class="text-center">$<%= @trip.budget_min %> and $<%= @trip.budget_max %></p>
-          </div>
+        </div>
         <div class= "icon text-center">
           <div style="font-size: 30px;">🛫</div>
           <p class="font-weight-bold text-center">Departure date</p>
@@ -94,9 +94,6 @@
   <div class="users-grid d-flex justify-content-around mt-5">
     <!-- TRIP OWNER -->
     <%#= render 'shared/usercards', user: @trip.user,booking: nil, current_user_booking: @booking%>
-
-
-
     <% @trip.bookings.each do |booking| %>
       <div class="card-and-review">
         <% if booking.status == "accepted" %>
@@ -109,11 +106,11 @@
   <!-- TRIP'S POST  -->
 
   <h2 class="font-weight-bold text-center mt-5 mb-4">trip posts</h2>
-  <div class="posts bg-white rounded p-3 ">
+  <div class="posts p-3 ">
     <% if @trip.posts.first == nil %>
-      <p class='text-center'> No post available</p>
+      <p class='text-center'>No post available</p>
     <% else %>
-      <%= render 'shared/post_cards_grid', posts: @trip.posts %>
+      <%= render 'shared/post_cards_grid_tripshow', posts: @trip.posts %>
     <% end %>
     <div class="text-center mt-3">
       <% if user_signed_in? && current_user.accepted_in?(@trip.id) %>
@@ -155,25 +152,24 @@
 
   <!-- MODAL JOIN A TRIP -->
   <div class="modal fade" id="joinModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Thank you for choosing this trip!</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <%= simple_form_for [ @trip, @new_booking ] do |f| %>
-          <%= f.input :description, required: true, label: "Please tell us why you want to join this trip" %>
-          <%= f.submit "Submit your application", class: "btn btn-travel-primary mt-3" %>
-        <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-travel-secondary" data-dismiss="modal">Close</button>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Thank you for choosing this trip!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for [ @trip, @new_booking ] do |f| %>
+            <%= f.input :description, required: true, label: "Please tell us why you want to join this trip" %>
+            <%= f.submit "Submit your application", class: "btn btn-travel-primary mt-3" %>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-travel-secondary" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
 </div>
