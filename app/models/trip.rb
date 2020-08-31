@@ -17,6 +17,7 @@ class Trip < ApplicationRecord
   validates :max_capacity, presence: true, numericality: { greater_than: 1 }
   validates :photo, presence: true
   validate :end_date_after_start_date
+  acts_as_taggable_on :tags
 
   include PgSearch::Model
   scope :undeparted, -> { where('departure_date > ?', Date.today) }

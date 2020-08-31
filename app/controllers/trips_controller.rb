@@ -71,9 +71,16 @@ class TripsController < ApplicationController
     end
   end
 
+  def tagged
+    if params[:tag].present?
+      @trips = Trip.tagged_with(params[:tag])
+    else
+      @restaurants = Trip.all
+    end
+  end
   private
 
   def trip_params
-    params.require(:trip).permit(:title, :description, :destination, :budget_min, :budget_max, :max_capacity, :return_date, :departure_date, :photo)
+    params.require(:trip).permit(:title, :description, :destination, :budget_min, :budget_max, :max_capacity, :return_date, :departure_date, :photo, :tag_list)
   end
 end

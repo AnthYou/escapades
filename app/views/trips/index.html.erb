@@ -1,3 +1,11 @@
+<% @trips.each do |r| %>
+  <h2><%= trip.title %></h2>
+  <p>
+    <% trip.tag_list.each do |tag| %>
+      <%= link_to tag, tagged_path(tag: tag) %>
+    <% end %>
+  </p>
+<% end %>
 <div class="container">
   <h1 class="text-center mt-4">Find the trip of your dreams 🤩</h1>
   <!-- SEARCHBAR -->
@@ -24,3 +32,4 @@
       </div>
   </div>
 </div>
+

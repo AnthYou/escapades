@@ -20,4 +20,5 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
   get "/dashboard", to: "users#dashboard", as: :dashboard
+  get '/tagged', to: "trips#tagged", as: :tagged
 end
