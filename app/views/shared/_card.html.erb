@@ -9,11 +9,11 @@
     <!--  BADGES -->
     <div class="card-badges">
       <% if trip.days_to_departure <= 0 %>
-        <span class="badge badge-success py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:20px;"> Departed !</span>
+        <span class="badge badge-success py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:20px;">Departed!</span>
       <% elsif trip.days_to_departure <= 7 %>
-        <span class="badge badge-warning py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:20px;"> <%= trip.days_to_departure %> days before departure</span>
+        <span class="badge badge-warning py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:20px;"><%= trip.days_to_departure %> days before departure</span>
       <% else %>
-        <span class="badge badge-info py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:20px;"> <%= trip.days_to_departure%> days before departure</span>
+        <span class="badge badge-info py-2 px-3 font-weight-light" style="position: absolute; right: 20px; top:20px;"><%= trip.days_to_departure%> days before departure</span>
       <% end %>
 
       <!-- BADGE : FULL -->
