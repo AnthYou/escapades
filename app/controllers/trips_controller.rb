@@ -47,6 +47,7 @@ class TripsController < ApplicationController
         lat: activity.latitude,
         lng: activity.longitude,
         step: i + 1,
+        transport_type: activity.transport_type,
         infoWindow: render_to_string(partial: "shared/info_window_activity", locals: { activity: activity })
       }
     end
