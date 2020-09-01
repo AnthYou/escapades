@@ -14,7 +14,9 @@
             </div>
           </div>
           <div class="polaroid__content-caption">
-            <p class= "polaroid__content-caption-text"><%= post.content.truncate(125) %></p>
+            <% if post.content %>
+              <p class= "polaroid__content-caption-text"><%= post.content.truncate(125) %></p>
+            <% end %>
           </div>
         </div>
       </div>
