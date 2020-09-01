@@ -80,17 +80,17 @@ const drawRouteLines = (map, markers) => {
 
 //DESSINER LES TRAJETS ROUTES entre TOUTES les activities (call API) ===========
 const drawRouteDriving = (map, markers) => {
-    const mapElement = document.getElementById('map2');
-    const apiKey = mapElement.dataset.mapboxApiKey;
-    const coords = markers.map(marker => [marker.lng, marker.lat])
-    console.log(coords);
-    const coords_string = coords.join(";")
-    console.log(coords_string);
-    const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${coords_string}?geometries=geojson&access_token=${apiKey}`
-    fetch(url)
-      .then(response => response.json())
-      .then((data) => {
-        const route = data.routes[0].geometry.coordinates;
+  const mapElement = document.getElementById('map2');
+  const apiKey = mapElement.dataset.mapboxApiKey;
+  const coords = markers.map(marker => [marker.lng, marker.lat])
+  console.log(coords);
+  const coords_string = coords.join(";")
+  console.log(coords_string);
+  const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${coords_string}?geometries=geojson&access_token=${apiKey}`
+  fetch(url)
+    .then(response => response.json())
+    .then((data) => {
+      const route = data.routes[0].geometry.coordinates;
         map.on('load', function() {
           map.addSource('route', {
             'type': 'geojson',
@@ -107,29 +107,24 @@ const drawRouteDriving = (map, markers) => {
               'marker-symbol': 'rocket'
               }
             }
+          });
+          map.addLayer({
+            'id': 'route',
+            'type': 'line',
+            'source': 'route',
+            'layout': {
+            'line-join': 'round',
+            'line-cap': 'round'
+            },
+            'paint': {
+            'line-color': 'orange',
+            'line-width': 3,
+            'line-opacity': 0.6
+            }
+          })
         });
-
-      map.addLayer({
-        'id': 'route',
-        'type': 'line',
-        'source': 'route',
-        'layout': {
-        'line-join': 'round',
-        'line-cap': 'round'
-        },
-        'paint': {
-        'line-color': 'orange',
-        'line-width': 3,
-        'line-opacity': 0.6
-        }
-      });
   });
-      });
 }
-
-
-
-
 const initMapbox = () => {
 
   // MAP IN HOME

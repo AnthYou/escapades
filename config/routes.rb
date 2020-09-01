@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get "bookings", to: "bookings#review", as: "review_booking"
     resources :activities, only: [:new, :create]
     resources :posts, only: [:index, :create, :new, :show]
+    resources :messages, only: [:index, :create]
   end
 
   resources :bookings, only: [] do
