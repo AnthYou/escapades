@@ -44,3 +44,24 @@
   right: 360px;
   top: 1410px;
 }
+
+.btn-travel-special {
+  padding: 10px 20px;
+  background-color: $my-blue;
+  color: white;
+  font-weight: 600;
+  border: 2px solid $my-blue;
+  border-radius: 20px;
+  box-shadow: 1px 1px 5px $my-blue;
+}
+
+.btn-travel-special:hover {
+  background-color: $my-blue;
+  color: white;
+  border: 2px solid white;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-travel-special:active {
+  box-shadow: 1px 1px 5px $my-blue;
+}

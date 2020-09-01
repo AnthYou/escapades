@@ -1,0 +1,40 @@
+<div class="container" style="border-radius: 20px;">
+  <div class="trip-banner mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @trip.photo.key, crop: :fill %>');">
+    <h1><%=@trip.title%></h1>
+    <p><%= @trip.city ? @trip.city : @trip.country %></p>
+    <%= link_to 'Back to trip', trip_path(@trip), class: 'btn-travel-primary'  %>
+  </div>
+
+  <div class="p-5 bg-white mb-3" style="border-radius: 20px;">
+    <div class="trip-description">
+      <p class="mb-2"><strong>Trip members</strong></p>
+      <% @trip.participants.each do |participant| %>
+        <%= link_to user_path(participant), :action => 'go' do  %>
+          <%= cl_image_tag participant.photo.key, class: "avatar", style: 'margin-right: 0px;' %>
+        <% end %>
+      <% end %>
+    </div>
+    <hr>
+    <div id="messages" data-trip-id="<%= @trip.id %>">
+      <% @messages.each do |message| %>
+        <div class="message-container d-flex" id="message-<%= message.id %>">
+          <%= link_to user_path(message.user), :action => 'go' do  %>
+            <%= cl_image_tag message.user.photo.key, class: "avatar mr-3" %>
+          <% end %>
+          <div>
+            <i class="author">
+              <span><%= message.user.first_name %> <%= message.user.last_name %></span>
+              <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+            </i>
+            <p><%= message.content %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= simple_form_for [ @trip, @message ], remote: true do |f| %>
+    <%= f.input :content, label: false, placeholder: "Message ##{@trip.title}" %>
+    <%= f.submit 'Send', class: 'btn-travel-primary' %>
+  <% end %>
+</div>

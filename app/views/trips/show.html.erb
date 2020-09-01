@@ -9,15 +9,18 @@
     <p><%= @trip.city ? @trip.city : @trip.country %></p>
     <% if @trip.full? || @trip.departed? %>
       <div class='text-center mt-5'>
-        <p> Trip is full or has already departed!</p>
+        <p>Trip is full or has already departed!</p>
       </div>
     <% else %>
       <% if user_signed_in? %>
         <% if @trip.user == current_user %>
-          <%= link_to 'Manage my trip', dashboard_path, class: 'btn-travel-primary' %>
+          <div class="d-flex">
+            <%= link_to 'Manage my trip', dashboard_path, class: 'btn-travel-primary mr-1' %>
+            <%= link_to 'Go to chatroom', trip_messages_path(@trip), class: 'btn-travel-special' %>
+          </div>
         <% elsif current_user.accepted_in?(@trip.id) %>
           <div class='text-center mt-5'>
-            <p> You already joined this trip!</p>
+            <%= link_to 'Go to chatroom', trip_messages_path(@trip), class: 'btn-travel-special' %>
           </div>
         <% elsif current_user.applied_for?(@trip.id) %>
           <div class="text-center mt-5">
@@ -130,10 +133,11 @@
       <% if @trip.user == current_user %>
         <div class="text-center mt-5 mb-3">
           <%= link_to 'Manage my trip', dashboard_path, class: 'btn-travel-primary' %>
+          <%= link_to 'Go to chatroom', trip_messages_path(@trip), class: 'btn-travel-special' %>
         </div>
       <% elsif current_user.accepted_in?(@trip.id)%>
         <div class='text-center mt-5'>
-          <p> You already joined this trip!</p>
+          <%= link_to 'Go to chatroom', trip_messages_path(@trip), class: 'btn-travel-special' %>
         </div>
       <% elsif current_user.applied_for?(@trip.id) %>
         <div class="text-center mt-5">
