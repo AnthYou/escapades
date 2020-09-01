@@ -95,11 +95,11 @@
     <!-- TRIP OWNER -->
     <%#= render 'shared/usercards', user: @trip.user,booking: nil, current_user_booking: @booking%>
     <% @trip.bookings.each do |booking| %>
-      <div class="card-and-review">
-        <% if booking.status == "accepted" %>
+      <% if booking.status == "accepted" %>
+        <div class="card-and-review">
           <%= render 'shared/usercards', user: booking.user, booking: booking, current_user_booking: @booking %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
 
