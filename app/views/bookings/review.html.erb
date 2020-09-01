@@ -1,0 +1,13 @@
+<div class="container mt-5 show-container">
+  <h2 class="text-center mb-5">Review your trip applications</h2>
+  <div class="post-content bg-white p-5 mb-3 rounded">
+  <%= link_to "<-- Back to your trip", trip_path(@trip), class: "btn-travel-secondary mt-3" %>
+    <div class="users-grid d-flex justify-content-around mt-5">
+      <% @bookings.each do |booking| %>
+        <div class="card-and-review">
+          <%= render 'shared/usercards-pending', user: booking.user, booking: booking %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
