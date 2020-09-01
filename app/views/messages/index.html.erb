@@ -24,6 +24,6 @@
 
   <%= simple_form_for [ @trip, @message ], remote: true do |f| %>
     <%= f.input :content, label: false, placeholder: "Message ##{@trip.title}" %>
-    <%= f.submit 'Send', class: 'btn-travel-primary' %>
+    <%= f.submit 'Send', class: 'btn-travel-primary', id: 'send-message' %>
   <% end %>
 </div>

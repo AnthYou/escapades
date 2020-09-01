@@ -36,6 +36,7 @@ import { initUpdateNavbarOnScroll } from "../components/navbar_home";
 import { initAutocomplete } from "../plugins/init_autocomplete";
 import { initPolaroidsRotation } from "../components/postcards";
 import { initTripCable } from "../channels/trip_channel";
+import { sendMessage } from "../components/send_message";
 
 document.addEventListener('turbolinks:load', () => {
   initUpdateNavbarOnScroll();
@@ -45,6 +46,7 @@ document.addEventListener('turbolinks:load', () => {
   initPolaroidsRotation();
   initExpander();
   initTripCable();
+  sendMessage();
   // Call your functions here, e.g:
   // initSelect2();
 });
