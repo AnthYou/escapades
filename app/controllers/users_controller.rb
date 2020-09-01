@@ -12,13 +12,13 @@ class UsersController < ApplicationController
 
     @user_reviews = @user.received_reviews
 
-    @trips = Trip.where(user_id: @user.id)
+    @bookings = @user.bookings.where(status: "accepted")
 
-    @markers = @trips.map do |trip|
+    @markers = @bookings.map do |booking|
       {
-        lat: trip.latitude,
-        lng: trip.longitude,
-        infoWindow: render_to_string(partial: "shared/info_window_trips", locals: { trip: trip })
+        lat: booking.trip.latitude,
+        lng: booking.trip.longitude,
+        infoWindow: render_to_string(partial: "shared/info_window_trips", locals: { trip: booking.trip })
       }
     end
     authorize @user
