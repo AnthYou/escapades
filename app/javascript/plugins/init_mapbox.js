@@ -80,17 +80,49 @@ const drawRouteLines = (map, markers) => {
 
 //DESSINER LES TRAJETS ROUTES entre TOUTES les activities (call API) ===========
 const drawRouteDriving = (map, markers) => {
-    const mapElement = document.getElementById('map2');
-    const apiKey = mapElement.dataset.mapboxApiKey;
-    const coords = markers.map(marker => [marker.lng, marker.lat])
-    console.log(coords);
-    const coords_string = coords.join(";")
-    console.log(coords_string);
-    const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${coords_string}?geometries=geojson&access_token=${apiKey}`
-    fetch(url)
-      .then(response => response.json())
-      .then((data) => {
-        const route = data.routes[0].geometry.coordinates;
+  const mapElement = document.getElementById('map2');
+  const apiKey = mapElement.dataset.mapboxApiKey;
+  const coords = markers.map(marker => [marker.lng, marker.lat])
+  console.log(coords);
+  const coords_string = coords.join(";")
+  console.log(coords_string);
+  const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${coords_string}?geometries=geojson&access_token=${apiKey}`
+  fetch(url)
+    .then(response => response.json())
+    .then((data) => {
+      const route = data.routes[0].geometry.coordinates;
+      if (map.loaded()) {
+        map.addSource('route', {
+          'type': 'geojson',
+          'data': {
+            'type': 'Feature',
+            'properties': {},
+            'geometry': {
+              'type': 'LineString',
+              'coordinates': route
+            },
+          'properties': {
+            'marker-color': '#3bb2d0',
+            'marker-size': 'large',
+            'marker-symbol': 'rocket'
+            }
+          }
+        });
+        map.addLayer({
+          'id': 'route',
+          'type': 'line',
+          'source': 'route',
+          'layout': {
+          'line-join': 'round',
+          'line-cap': 'round'
+          },
+          'paint': {
+          'line-color': 'orange',
+          'line-width': 3,
+          'line-opacity': 0.6
+          }
+        })
+      } else {
         map.on('load', function() {
           map.addSource('route', {
             'type': 'geojson',
@@ -107,29 +139,58 @@ const drawRouteDriving = (map, markers) => {
               'marker-symbol': 'rocket'
               }
             }
+          });
+          map.addLayer({
+            'id': 'route',
+            'type': 'line',
+            'source': 'route',
+            'layout': {
+            'line-join': 'round',
+            'line-cap': 'round'
+            },
+            'paint': {
+            'line-color': 'orange',
+            'line-width': 3,
+            'line-opacity': 0.6
+            }
+          })
         });
+      }
 
-      map.addLayer({
-        'id': 'route',
-        'type': 'line',
-        'source': 'route',
-        'layout': {
-        'line-join': 'round',
-        'line-cap': 'round'
-        },
-        'paint': {
-        'line-color': 'orange',
-        'line-width': 3,
-        'line-opacity': 0.6
-        }
-      });
+    //   if (map.loaded()) {
+    //       map.addLayer({
+    //       'id': 'route',
+    //       'type': 'line',
+    //       'source': 'route',
+    //       'layout': {
+    //       'line-join': 'round',
+    //       'line-cap': 'round'
+    //       },
+    //       'paint': {
+    //       'line-color': 'orange',
+    //       'line-width': 3,
+    //       'line-opacity': 0.6
+    //       }
+    //     })
+    //   } else {
+    //     map.on('load', () => map.addLayer({
+    //       'id': 'route',
+    //       'type': 'line',
+    //       'source': 'route',
+    //       'layout': {
+    //       'line-join': 'round',
+    //       'line-cap': 'round'
+    //       },
+    //       'paint': {
+    //       'line-color': 'orange',
+    //       'line-width': 3,
+    //       'line-opacity': 0.6
+    //       }
+    //     })
+    //   );
+    // }
   });
-      });
 }
-
-
-
-
 const initMapbox = () => {
 
   // MAP IN HOME
