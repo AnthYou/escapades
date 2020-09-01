@@ -19,8 +19,8 @@
       <% if @user == current_user %>
         <div class="user-info p-3 d-flex justify-content-center align-items-center" style="background-color: rgba(255, 255, 255, 0.4); border-radius: 20px; box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); position: relative; left: -10px;">
             <br>
-            <%= link_to "Go to dashboard", dashboard_path, class: "btn btn-travel"%>
-            <%= link_to "Edit my profile", edit_user_registration_path(current_user), class: "btn btn-travel-secondary "%>
+            <%= link_to "Dashboard", dashboard_path, class: "btn btn-travel-primary mr-1"%>
+            <%= link_to "Edit profile", edit_user_registration_path(current_user), class: "btn btn-travel-secondary "%>
         </div>
       <% end %>
        <div class="user-info p-3" style="background-color: rgba(255, 255, 255, 0.4); border-radius: 20px; box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); position: relative; left: -10px;">
