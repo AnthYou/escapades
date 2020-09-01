@@ -44,7 +44,9 @@
     <div class="carousel-card-info">
       <h2><%= trip.country %></h2>
       <h3><%= trip.city.presence %></h3>
-      <p><%= trip.description.truncate(250) %></p>
+      <% if trip.description %>
+        <p><%= trip.description.truncate(250) %></p>
+      <% end %>
       <!-- USER AVATARS -->
       <div class="carousel-users">
         <% trip.bookings.where(status: "accepted").reverse.each do |booking| %>

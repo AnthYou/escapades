@@ -30,7 +30,9 @@
     </div>
 <% end %>
     <div class="usercard-description">
-      <%= booking.description.truncate(70) %>
+      <% if booking.description %>
+        <%= booking.description.truncate(70) %>
+      <% end %>
     </div>
     <div class= "d-flex justify-content-around align-items-center mb-2 mt-2">
       <%=  link_to trip_accept_booking_path(booking.trip.id, booking.id), method: :patch, data: {confirm: "Confirm accept?"}, :action => 'go' do %>
