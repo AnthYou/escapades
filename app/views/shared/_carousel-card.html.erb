@@ -1,0 +1,73 @@
+<!-- CAROUSEL -->
+<%= link_to trip_path(trip), :action => 'go', data: {turbolinks: 'false'} do %>
+  <div class="carousel-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path trip.photo.key%>');">
+    <!--  BADGES -->
+    <div class="card-badges">
+      <% if trip.days_to_departure <= 0 %>
+        <span class="badge badge-success py-2 px-3 font-weight-light" style="position: absolute; right: 15%; top: 25px;">Departed!</span>
+      <% elsif trip.days_to_departure <= 7 %>
+        <span class="badge badge-warning py-2 px-3 font-weight-light" style="position: absolute; right: 15%; top: 25px;"><%= trip.days_to_departure %> days before departure</span>
+      <% else %>
+        <span class="badge badge-info py-2 px-3 font-weight-light" style="position: absolute; right: 15%; top: 25px;"><%= trip.days_to_departure%> days before departure</span>
+      <% end %>
+
+      <!-- BADGE : FULL -->
+      <!-- Display the full badge only when a trip max capacity is reached -->
+      <% if trip.full? %>
+        <span class="badge badge-danger py-2 px-3 font-weight-light" style="position: absolute; right: 15%; top:55px;">FULL</span>
+      <% end %>
+
+      <!-- BADGE : OWNER -->
+      <!-- Display the owner badge only when current_user is the owner of the trip -->
+      <% if trip.user == current_user %>
+        <span class="badge badge-secondary py-2 px-3 font-weight-light" style="position: absolute; right: 15%; bottom: 25px;">OWNER</span>
+      <% end %>
+
+      <% if user_signed_in? %>
+      <!-- BADGE : BOOKING-STATUS -->
+        <!-- Find the booking between current user and a given trip. Can be nil or an instance -->
+        <% current_user_trip_booking = trip.bookings.where(user_id: current_user.id).first %>
+        <% if current_user_trip_booking %>
+        <!-- Display the accepted tag only when current_user is accepted in a trip -->
+          <% if current_user_trip_booking.status == "accepted" && trip.user != current_user %>
+            <span class="badge badge-success py-2 px-3 font-weight-light" style="position: absolute; right: 15%; bottom: 25px;">Accepted</span>
+          <% end %>
+        <!-- Display the pending tag only when current_user's trip booking status is pending -->
+          <% if current_user_trip_booking.status == "pending" %>
+            <span class="badge badge-info py-2 px-3 font-weight-light" style="position: absolute; right: 15%; bottom: 25px;">Pending</span>
+          <% end %>
+        <!-- Else (cancelled, rejected => show no tag)-->
+        <% end %>
+      <% end %>
+    </div>
+    <!-- CARD INFO -->
+    <div class="carousel-card-info">
+      <h2><%= trip.country %></h2>
+      <h3><%= trip.city.presence %></h3>
+      <p><%= trip.description.truncate(250) %></p>
+      <!-- USER AVATARS -->
+      <div class="carousel-users">
+        <% trip.bookings.where(status: "accepted").reverse.each do |booking| %>
+          <% if booking.user.photo.attached? %>
+            <li class="avatar <%= 'avatar-owner' if booking.user == trip.user %> list-inline-item" style="background-image: url('<%= cl_image_path booking.user.photo.key %>');"></li>
+          <% else %>
+            <li class="avatar <%= 'avatar-owner' if booking.user == trip.user %> list-inline-item" style="background-image: url('https://icon-library.com/images/default-user-icon/default-user-icon-8.jpg');"></li>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="carousel-card-details">
+        <!-- NUMBER OF NIGHTS -->
+        <p class="carousel-nb-nights"><%= (trip.return_date - trip.departure_date).to_i %> nights</p>
+        <!-- AVERAGE RATING -->
+        <% trip.trip_average_rating.times do %>
+          <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
+        <% end %>
+        <% (5 - trip.trip_average_rating).times do %>
+          <li class="list-inline-item star-grey"><i class="fas fa-star"></i></li>
+        <% end %>
+        <!-- PRICE RANGE -->
+        <p class="price-range">$ <%= trip.budget_min %> - <%= trip.budget_max %></p>
+      </div>
+    </div>
+  </div>
+<% end %>
