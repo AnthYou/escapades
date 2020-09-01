@@ -1,6 +1,6 @@
 <div class = "container mt-3">
 <!--   PERSONAL INFO -->
-  <div class="bg-white p-4 rounded mb-3 text-center d-flex" >
+  <div class="bg-white p-4 rounded mb-3 text-center d-flex align-items-center" >
     <div class="user-col-left">
       <div class="user-info p-3" style="background-color: rgba(255, 255, 255, 0.4); border-radius: 20px; box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); position: relative; left: -10px;">
         <% if @user.photo.attached? %>
@@ -25,9 +25,9 @@
       <% end %>
        <div class="user-info p-3" style="background-color: rgba(255, 255, 255, 0.4); border-radius: 20px; box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); position: relative; left: -10px;">
           <ul style= "margin: 0px; padding-left: 0px">
-            <li style= "list-style-type: none; margin-bottom: 3px;"> <a href="#"> <i class="fab fa-instagram"></i> Follow me on instagram</a> </li>
-            <li style= "list-style-type: none; margin-bottom: 3px;"> <a href="#"> <i class="fab fa-facebook"></i> Follow me on facebook</a> </li>
-            <li style= "list-style-type: none; margin-bottom: 3px;"> <a href="#"> <i class="fas fa-globe"></i></i> Visit my website</a> </li>
+            <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="fab fa-facebook"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="fas fa-globe"></i></i></a></li>
           </ul>
       </div>
     </div>
