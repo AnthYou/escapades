@@ -19,6 +19,10 @@ class MessagesController < ApplicationController
     @message.trip = @trip
     @message.user = current_user
     if @message.save
+      TripChannel.broadcast_to(
+        @trip,
+        render_to_string(partial: "message", locals: { message: @message })
+      )
       redirect_to trip_messages_path(@trip, anchor: "message-#{@message.id}")
     else
       render "messages/index"
