@@ -5,7 +5,8 @@
       <%= simple_form_for [ @trip, @activity ] do |f| %>
         <%= f.input :title %>
         <%= f.input :description, as: :text %>
-        <%= f.input :location %>
+        <%= f.input :country, input_html: { class: 'trip_country' } %>
+        <%= f.input :city, input_html: { class: 'trip_city' } %>
         <%= f.input :price, as: :integer %>
         <div class="row">
           <div class="col">
@@ -16,7 +17,7 @@
           </div>
         </div>
         <% if @trip.activities != [] %>
-          <%= f.input :transport_type, collection: Activity::TRANSPORT, label: 'How do you want to get there? <br> Please choose your tranport type.' %>
+          <%= f.input :transport_type, as: :radio_buttons, collection: Activity::TRANSPORT, label: 'How do you want to get there? Please choose your tranport type.' %>
         <% end %>
         <%= f.input :url, label: 'Please enter an URL to help your mates booking this activity.' %>
         <%= f.input :photo, as: :file, required: true %>

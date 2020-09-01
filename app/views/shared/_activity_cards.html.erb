@@ -1,6 +1,6 @@
 <div class="activity-cards activity-body">
 
-  <% trip.activities.each_with_index do |activity, index| %>
+  <% activities.each_with_index do |activity, index| %>
     <%= render "shared/activity_card", activity: activity, index: index%>
   <% end %>
 </div>

@@ -41,7 +41,7 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @booking = @trip.bookings.where(user_id: current_user.id).last if user_signed_in?
     @new_booking = Booking.new
-    @activities = @trip.activities
+    @activities = @trip.activities.order(:created_at)
     @markers = @activities.map.with_index do |activity, i|
       {
         lat: activity.latitude,

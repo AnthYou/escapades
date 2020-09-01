@@ -443,7 +443,9 @@ activities = [
       price: 100,
       start_date: "21/07/2020".to_date,
       end_date: "28/07/2020".to_date,
-      location: "Melbourne, Australia",
+      city: "Melbourne",
+      country: "Australia",
+      transport_type: "Plane",
       url: "https://www.visitmelbourne.com/",
       trip: Trip.first
     },
@@ -456,7 +458,9 @@ activities = [
       price: 800,
       start_date: "29/07/2020".to_date,
       end_date: "04/08/2020".to_date,
-      location: "Cairns, Australia",
+      city: "Cairns",
+      country: "Australia",
+      transport_type: "Car",
       url: "https://www.australia.com/en/places/cairns-and-surrounds/guide-to-the-great-barrier-reef.html",
       trip: Trip.first
     },
@@ -469,7 +473,9 @@ activities = [
       price: 200,
       start_date: "05/08/2020".to_date,
       end_date: "20/08/2020".to_date,
-      location: "Alice Springs, Australia",
+      city: "Alice Springs",
+      country: "Australia",
+      transport_type: "Plane",
       url: "https://parksaustralia.gov.au/uluru/",
       trip: Trip.first
     },
@@ -482,7 +488,9 @@ activities = [
       price: 280,
       start_date: "21/08/2020".to_date,
       end_date: "22/08/2020".to_date,
-      location: "Perth, Australia",
+      city: "Perth",
+      country: "Australia",
+      transport_type: "Car",
       url: "https://www.skydive.com.au/perth/",
       trip: Trip.first
     },

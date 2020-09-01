@@ -163,9 +163,10 @@ const initMapbox = () => {
      addMarkersToMap(map2, markers)
 
      markers.forEach(function (marker, i) {
+      console.log(marker)
       if (i>0) {
         let previous_marker = markers[i-1];
-        if (marker.transport_type === 'plane') {
+        if (marker.transport_type === 'Plane') {
           let steps = [previous_marker, marker]
           drawRouteLines(map2, steps, i);
         } else {
