@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :trips, only: [ :index, :create, :new, :show] do
     resources :bookings, only: [:new, :create]
     patch "bookings/:id", to: "bookings#cancel", as: "cancel_booking"
+    get "bookings", to: "bookings#review", as: "review_booking"
     resources :activities, only: [:new, :create]
     resources :posts, only: [:index, :create, :new, :show]
   end

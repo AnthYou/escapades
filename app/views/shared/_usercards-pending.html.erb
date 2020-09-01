@@ -1,0 +1,47 @@
+<%= link_to user_path(user), :action => 'go' do %>
+  <!-- USER CARD -->
+  <div class="pending-usercard-container mb-4">
+    <% if user.photo.attached? %>
+      <li class="usercard-image" style="background-image: url('<%= cl_image_path user.photo.key %>');"></li>
+    <% else %>
+      <li class="usercard-image" style="background-image: url('https://icon-library.com/images/default-user-icon/default-user-icon-8.jpg');"></li>
+    <% end %>
+    <!-- BADGE -->
+  <div class="card-badges">
+      <span class="badge badge-secondary py-2 px-3 font-weight-light" style="position: absolute; left: 20px; top: 20px;">pending</span>
+  </div>
+
+  <div class="card-info">
+    <div class="usercard-top">
+      <h2 class="usercard-name"><%= user.first_name.capitalize %> <%= user.last_name.capitalize%></h2>
+      <!-- AVERAGE RATING -->
+      <div class="reviews">
+        <% if user.user_average_rating != nil  %>
+          <% user.user_average_rating.times do %>
+            <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
+          <% end %>
+          <% (5 - user.user_average_rating).times do %>
+            <li class="list-inline-item star-grey"><i class="fas fa-star"></i></li>
+          <% end %>
+        <% else %>
+          <li class="list-inline-item"> No review </li>
+        <% end %>
+      </div>
+    </div>
+<% end %>
+    <div class="usercard-description">
+      <%= booking.description %>
+    </div>
+    <div class= "d-flex justify-content-around align-items-center mb-2 mt-2">
+      <div class="navbar-icon-bg-orange" style="margin-right: 0px; background-color: #99ff33">
+          <i class="fas fa-check"></i>
+      </div>
+       <div class="navbar-icon-bg-black" style="margin-right: 0px; background-color: #ff5c33">
+          <i class="fas fa-times"></i>
+      </div>
+      <div class="navbar-icon-bg-grey" style="margin-right: 0px">
+          <i class="fas fa-comments"></i>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,4 @@
 class BookingsController < ApplicationController
-
   def create
     @user = current_user
     @booking = Booking.new(booking_params)
@@ -22,6 +21,12 @@ class BookingsController < ApplicationController
     @booking.status = "cancelled"
     @booking.save
     redirect_to trip_path(@booking.trip)
+  end
+
+  def review
+    @trip = Trip.find(params[:trip_id])
+    @bookings = @trip.bookings.where(status: "pending")
+    authorize @bookings
   end
 
   private
