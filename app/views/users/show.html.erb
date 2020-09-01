@@ -13,6 +13,16 @@
         <% else %>
           <h3><strong><%= @user.first_name %> <%= @user.last_name %></strong></h3>
         <% end %>
+        <div class="stars mb-3">
+          <% if @user.user_average_rating != nil %>
+            <% @user.user_average_rating.times do %>
+              <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
+            <% end %>
+            <% (5 - @user.user_average_rating).times do %>
+              <li class="list-inline-item star-grey"><i class="fas fa-star"></i></li>
+            <% end %>
+          <% end %>
+        </div>
         <p> <%= ((Date.today - @user.date_of_birth) / 365).to_i %> years old </p>
         <p> <%= @user.description %> </p>
       </div>
@@ -81,12 +91,12 @@
           </div>
           <div class="col-6 p-3">
             <div class="stars">
-                <% review.stars.times do %>
-                  <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
-                <% end %>
+              <% review.stars.times do %>
+                <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
+              <% end %>
               <% (5 - review.stars).times do %>
                 <li class="list-inline-item star-grey"><i class="fas fa-star"></i></li>
-                <% end %>
+              <% end %>
             </div>
             <div class="review-content">
                 <p style="font-size: 14px; font-weight: 300;"><%= review.content %></p>
