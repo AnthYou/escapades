@@ -20,7 +20,11 @@ class BookingPolicy < ApplicationPolicy
     true
   end
 
-  def review?
+  def accept?
+    true
+  end
+
+  def decline?
     true
   end
 end

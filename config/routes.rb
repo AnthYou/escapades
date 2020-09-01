@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :trips, only: [ :index, :create, :new, :show] do
     resources :bookings, only: [:new, :create]
-    patch "bookings/:id", to: "bookings#cancel", as: "cancel_booking"
+
+    patch "bookings/:id/cancel", to: "bookings#cancel", as: "cancel_booking"
+    patch "bookings/:id/accept", to: "bookings#accept", as: "accept_booking"
+    patch "bookings/:id/decline", to: "bookings#decline", as: "decline_booking"
+
     get "bookings", to: "bookings#review", as: "review_booking"
     resources :activities, only: [:new, :create]
     resources :posts, only: [:index, :create, :new, :show]

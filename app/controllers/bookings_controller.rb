@@ -26,7 +26,29 @@ class BookingsController < ApplicationController
   def review
     @trip = Trip.find(params[:trip_id])
     @bookings = @trip.bookings.where(status: "pending")
-    authorize @bookings
+    authorize @trip, :review?
+  end
+
+  def accept
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.status = "accepted"
+    if @booking.save
+      redirect_to trip_review_booking_path(@booking.trip)
+    else
+      flash[:alert] = "An error has occured"
+    end
+  end
+
+  def decline
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.status = "declined"
+    if @booking.save
+      redirect_to trip_review_booking_path(@booking.trip)
+    else
+      flash[:alert] = "An error has occured"
+    end
   end
 
   private
