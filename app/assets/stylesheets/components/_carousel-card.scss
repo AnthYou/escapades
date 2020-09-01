@@ -1,0 +1,75 @@
+.carousel-card {
+  border-radius: 20px;
+  height: 300px;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.carousel-card-info {
+  position: absolute;
+  top: 25px;
+  left: 15%;
+  width: 300px;
+  height: 250px;
+  border-radius: 20px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 0px;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 12px;
+  }
+}
+
+.carousel-users {
+  position: absolute;
+  right: 45px;
+  bottom: 10px;
+}
+
+.carousel-users .avatar {
+  height: 50px;
+  width: 50px;
+  background-size: cover;
+}
+
+.avatar-owner {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  background-size: cover;
+  border: 1px solid $my-orange;
+}
+
+.carousel-users li.avatar {
+  margin-right: -30px;
+}
+
+p.carousel-nb-nights {
+  font-weight: 500;
+  margin-bottom: 0px;
+}
+
+.carousel-card-details {
+  position: absolute;
+  bottom: 10px;
+}
+
+.carousel-card-details .list-inline-item {
+  margin-right: 0px;
+}
+
+.carousel-card-details .price-range {
+  font-size: 14px;
+}
