@@ -2,7 +2,6 @@ class User < ApplicationRecord
   has_one_attached :photo
   validates :photo, presence: true
   has_many :trips, dependent: :destroy
-  has_many :bookings, dependent: :destroy
   has_many :joined_trips, through: :bookings, source: :trip
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

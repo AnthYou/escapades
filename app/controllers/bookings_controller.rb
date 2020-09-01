@@ -1,9 +1,4 @@
 class BookingsController < ApplicationController
-  # def new
-  #   @booking = Booking.new
-  #   authorize @booking
-  #   @trip = Trip.find(params[:trip_id])
-  # end
 
   def create
     @user = current_user
@@ -19,6 +14,14 @@ class BookingsController < ApplicationController
       flash[:alert] = @booking.errors.full_messages.join("; ")
       render :new
     end
+  end
+
+  def cancel
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.status = "cancelled"
+    @booking.save
+    redirect_to trip_path(@booking.trip)
   end
 
   private
