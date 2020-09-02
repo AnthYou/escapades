@@ -24,7 +24,9 @@
       <div class="activity-card-flap flap2 ">
         <div class="card-actions">
           <a href='<%= activity.url %>' class="btn-travel-primary">Visit website</a>
-          <%= link_to 'Edit this activity', edit_activity_path(activity), class: "btn btn-travel-secondary mb-3 " %>
+          <% if activity.trip.user == current_user %>
+            <%= link_to 'Edit this activity', edit_activity_path(activity), class: "btn btn-travel-secondary mb-3 " %>
+          <% end %>
         </div>
       </div>
     </div>
