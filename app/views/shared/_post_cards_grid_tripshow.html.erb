@@ -4,14 +4,6 @@
       <div class="polaroid" data-toggle="modal" data-target=".bd-example-modal-lg-<%= post.id %>">
         <div class="polaroid__content">
           <div class="polaroid__content-image">
-            <div class="polaroid-likes">
-              <% if user_signed_in? %>
-                <%= link_to like_trip_post_path(post.trip.id, post.id), method: :patch, remote: true, data: { post: post.id }, class: "likes #{'liked' if current_user.voted_for?(post)} d-flex align-items-center", :action => 'go' do %>
-                  <i class="fas fa-heart mr-1"></i>
-                  <span class="likes-count" style="font-size: 24px; margin-bottom: 0px; margin-top: 2px;"><%= post.get_likes.size %></span>
-                <% end %>
-              <% end %>
-            </div>
             <% if post.photo.attached? %>
               <img src="<%= cl_image_path post.photo.key, crop: :fill %>" alt=''>
             <% else %>

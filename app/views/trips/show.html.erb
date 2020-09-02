@@ -1,14 +1,14 @@
 <div class="container mt-5 show-container">
 
   <% if @trip.photo.attached? %>
-    <div class="trip-banner mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @trip.photo.key, crop: :fill %>');">
+    <div class="trip-banner mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @trip.photo.key, crop: :fill %>');">
   <% else %>
-    <div class="trip-banner mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png');">
+    <div class="trip-banner mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png');">
   <% end %>
     <h1><%=@trip.title%></h1>
     <p><%= @trip.city ? @trip.city : @trip.country %></p>
     <% if @trip.full? || @trip.departed? %>
-      <div class='text-center mt-5'>
+      <div class='text-center mt-3'>
         <p>Trip is full or has already departed!</p>
       </div>
     <% elsif (@trip.full? || @trip.departed?) && (user_signed_in?) && (current_user.accepted_in?(@trip.id)) %>
@@ -20,11 +20,11 @@
             <%= link_to 'Go to chatroom', trip_messages_path(@trip), class: 'btn-travel-special' %>
           </div>
         <% elsif current_user.accepted_in?(@trip.id) %>
-          <div class='text-center mt-5'>
+          <div class='text-center mt-3'>
             <%= link_to 'Go to chatroom', trip_messages_path(@trip), class: 'btn-travel-special' %>
           </div>
         <% elsif current_user.applied_for?(@trip.id) %>
-          <div class="text-center mt-5">
+          <div class="text-center mt-3">
             <p> You already applied to this trip!</p>
           </div>
         <% else %>
@@ -36,16 +36,12 @@
     <% end %>
   </div>
 
-<!-- DESCRIPTION -->
-  <h2 class="text-center font-weight-bold mb-5">about the trip</h2>
-  <div class="trip-description">
-    <p><%= @trip.description %></p>
-  </div>
-
 <!-- SPECS -->
-  <div class="spec mt-5">
-    <h2 class="text-center font-weight-bold mb-5" style="font-weight:600;">specs</h2>
+  <div class="spec my-5">
     <div class="trip-description">
+      <h2 class="font-weight-bold text-center mb-2">about the trip</h2>
+      <p class="text-center p-3"><%= @trip.description %></p>
+      <hr>
       <div class="icons my-3" style= "display:flex;justify-content: space-around">
         <div class= "icon text-center">
           <div style="font-size: 30px;">💵</div>
@@ -70,6 +66,7 @@
       </div>
     </div>
   </div>
+
 
 <!-- MAPBOX -->
 <h2 class="text-center mt-5 pb-5 font-weight-bold">trip activities</h2>

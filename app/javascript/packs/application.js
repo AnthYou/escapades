@@ -31,7 +31,6 @@ import "../plugins/flatpickr";
 // import { initSelect2 } from '../components/init_select2';
 import { initMapbox } from '../plugins/init_mapbox';
 import { initStarRating } from '../plugins/init_star_rating';
-
 import { initFlatpickr } from "../plugins/flatpickr";
 import { initExpander } from "../plugins/expander";
 import { initUpdateNavbarOnScroll } from "../components/navbar_home";
@@ -45,7 +44,6 @@ import { initSelect2 } from '../plugins/init_select2';
 document.addEventListener('turbolinks:load', () => {
   initTagCheckbox();
   initUpdateNavbarOnScroll();
-  initMapbox();
   initStarRating();
   initFlatpickr();
   initSelect2();
@@ -54,6 +52,7 @@ document.addEventListener('turbolinks:load', () => {
   initExpander();
   initTripCable();
   sendMessage();
+  initMapbox();
   // Call your functions here, e.g:
   // initSelect2();
 });

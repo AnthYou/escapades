@@ -2,7 +2,7 @@ class Booking < ApplicationRecord
   belongs_to :trip
   belongs_to :user
   has_many :reviews
-  has_many :notifications
+  has_many :notifications, dependent: :destroy
   validates :user, uniqueness: { scope: :trip }
 
   after_save :create_booking_notif
