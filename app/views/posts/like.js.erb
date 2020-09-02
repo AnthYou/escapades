@@ -1,0 +1,19 @@
+var postLikeInfo = document.querySelector("[data-post='<%= @post.id %>']");
+if (postLikeInfo) {
+  <% if current_user.liked? @post %>
+    postLikeInfo.classList.add('liked');
+  <% else %>
+    postLikeInfo.classList.remove('liked');
+  <% end %>
+  postLikeInfo.querySelector('.likes-count').innerHTML = '<%= @likes_counter %>';
+}
+
+// function likePost(postId, likesCounter) {
+//   const postLikeInfo = document.querySelector(`[data-post='${postId}']`);
+//   if (postLikeInfo) {
+//     postLikeInfo.classList.add('liked');
+//     postLikeInfo.querySelector('.likes-count').innerHTML = likesCounter;
+//   }
+// }
+
+// likePost(<%= @post.id %>, <%= @likes_counter %>);

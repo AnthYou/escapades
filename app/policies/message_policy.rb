@@ -12,4 +12,8 @@ class MessagePolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def like?
+    true
+  end
 end

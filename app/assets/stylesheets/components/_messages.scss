@@ -1,0 +1,15 @@
+.message-container {
+
+  .likes {
+    color: $my-blue;
+
+    &:hover {
+      color: $my-black;
+    }
+  }
+
+  .liked {
+    color: red;
+  }
+
+}

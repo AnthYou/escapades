@@ -43,6 +43,22 @@ class PostsController < ApplicationController
     end
   end
 
+  def like
+    @post = Post.find(params[:id])
+    authorize @post
+
+    if current_user.liked? @post
+      current_user.unlike @post
+    else
+      current_user.likes @post
+    end
+
+    @likes_counter = @post.get_likes.size
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def post_params
