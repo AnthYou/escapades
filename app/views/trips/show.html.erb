@@ -11,7 +11,7 @@
       <div class='text-center mt-5'>
         <p>Trip is full or has already departed!</p>
       </div>
-    <% elsif (@trip.full? || @trip.departed?) && current_user.accepted_in?(@trip.id) %>
+    <% elsif (@trip.full? || @trip.departed?) && (user_signed_in?) && (current_user.accepted_in?(@trip.id)) %>
       <%= link_to 'Go to chatroom', trip_messages_path(@trip), class: 'btn-travel-special' %>
     <% else %>
       <% if user_signed_in? %>
