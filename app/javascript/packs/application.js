@@ -35,7 +35,7 @@ import { initStarRating } from '../plugins/init_star_rating';
 import { initFlatpickr } from "../plugins/flatpickr";
 import { initExpander } from "../plugins/expander";
 import { initUpdateNavbarOnScroll } from "../components/navbar_home";
-import {initTagCheckbox} from "../plugins/init_tag_checkbox";
+import { initTagCheckbox } from "../plugins/init_tag_checkbox";
 import { initAutocomplete } from "../plugins/init_autocomplete";
 import { initPolaroidsRotation } from "../components/postcards";
 import { initTripCable } from "../channels/trip_channel";
@@ -46,9 +46,7 @@ document.addEventListener('turbolinks:load', () => {
   initTagCheckbox();
   initUpdateNavbarOnScroll();
   initMapbox();
-
   initStarRating();
-
   initFlatpickr();
   initSelect2();
   initAutocomplete();
