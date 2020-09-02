@@ -27,4 +27,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
   get "/dashboard", to: "users#dashboard", as: :dashboard
+  get "/notifications", to: "notifications#index", as: :notifications
+  patch "notifications/:id/read", to: "notifications#notification_read", as: "notification_read"
+
 end
