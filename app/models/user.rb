@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  acts_as_voter
   has_one_attached :photo
   validates :photo, presence: true
   has_many :trips, dependent: :destroy
@@ -12,6 +13,7 @@ class User < ApplicationRecord
   has_many :received_reviews, through: :bookings, source: :reviews # as booking participant
   has_many :posts, dependent: :destroy
   has_many :notifications, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   # Compute the average rating for a given user. Return an integer
   def user_average_rating

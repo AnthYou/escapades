@@ -11,6 +11,8 @@
       <div class='text-center mt-5'>
         <p>Trip is full or has already departed!</p>
       </div>
+    <% elsif (@trip.full? || @trip.departed?) && (user_signed_in?) && (current_user.accepted_in?(@trip.id)) %>
+      <%= link_to 'Go to chatroom', trip_messages_path(@trip), class: 'btn-travel-special' %>
     <% else %>
       <% if user_signed_in? %>
         <% if @trip.user == current_user %>
@@ -108,12 +110,13 @@
     <% end %>
   </div>
 
-  <!-- TRIP'S POST  -->
+</div>
 
+  <!-- TRIP'S POST  -->
   <h2 class="font-weight-bold text-center mt-5 mb-4">trip posts</h2>
   <div class="posts p-3 ">
     <% if @trip.posts.first == nil %>
-      <p class='text-center'>No post available</p>
+      <p class='text-center'>There is no post yet.</p>
     <% else %>
       <%= render 'shared/post_cards_grid_tripshow', posts: @trip.posts %>
     <% end %>
@@ -126,6 +129,7 @@
 
 <!-- TRIP'S STATUS AND CTAs -->
 
+<div class="container show-container"></div>
   <% if @trip.full? || @trip.departed? %>
     <div class='text-center mt-5'>
       <p> Trip is full or has already departed !</p>

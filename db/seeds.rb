@@ -1,6 +1,7 @@
 require "open-uri"
 
 # Destroy all previous instances
+t0 = Time.now
 puts "Destroy previous instances..."
 
 Review.destroy_all
@@ -184,7 +185,8 @@ trips = [
       departure_date: "21/07/2020".to_date,
       return_date: "23/08/2020".to_date,
       max_capacity: 6,
-      user: User.first
+      user: User.first,
+      tag_list: ["RoadTrip"]
     },
     "https://images.unsplash.com/photo-1529108190281-9a4f620bc2d8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1023&q=80"
   ],
@@ -199,7 +201,8 @@ trips = [
       departure_date: "20/12/2020".to_date,
       return_date: "5/01/2021".to_date,
       max_capacity: 6,
-      user: User.all.sample
+      user: User.all.sample,
+      tag_list: ["Magical", "christmas"]
     },
     "https://images.unsplash.com/photo-1534430480872-3498386e7856?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
   ],
@@ -214,7 +217,8 @@ trips = [
       departure_date: "20/08/2020".to_date,
       return_date: "17/09/2020".to_date,
       max_capacity: 6,
-      user: User.all.sample
+      user: User.all.sample,
+      tag_list: ["Summer", "RoadTrip", "Sea", "Chill"]
     },
     "https://www.decisionsdurables.com/wp-content/uploads/2017/03/la_reunion_vue_du_ciel02_-_credit_irt_-_serge_gelabert_dts_12_2014.jpg"
   ],
@@ -229,7 +233,8 @@ trips = [
       departure_date: "22/08/2020".to_date,
       return_date: "31/08/2020".to_date,
       max_capacity: 6,
-      user: User.all.sample
+      user: User.all.sample,
+      tag_list: ["Horsing", "Chill"]
     },
     "https://images.unsplash.com/photo-1565622832101-358788927c53?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
   ],
@@ -244,7 +249,8 @@ trips = [
       departure_date: "28/08/2020".to_date,
       return_date: "31/08/2020".to_date,
       max_capacity: 4,
-      user: User.all.sample
+      user: User.all.sample,
+      tag_list: ["Romantic"]
     },
     "https://images.unsplash.com/photo-1546946590-5d739771abc4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1512&q=80"
   ],
@@ -258,7 +264,8 @@ trips = [
       departure_date: "04/09/2020".to_date,
       return_date: "07/09/2020".to_date,
       max_capacity: 3,
-      user: User.all.sample
+      user: User.all.sample,
+      tag_list: ["Romantic"]
     },
     "https://images.unsplash.com/photo-1547448415-e9f5b28e570d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
   ]
@@ -505,3 +512,4 @@ activities.each do |activity| iterated_activity = Activity.new(activity.first)
 end
 
 puts "Done ! 🍺"
+puts "In #{(Time.now - t0).to_i} seconds."

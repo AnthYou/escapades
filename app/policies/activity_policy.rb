@@ -12,4 +12,16 @@ class ActivityPolicy < ApplicationPolicy
   def create?
     new?
   end
+
+  def edit?
+    record.trip.user == user
+  end
+
+  def update?
+    edit?
+  end
+
+  def destroy?
+    record.trip.user == user
+  end
 end

@@ -10,9 +10,23 @@ Rails.application.routes.draw do
 
     get "bookings", to: "bookings#review", as: "review_booking"
     resources :activities, only: [:new, :create]
-    resources :posts, only: [:index, :create, :new, :show]
-    resources :messages, only: [:index, :create]
+
+
+  resources :activities, only: [:edit, :update, :destroy]
+
+    resources :posts, only: [:index, :create, :new, :show] do
+      member do
+        patch "like", to: "posts#like"
+      end
+    end
+    resources :messages, only: [:index, :create] do
+      member do
+        patch "like", to: "messages#like"
+      end
+    end
   end
+
+  get '/filter', to: 'trips#filter'
 
   resources :bookings, only: [] do
     resources :reviews, only: [ :new, :create ]
@@ -29,5 +43,7 @@ Rails.application.routes.draw do
   get "/dashboard", to: "users#dashboard", as: :dashboard
   get "/notifications", to: "notifications#index", as: :notifications
   patch "notifications/:id/read", to: "notifications#notification_read", as: "notification_read"
+
+  get '/tagged', to: "trips#tagged", as: :tagged
 
 end
