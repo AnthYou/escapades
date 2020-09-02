@@ -1,6 +1,7 @@
 require "open-uri"
 
 # Destroy all previous instances
+t0 = Time.now
 puts "Destroy previous instances..."
 
 Review.destroy_all
@@ -505,3 +506,4 @@ activities.each do |activity| iterated_activity = Activity.new(activity.first)
 end
 
 puts "Done ! 🍺"
+puts "In #{(Time.now - t0).to_i} seconds."
