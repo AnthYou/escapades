@@ -10,4 +10,5 @@ const initStarRating = () => {
     }
   });
 };
+
 export { initStarRating };
