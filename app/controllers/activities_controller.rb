@@ -20,6 +20,12 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def edit
+    @trip = Trip.find(params[:trip_id])
+    @activity = Activity.find(params[:id])
+    @activity.trip = @trip
+  end
+
   private
 
   def activity_params
