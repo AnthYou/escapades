@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :messages, only: [:index, :create]
   end
 
+  get '/filter', to: 'trips#filter'
+
   resources :bookings, only: [] do
     resources :reviews, only: [ :new, :create ]
   end
@@ -27,4 +29,5 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
   get "/dashboard", to: "users#dashboard", as: :dashboard
+  get '/tagged', to: "trips#tagged", as: :tagged
 end
