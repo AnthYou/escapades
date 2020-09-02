@@ -7,6 +7,7 @@ ruby '2.6.6'
 gem 'cloudinary', '~> 1.12.0'
 gem 'geocoder'
 gem 'pg_search', '~> 2.3.0'
+gem 'acts_as_votable'
 # =========================
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

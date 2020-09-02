@@ -2,11 +2,17 @@
   <%= link_to user_path(message.user), :action => 'go' do  %>
     <%= cl_image_tag message.user.photo.key, class: "avatar mr-3" %>
   <% end %>
-  <div>
+  <div style="flex-grow: 1;">
     <i class="author">
       <span><%= message.user.first_name %> <%= message.user.last_name %></span>
       <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
     </i>
     <p><%= message.content %></p>
   </div>
+  <% if user_signed_in? %>
+    <%= link_to like_trip_message_path(message.trip.id, message.id), method: :patch, remote: true, data: { message: message.id }, class: "likes #{'liked' if current_user.voted_for?(message)} d-flex align-items-center", :action => 'go' do %>
+      <i class="fas fa-heart mr-1"></i>
+      <span class="likes-count" style="font-size: 24px; margin-bottom: 0px; margin-top: 2px;"><%= message.get_likes.size %></span>
+    <% end %>
+  <% end %>
 </div>

@@ -1,0 +1,9 @@
+var messageLikeInfo = document.querySelector("[data-message='<%= @message.id %>']");
+if (messageLikeInfo) {
+  <% if current_user.liked? @message %>
+    messageLikeInfo.classList.add('liked');
+  <% else %>
+    messageLikeInfo.classList.remove('liked');
+  <% end %>
+  messageLikeInfo.querySelector('.likes-count').innerHTML = '<%= @likes_counter %>';
+}

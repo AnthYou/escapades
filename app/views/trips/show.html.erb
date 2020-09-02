@@ -115,7 +115,7 @@
   <h2 class="font-weight-bold text-center mt-5 mb-4">trip posts</h2>
   <div class="posts p-3 ">
     <% if @trip.posts.first == nil %>
-      <p class='text-center'>No post available</p>
+      <p class='text-center'>There is no post yet.</p>
     <% else %>
       <%= render 'shared/post_cards_grid_tripshow', posts: @trip.posts %>
     <% end %>
