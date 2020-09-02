@@ -2,11 +2,9 @@
   <div class="form p-5 m-3 bg-white">
     <h2 class="text-center mb-5">Create a new review</h2>
     <%= simple_form_for([@booking, @review ],  html: { class: "review_form" }) do |f| %>
-      <%#= simple_form_for [ @booking, @review ] do |f| %>
-        <%= f.input :content %>
-        <%= f.input :stars, collection: (1..5).to_a, label: "Rate your experience" %>
-        <%= f.submit "Submit review", class: "btn btn-travel-primary" %>
-      <%#end %>
+      <%= f.input :content %>
+      <%= f.input :stars, collection: (1..5).to_a, label: "Rate your experience" %>
+      <%= f.submit "Submit review", class: "btn btn-travel-primary" %>
     <% end %>
   </div>
 </div>
