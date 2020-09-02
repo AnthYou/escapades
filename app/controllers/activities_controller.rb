@@ -21,9 +21,22 @@ class ActivitiesController < ApplicationController
   end
 
   def edit
-    @trip = Trip.find(params[:trip_id])
     @activity = Activity.find(params[:id])
-    @activity.trip = @trip
+    @trip = @activity.trip
+    @first_activity = @trip.activities.order(:start_date).first
+    authorize @activity
+  end
+
+  def update
+    @activity = Activity.find(params[:id])
+    authorize @activity
+    @trip = @activity.trip
+    if @activity.update(activity_params)
+      redirect_to trip_path(@trip)
+    else
+      flash[:alert] = @activity.errors.full_messages.join("; ")
+      render :new
+    end
   end
 
   private
