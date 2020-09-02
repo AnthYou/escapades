@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy # as reviewer
   has_many :received_reviews, through: :bookings, source: :reviews # as booking participant
   has_many :posts, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   # Compute the average rating for a given user. Return an integer
   def user_average_rating
