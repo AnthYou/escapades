@@ -33,17 +33,27 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { initStarRating } from '../plugins/init_star_rating';
 
 import { initFlatpickr } from "../plugins/flatpickr";
+import { initExpander } from "../plugins/expander";
 import { initUpdateNavbarOnScroll } from "../components/navbar_home";
 import {initTagCheckbox} from "../plugins/init_tag_checkbox";
+import { initAutocomplete } from "../plugins/init_autocomplete";
+import { initPolaroidsRotation } from "../components/postcards";
+import { initTripCable } from "../channels/trip_channel";
+import { sendMessage } from "../components/send_message";
 
 document.addEventListener('turbolinks:load', () => {
   initTagCheckbox();
+  initUpdateNavbarOnScroll();
   initMapbox();
 
   initStarRating();
 
   initFlatpickr();
-  initUpdateNavbarOnScroll();
+  initAutocomplete();
+  initPolaroidsRotation();
+  initExpander();
+  initTripCable();
+  sendMessage();
   // Call your functions here, e.g:
   // initSelect2();
 });

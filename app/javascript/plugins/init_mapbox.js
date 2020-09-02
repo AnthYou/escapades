@@ -24,7 +24,7 @@ const addMarkersToMap = (map, markers) => {
       .addTo(map);
 
     } else  {
-      new mapboxgl.Marker({color: 'orange'})
+      new mapboxgl.Marker({color: '#f2a365'})
 
       .setLngLat([ marker.lng, marker.lat ])
       .setPopup(popup)
@@ -32,36 +32,16 @@ const addMarkersToMap = (map, markers) => {
     }
 
   });
-
-  // markers.forEach((marker) => {
-  //   const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // add this
-  //   const pin = new mapboxgl.Marker()
-  //     .setLngLat([ marker.lng, marker.lat ])
-  //     .setPopup(popup)
-  //     .addTo(map);
-  //     console.log(pin);
-  //     pin.innerHTML = '<p>${marker.step}</p>';
-  // });
-
-
 };
 
-const drawRoute = (map, markers) => {
+
+//DESSINER DES LIGNES DROITES ENTRES LES POINTS ACTIVITIES (trajet avion) ===========
+const drawRouteLines = (map, markers, i) => {
     const coords = markers.map(marker => [marker.lng, marker.lat])
     console.log(coords)
     // console.log(buildMarkers(map, markers))
     map.on('load', function() {
-    //   map.addSource("my_markers", {
-    //     type: "geojson",
-    //     data: buildMarkers(map, markers)
-    //   })
-    //   .addLayer({
-    //     id: "markersLayer",
-    //     type: "symbol",
-    //     source: "my_markers"
-    //   })
-
-      map.addSource('route', {
+      map.addSource(`route-${i}`, {
         'type': 'geojson',
         'data': {
           'type': 'Feature',
@@ -79,15 +59,15 @@ const drawRoute = (map, markers) => {
       });
 
       map.addLayer({
-        'id': 'route',
+        'id': `route-${i}`,
         'type': 'line',
-        'source': 'route',
+        'source': `route-${i}`,
         'layout': {
         'line-join': 'round',
         'line-cap': 'round'
         },
         'paint': {
-        'line-color': 'orange',
+        'line-color': '#30475e',
         'line-width': 3,
         'line-opacity': 0.6
         }
@@ -95,6 +75,57 @@ const drawRoute = (map, markers) => {
   });
 }
 
+
+
+
+//DESSINER LES TRAJETS ROUTES entre les activities (call API) ===========
+const drawRouteDriving = (map, markers, i) => {
+  const mapElement = document.getElementById('map2');
+  const apiKey = mapElement.dataset.mapboxApiKey;
+  const coords = markers.map(marker => [marker.lng, marker.lat])
+  // console.log(coords);
+  const coords_string = coords.join(";")
+  // console.log(coords_string);
+  const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${coords_string}?geometries=geojson&access_token=${apiKey}`
+  fetch(url)
+    .then(response => response.json())
+    .then((data) => {
+      const route = data.routes[0].geometry.coordinates;
+      console.log(data)
+        map.on('load', function() {
+          map.addSource(`route-${i}`, {
+            'type': 'geojson',
+            'data': {
+              'type': 'Feature',
+              'properties': {},
+              'geometry': {
+                'type': 'LineString',
+                'coordinates': route
+              },
+            'properties': {
+              'marker-color': '#3bb2d0',
+              'marker-size': 'large',
+              'marker-symbol': 'rocket'
+              }
+            }
+          });
+          map.addLayer({
+            'id': `route-${i}`,
+            'type': 'line',
+            'source': `route-${i}`,
+            'layout': {
+            'line-join': 'round',
+            'line-cap': 'round'
+            },
+            'paint': {
+            'line-color': '#f2a365',
+            'line-width': 3,
+            'line-opacity': 0.6
+            }
+          })
+        });
+  });
+}
 const initMapbox = () => {
 
   // MAP IN HOME
@@ -127,9 +158,26 @@ const initMapbox = () => {
        style: 'mapbox://styles/mapbox/streets-v10'
      });
      const markers = JSON.parse(mapElement2.dataset.markers);
+     console.log(markers)
 
      addMarkersToMap(map2, markers)
-     drawRoute(map2, markers);
+
+     markers.forEach(function (marker, i) {
+      console.log(marker)
+      if (i>0) {
+        let previous_marker = markers[i-1];
+        if (marker.transport_type === 'Plane') {
+          let steps = [previous_marker, marker]
+          drawRouteLines(map2, steps, i);
+        } else {
+          let steps = [previous_marker, marker];
+          drawRouteDriving(map2, steps, i);
+        }
+      }
+    });
+
+
+     // drawRouteDriving(map2, markers);
 
      fitMapToMarkers(map2, markers);
 

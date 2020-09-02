@@ -15,7 +15,6 @@ class TripsController < ApplicationController
       @selected_filters = params[:filter][:tags].reject { |tag| tag == "" }
       @trips = @trips.tagged_with(@selected_filters)
     end
-
     query = <<~SQL
       trips.*,
       CASE WHEN departure_date > current_date THEN 1
@@ -47,12 +46,13 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @booking = @trip.bookings.where(user_id: current_user.id).last if user_signed_in?
     @new_booking = Booking.new
-    @activities = @trip.activities
+    @activities = @trip.activities.order(:start_date)
     @markers = @activities.map.with_index do |activity, i|
       {
         lat: activity.latitude,
         lng: activity.longitude,
         step: i + 1,
+        transport_type: activity.transport_type,
         infoWindow: render_to_string(partial: "shared/info_window_activity", locals: { activity: activity })
       }
     end

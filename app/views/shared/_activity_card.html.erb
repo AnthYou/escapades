@@ -1,27 +1,33 @@
-<!-- activity CARD -->
-  <div class="card-container mb-5">
-    <!-- IMAGE & TITLE -->
-    <div class="card-image d-flex flex-column" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path activity.photo.key%>');">
-      <h1 class="badge badge-pill badge-warning" style="position: absolute; top:10px; right:10px;"><%= index + 1 %></h1>
-      <h2 class="card-title"> <%=link_to activity.title, activity.url %></h2>
+
+  <div class="activity-card">
+    <% if activity.photo.attached? %>
+      <div class="card__image-holder" style="background-image: url('<%= cl_image_path activity.photo.key%>'); background-size: cover">
+    <% else %>
+      <div class="card__image-holder" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png'); background-size: cover">
+    <% end %>
+      <h1 class="badge badge-pill badge-warning" style="position: absolute; top:10px; left:10px;"><%= index + 1 %></h1>
     </div>
-
-  <!-- CARD INFO -->
-    <div class="card-info">
-      <h3 class="card-destination"><%= activity.location %></h3>
-      <div class="card-bottom">
-        <p class="card-description"><%= activity.description %></p>
-        <div class="card-details">
-
-          <!-- NUMBER OF NIGHTS -->
-          <p class="nb-nights">From: <%= activity.start_date.strftime('%B %e') %></p>
-          <p class="nb-nights">To: <%= activity.end_date.strftime('%B %e') %></p>
-          <p class="nb-nights"> <strong> <%= (activity.end_date - activity.start_date).to_i %> days </strong></p>
-
-          <!-- PRICE  -->
-          <p class="price-range mt-2">$ <%= activity.price %></p>
+    <div class="activity-card-title">
+      <a href="" class="activity-toggle-info btn">
+        <span class="left"></span>
+        <span class="right"></span>
+      </a>
+        <h6><strong><%= activity.title %></strong></h6>
+        <%= activity.city %>
+    </div>
+    <div class="activity-card-flap flap1">
+      <div class="activity-card-description mb-2">
+          <p class="mb-0 "><strong><%= activity.start_date.strftime('%B %e') %> <i class="fas fa-arrow-right"></i> <%= activity.end_date.strftime('%B %e') %> (<%= pluralize (activity.end_date - activity.start_date).to_i, "day" %>)</strong></p>
+          <p><strong>$ <%= activity.price %></strong></p>
+          <%= activity.description %>
+      </div>
+      <div class="activity-card-flap flap2 ">
+        <div class="card-actions">
+          <a href='<%= activity.url %>' class="btn-travel-primary">Visit website</a>
         </div>
       </div>
     </div>
   </div>
+
+
 

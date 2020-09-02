@@ -17,6 +17,10 @@ class TripPolicy < ApplicationPolicy
     true
   end
 
+  def review?
+    record.user == user
+  end
+
   def add_activity?
     record.user == user
   end

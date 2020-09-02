@@ -1,0 +1,32 @@
+<div class="post-cards-container">
+  <div class="post-cards-container__items">
+    <% posts.each do |post| %>
+      <div class="polaroid" data-toggle="modal" data-target=".bd-example-modal-lg-<%= post.id %>">
+        <div class="polaroid__content">
+          <div class="polaroid__content-image">
+            <% if post.photo.attached? %>
+              <img src="<%= cl_image_path post.photo.key, crop: :fill %>" alt=''>
+            <% else %>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png">
+            <% end %>
+            <div style= "position: absolute; top:10px; right:10px">
+              <%= image_tag "pin.png", width: 90, class: 'mb-3' %>
+            </div>
+          </div>
+          <div class="polaroid__content-caption">
+            <% if post.content %>
+              <p class= "polaroid__content-caption-text"><%= post.content.truncate(125) %></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade bd-example-modal-lg-<%= post.id %>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <%= render 'shared/post_card', post: post %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -3,7 +3,6 @@ class ReviewsController < ApplicationController
     @booking = Booking.find(params[:booking_id])
     @review = Review.new
     authorize @review
-
   end
 
   def create
