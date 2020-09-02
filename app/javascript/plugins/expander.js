@@ -3,12 +3,13 @@
 const initExpander = () => {
   $(document).ready(function(){
     var zindex = 10;
-    const array = document.querySelectorAll(".activity-card")
+    const array = document.querySelectorAll(".card__image-holder")
 
     $("div.activity-card").each(function(){
       $(this).on("click",function(e){
-        e.preventDefault();
+        // e.preventDefault()kç;
         var isShowing = false;
+        // console.log(this.parentElement);
 
         if ($(this).hasClass("show")) {
           isShowing = true
@@ -29,6 +30,9 @@ const initExpander = () => {
               .css({zIndex: zindex})
               .addClass("show");
 
+
+
+
           }
 
           zindex++;
@@ -46,5 +50,6 @@ const initExpander = () => {
     })
   });
 }
+
 
 export { initExpander }
