@@ -25,19 +25,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <% if user_signed_in? %>
-          <li class="nav-item dropdown">
-              <div class="navbar-icon-bg-orange" id="navbarDropdown" data-toggle="dropdown">
-                <i class="fas fa-suitcase-rolling"></i>
-              </div>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <%= link_to 'Join a trip', trips_path, class: 'dropdown-item' %>
-                <%= link_to 'Create a trip', new_trip_path, class: 'dropdown-item'  %>
-              </div>
-          </li>
           <li class="nav-item">
-            <%= link_to trips_path, :action => 'go' do %>
-              <div class="navbar-icon-bg-black">
-                <i class="fas fa-user-friends"></i>
+            <%= link_to new_trip_path, :action => 'go' do  %>
+              <div class="navbar-icon-bg-orange">
+                <i class="fas fa-plus"></i>
               </div>
             <% end %>
           </li>
