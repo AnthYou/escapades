@@ -56,13 +56,19 @@
               <% end %>
             </div>
           </li>
-          <li class="nav-item">
-            <%= link_to trips_path, :action => 'go' do %>
-              <div class="navbar-icon-bg-black">
-                <i class="fas fa-bell"></i>
-              </div>
+
+
+          <li class="nav-item" style="position: relative;">
+            <div class="navbar-icon-bg-black" data-toggle="modal" data-target=".bd-example-modal-lg">
+              <i class="fas fa-bell"></i>
+            </div>
+            <% if Notification.where(receiver: current_user, read: false).count > 0%>
+              <p class="badge badge-pill badge-danger" style="position: absolute; right: 10px; top: -3px;"><%=Notification.where(receiver: current_user, read: false).count%></p>
             <% end %>
           </li>
+
+
+
           <li class="nav-item dropdown">
             <% if current_user.photo.attached? %>
               <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", gravity: :face, id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -84,7 +90,35 @@
             <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
           </li>
         <% end %>
+
+
+      <div class="modal bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <% if Notification.where(receiver: current_user, read: false).count > 0  %>
+              <%= render 'shared/notifications-partial', notifications: Notification.where(receiver: current_user, read: false) %>
+            <% else %>
+            <p class= "text-center">You have no notification for the moment ! Come back later.</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+
       </ul>
     </div>
   </div>
+<!--     MODAL FOR NOTIFICATIONS -->
 </div>
+
+<style>
+.modal-backdrop.show {
+  display: none;
+}
+
+.modal.modal-open {
+  /*display: none;*/
+  background-color: rgba(0,0,0,0.3);
+}
+</style>
+
