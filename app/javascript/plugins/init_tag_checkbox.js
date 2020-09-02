@@ -5,4 +5,5 @@ const initTagCheckbox = () => {
     });
   });
 };
+
 export { initTagCheckbox };
