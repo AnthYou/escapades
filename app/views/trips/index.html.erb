@@ -9,7 +9,7 @@
 
     <fieldset class="form-group check_boxes required filter_tags">
       <legend class="col-form-label pt-0">
-        Tags <abbr title="required">*</abbr>
+        Filters <abbr title="required">*</abbr>
       </legend>
       <input type="hidden" name="filter[tags][]" value="">
 
@@ -17,7 +17,7 @@
         <% Trip.all.map(&:tags).flatten.uniq.each do |tag| %>
           <div class="form-check">
             <input class="form-check-input check_boxes required d-none" type="checkbox" value="<%= tag %>" name="filter[tags][]" id="filter_tags_<%= tag %>" <%= 'checked' if @selected_filters.include?(tag.name) %>>
-            <label class="form-check-label collection_check_boxes filter-tag <%= 'active' if @selected_filters.include?(tag.name) %>" for="filter_tags_<%= tag %>"><%= tag %></label>
+            <label class="form-check-label collection_check_boxes filter-tag <%= 'active' if @selected_filters.include?(tag.name) %>" for="filter_tags_<%= tag %>" style="border-radius: 20px"><%= tag %></label>
           </div>
         <% end %>
       </div>

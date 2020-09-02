@@ -50,12 +50,12 @@ document.addEventListener('turbolinks:load', () => {
   initStarRating();
 
   initFlatpickr();
+  initSelect2();
   initAutocomplete();
   initPolaroidsRotation();
   initExpander();
   initTripCable();
   sendMessage();
-  initSelect2();
   // Call your functions here, e.g:
   // initSelect2();
 });
