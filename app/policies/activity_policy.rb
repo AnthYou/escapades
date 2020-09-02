@@ -20,4 +20,8 @@ class ActivityPolicy < ApplicationPolicy
   def update?
     edit?
   end
+
+  def destroy?
+    record.trip.user == user
+  end
 end

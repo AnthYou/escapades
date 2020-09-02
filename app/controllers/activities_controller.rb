@@ -39,6 +39,14 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def destroy
+    @activity = Activity.find(params[:id])
+    authorize @activity
+    @trip = @activity.trip
+    @activity.destroy
+    redirect_to trip_path(@trip)
+  end
+
   private
 
   def activity_params

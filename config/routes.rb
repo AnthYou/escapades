@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :messages, only: [:index, :create, :edit, :update]
   end
 
-  resources :activities, only: [:edit, :update]
+  resources :activities, only: [:edit, :update, :destroy]
 
   resources :bookings, only: [] do
     resources :reviews, only: [ :new, :create ]

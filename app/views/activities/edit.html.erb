@@ -21,10 +21,16 @@
         <% end %>
         <%= f.input :url, label: 'Please enter an URL to help your mates booking this activity.' %>
         <%= f.input :photo, as: :file, required: true %>
-        <%= f.submit "Submit activity", class: "btn btn-travel-primary" %>
+        <%= f.submit "Edit activity", class: "btn btn-travel-primary" %>
+        <%= link_to "Remove",
+                  activity_path(@activity),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" },
+                  class: "btn btn-travel-primary" %>
       <% end %>
       <hr>
       <%= link_to 'Back', root_path, class: "btn-travel-secondary mt-2" %>
+
     </div>
   </div>
 </div>
