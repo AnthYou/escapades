@@ -1,25 +1,30 @@
-<% @trips.each do |r| %>
-  <h2><%= trip.title %></h2>
-  <p>
-    <% trip.tag_list.each do |tag| %>
-      <%= link_to tag, tagged_path(tag: tag) %>
-    <% end %>
-  </p>
-<% end %>
 <div class="container">
   <h1 class="text-center mt-4">Find the trip of your dreams 🤩</h1>
   <!-- SEARCHBAR -->
-  <%= form_tag trips_path, class: 'mt-5 mb-5', method: :get do %>
-    <div class="d-flex align-items-center">
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        style: 'border-radius: 20px; height: 50px;',
-        placeholder: "Type a destination..."
-      %>
-      <%= button_tag(type: "submit", class: "navbar-icon-bg-orange", style: 'margin-left: -45px; border: none;') do %>
-        <i class="fas fa-search"></i>
-      <% end %>
+  <%= simple_form_for :filter, url: trips_path, method: :get do |f| %>
+    <%# @trips.map(&:tags).flatten.uniq.each do |tag| %>
+      <%#= f.input tag.name.to_sym, as: :boolean, input_html: { checked: @selected_filters.include?(tag.name) } %>
+    <%# end %>
+    <%#= f.input :tags, as: :check_boxes, collection: @trips.map(&:tags).flatten.uniq %>
+
+    <fieldset class="form-group check_boxes required filter_tags">
+      <legend class="col-form-label pt-0">
+        Tags <abbr title="required">*</abbr>
+      </legend>
+      <input type="hidden" name="filter[tags][]" value="">
+
+      <div class="filter-tags">
+        <% Trip.all.map(&:tags).flatten.uniq.each do |tag| %>
+          <div class="form-check">
+            <input class="form-check-input check_boxes required d-none" type="checkbox" value="<%= tag %>" name="filter[tags][]" id="filter_tags_<%= tag %>" <%= 'checked' if @selected_filters.include?(tag.name) %>>
+            <label class="form-check-label collection_check_boxes filter-tag <%= 'active' if @selected_filters.include?(tag.name) %>" for="filter_tags_<%= tag %>"><%= tag %></label>
+          </div>
+        <% end %>
+      </div>
+
+    <%= f.input :query, input_html: { value: params[:query] }, as: :hidden %>
+    <div style="text-align: center; margin: 50px">
+      <%= f.submit "Submit filters", class: "btn btn-travel-primary"%>
     </div>
   <% end %>
 

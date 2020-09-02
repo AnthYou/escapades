@@ -34,10 +34,10 @@ import { initStarRating } from '../plugins/init_star_rating';
 
 import { initFlatpickr } from "../plugins/flatpickr";
 import { initUpdateNavbarOnScroll } from "../components/navbar_home";
-
+import {initTagCheckbox} from "../plugins/init_tag_checkbox";
 
 document.addEventListener('turbolinks:load', () => {
-
+  initTagCheckbox();
   initMapbox();
 
   initStarRating();

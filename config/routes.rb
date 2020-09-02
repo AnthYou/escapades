@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :create, :new, :show]
   end
 
+  get '/filter', to: 'trips#filter'
+
   resources :bookings, only: [] do
     resources :reviews, only: [ :new, :create ]
   end
