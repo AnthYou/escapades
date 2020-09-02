@@ -12,6 +12,7 @@
         Filters <abbr title="required">*</abbr>
       </legend>
       <input type="hidden" name="filter[tags][]" value="">
+    </fieldset>
 
       <div class="filter-tags">
         <% Trip.all.map(&:tags).flatten.uniq.each do |tag| %>
