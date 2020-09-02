@@ -1,0 +1,36 @@
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-sm-offset-12 mb-5 bg-white p-5 rounded">
+      <h2 class="text-center mb-5"><strong><%= @activity.title %></strong></h2>
+      <%= simple_form_for([ @activity ]) do |f| %>
+        <%= f.input :title %>
+        <%= f.input :description, as: :text %>
+        <%= f.input :country, input_html: { class: 'trip_country' } %>
+        <%= f.input :city, input_html: { class: 'trip_city' } %>
+        <%= f.input :price, as: :integer %>
+        <div class="row">
+          <div class="col">
+            <%= f.input :start_date, as: :string, input_html: {class: "departure_date_flatpickr"} %>
+          </div>
+          <div class="col">
+            <%= f.input :end_date, as: :string, input_html: {class: "return_date_flatpickr"} %>
+          </div>
+        </div>
+        <% if  @first_activity != @activity %>
+          <%= f.input :transport_type, as: :radio_buttons, collection: Activity::TRANSPORT, label: 'How do you want to get there? Please choose your tranport type.' %>
+        <% end %>
+        <%= f.input :url, label: 'Please enter an URL to help your mates booking this activity.' %>
+        <%= f.input :photo, as: :file, required: true %>
+        <%= f.submit "Edit activity", class: "btn btn-travel-primary" %>
+        <%= link_to "Remove",
+                  activity_path(@activity),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" },
+                  class: "btn btn-travel-primary" %>
+      <% end %>
+      <hr>
+      <%= link_to 'Back', root_path, class: "btn-travel-secondary mt-2" %>
+
+    </div>
+  </div>
+</div>

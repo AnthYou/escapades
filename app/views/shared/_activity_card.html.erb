@@ -8,10 +8,6 @@
       <h1 class="badge badge-pill badge-warning" style="position: absolute; top:10px; left:10px;"><%= index + 1 %></h1>
     </div>
     <div class="activity-card-title">
-      <a href="" class="activity-toggle-info btn">
-        <span class="left"></span>
-        <span class="right"></span>
-      </a>
         <h6><strong><%= activity.title %></strong></h6>
         <%= activity.city %>
     </div>
@@ -23,7 +19,10 @@
       </div>
       <div class="activity-card-flap flap2 ">
         <div class="card-actions">
-          <a href='<%= activity.url %>' class="btn-travel-primary">Visit website</a>
+          <a href='<%= activity.url %>' class="btn-travel-primary" style="position: relative; z-index: 10;" target="blank">Visit website</a>
+          <% if activity.trip.user == current_user %>
+            <%= link_to 'Edit this activity', edit_activity_path(activity), class: "btn btn-travel-special", style: 'margin-top: 20px;' %>
+          <% end %>
         </div>
       </div>
     </div>
