@@ -1,10 +1,4 @@
 class BookingsController < ApplicationController
-  # def new
-  #   @booking = Booking.new
-  #   authorize @booking
-  #   @trip = Trip.find(params[:trip_id])
-  # end
-
   def create
     @user = current_user
     @booking = Booking.new(booking_params)
@@ -18,6 +12,42 @@ class BookingsController < ApplicationController
     else
       flash[:alert] = @booking.errors.full_messages.join("; ")
       render :new
+    end
+  end
+
+  def cancel
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.status = "cancelled"
+    @booking.save
+    redirect_to trip_path(@booking.trip)
+  end
+
+  def review
+    @trip = Trip.find(params[:trip_id])
+    @bookings = @trip.bookings.where(status: "pending")
+    authorize @trip, :review?
+  end
+
+  def accept
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.status = "accepted"
+    if @booking.save
+      redirect_to trip_review_booking_path(@booking.trip)
+    else
+      flash[:alert] = "An error has occured"
+    end
+  end
+
+  def decline
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.status = "declined"
+    if @booking.save
+      redirect_to trip_review_booking_path(@booking.trip)
+    else
+      flash[:alert] = "An error has occured"
     end
   end
 

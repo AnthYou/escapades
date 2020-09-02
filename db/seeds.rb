@@ -1,6 +1,7 @@
 require "open-uri"
 
 # Destroy all previous instances
+t0 = Time.now
 puts "Destroy previous instances..."
 
 Review.destroy_all
@@ -443,7 +444,7 @@ activities = [
       price: 100,
       start_date: "21/07/2020".to_date,
       end_date: "28/07/2020".to_date,
-      city: "Melbourne",
+      city: "Melbourne, Victoria, Australia",
       country: "Australia",
       transport_type: "Plane",
       url: "https://www.visitmelbourne.com/",
@@ -458,7 +459,7 @@ activities = [
       price: 800,
       start_date: "29/07/2020".to_date,
       end_date: "04/08/2020".to_date,
-      city: "Cairns",
+      city: "Cairns, Queensland, Australia",
       country: "Australia",
       transport_type: "Car",
       url: "https://www.australia.com/en/places/cairns-and-surrounds/guide-to-the-great-barrier-reef.html",
@@ -473,7 +474,7 @@ activities = [
       price: 200,
       start_date: "05/08/2020".to_date,
       end_date: "20/08/2020".to_date,
-      city: "Alice Springs",
+      city: "Alice Springs, Northern Territory, Australia",
       country: "Australia",
       transport_type: "Plane",
       url: "https://parksaustralia.gov.au/uluru/",
@@ -488,7 +489,7 @@ activities = [
       price: 280,
       start_date: "21/08/2020".to_date,
       end_date: "22/08/2020".to_date,
-      city: "Perth",
+      city: "Perth, Western Australia, Australia",
       country: "Australia",
       transport_type: "Car",
       url: "https://www.skydive.com.au/perth/",
@@ -505,3 +506,4 @@ activities.each do |activity| iterated_activity = Activity.new(activity.first)
 end
 
 puts "Done ! 🍺"
+puts "In #{(Time.now - t0).to_i} seconds."

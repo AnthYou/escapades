@@ -34,7 +34,9 @@
       </div>
     </div>
     <div class="usercard-description">
-      <%= user.description %>
+      <% if user.description %>
+        <%= user.description.truncate(70) %>
+      <% end %>
     </div>
   </div>
 </div>

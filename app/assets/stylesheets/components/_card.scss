@@ -126,12 +126,29 @@ p.price-range {
   background-color: white;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
+.pending-usercard-container {
+  position: relative;
+  width: 300px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
 
 .usercard-image {
   border-radius: 20px 20px 0px 0px;
   position: relative;
   background-size: cover;
   height: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pending-usercard-image {
+  border-radius: 20px 20px 0px 0px;
+  position: relative;
+  background-size: cover;
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
