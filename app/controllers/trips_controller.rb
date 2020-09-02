@@ -61,6 +61,10 @@ class TripsController < ApplicationController
 
   def new
     @trip = Trip.new
+    @tags_array = Trip.all.map do |trip|
+      trip.all_tags_list
+    end
+    @tags = @tags_array.flatten.uniq
     authorize @trip
   end
 

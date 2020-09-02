@@ -22,7 +22,7 @@
           <div class="col">
             <%= f.input :return_date, as: :string, input_html: {class: "return_date_flatpickr"} %>
           </div>
-          <%= f.input :tag_list, label: "Add tags", hint: "Add your tags, separated by commas" %>
+          <%= f.input :tag_list, label: "Add tags", hint: "Add your tags", input_html: {class: "select2"}, collection: @tags%>
         </div>
         <%= f.input :max_capacity %>
         <%= f.input :photo, as: :file, required: true %>

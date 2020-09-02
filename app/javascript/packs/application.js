@@ -40,6 +40,7 @@ import { initAutocomplete } from "../plugins/init_autocomplete";
 import { initPolaroidsRotation } from "../components/postcards";
 import { initTripCable } from "../channels/trip_channel";
 import { sendMessage } from "../components/send_message";
+import { initSelect2 } from '../plugins/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
   initTagCheckbox();
@@ -54,6 +55,7 @@ document.addEventListener('turbolinks:load', () => {
   initExpander();
   initTripCable();
   sendMessage();
+  initSelect2();
   // Call your functions here, e.g:
   // initSelect2();
 });
