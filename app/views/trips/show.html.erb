@@ -41,7 +41,7 @@
   <div class="trip-description">
     <p><%= @trip.description %></p>
   </div>
-      
+
 <!-- SPECS -->
   <div class="spec mt-5">
     <h2 class="text-center font-weight-bold mb-5" style="font-weight:600;">specs</h2>
@@ -110,8 +110,9 @@
     <% end %>
   </div>
 
-  <!-- TRIP'S POST  -->
+</div>
 
+  <!-- TRIP'S POST  -->
   <h2 class="font-weight-bold text-center mt-5 mb-4">trip posts</h2>
   <div class="posts p-3 ">
     <% if @trip.posts.first == nil %>
@@ -128,6 +129,7 @@
 
 <!-- TRIP'S STATUS AND CTAs -->
 
+<div class="container show-container"></div>
   <% if @trip.full? || @trip.departed? %>
     <div class='text-center mt-5'>
       <p> Trip is full or has already departed !</p>

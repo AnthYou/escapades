@@ -1,4 +1,4 @@
-<div class = "container mt-3">
+<div class="container mt-3">
 <!--   PERSONAL INFO -->
   <div class="bg-white p-4 rounded mb-3 text-center d-flex align-items-center" >
     <div class="user-col-left">
@@ -110,8 +110,10 @@
     </div>
   </div>
 
-  <h2 style="text-align:center; font-weight: 600; margin-bottom: 20px;"> <%= @user.first_name.capitalize %>'s posts</h2>
-  <div class="posts p-3 ">
+</div>
+
+<h2 style="text-align:center; font-weight: 600; margin-bottom: 20px;"> <%= @user.first_name.capitalize %>'s posts</h2>
+<div class="posts p-3 ">
   <% if @user.posts.first == nil %>
       <p class= 'text-center'>No posts yet.</p>
   <% else %>
@@ -123,5 +125,3 @@
     <% end %>
   </div>
 </div>
-</div>
-

@@ -18,7 +18,7 @@
     <p style= "margin-bottom: 0px;"> <%= post.content %> </p>
   </div>
   <div>
-    <p>By:<strong> <%= User.find(post.user_id).first_name %> <%= User.find(post.user_id).last_name %></strong></p>
+    <p>By: <strong><%= User.find(post.user_id).first_name %> <%= User.find(post.user_id).last_name %></strong></p>
     <p>Published on: <%= post.created_at.strftime('%b %e, %l:%M %p') %> </p>
   </div>
 </div>

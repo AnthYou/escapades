@@ -57,3 +57,17 @@
     }
   }
 }
+
+.polaroid-likes {
+  .likes {
+    color: $my-blue;
+
+    &:hover {
+      color: $my-black;
+    }
+  }
+
+  .liked {
+    color: red;
+  }
+}
