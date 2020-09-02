@@ -1,4 +1,4 @@
-<div class = "container mt-3">
+<div class="container mt-3">
 <!--   PERSONAL INFO -->
   <div class="bg-white p-4 rounded mb-3 text-center d-flex align-items-center" >
     <div class="user-col-left">
@@ -56,7 +56,7 @@
   <div class="reviews mt-5">
     <h2 style="text-align:center; font-weight: 600; margin-bottom: 20px;">Reviews</h2>
     <% if @user.received_reviews == [] %>
-      <p class="text-center mt-4">You did not received a review yet.</p>
+      <p class="text-center mt-4">You have not received a review yet.</p>
     <% else %>
       <% @user.received_reviews.each do |review|%>
         <div class="row review mb-3">
@@ -110,10 +110,12 @@
     </div>
   </div>
 
-  <h2 style="text-align:center; font-weight: 600; margin-bottom: 20px;"> <%= @user.first_name.capitalize %>'s posts</h2>
-  <div class="posts p-3 ">
+</div>
+
+<h2 style="text-align:center; font-weight: 600; margin-bottom: 20px;"> <%= @user.first_name.capitalize %>'s posts</h2>
+<div class="posts p-3 ">
   <% if @user.posts.first == nil %>
-      <p class= 'text-center'> No post available</p>
+      <p class= 'text-center'>No posts yet.</p>
   <% else %>
     <%= render 'shared/post_cards_grid_tripshow', posts: @user.posts %>
   <% end %>
@@ -123,5 +125,3 @@
     <% end %>
   </div>
 </div>
-</div>
-

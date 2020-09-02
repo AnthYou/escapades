@@ -29,6 +29,22 @@ class MessagesController < ApplicationController
     end
   end
 
+  def like
+    @message = Message.find(params[:id])
+    authorize @message
+
+    if current_user.liked? @message
+      current_user.unlike @message
+    else
+      current_user.likes @message
+    end
+
+    @likes_counter = @message.get_likes.size
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def message_params

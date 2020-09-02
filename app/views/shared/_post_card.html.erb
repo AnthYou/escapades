@@ -1,6 +1,14 @@
 <div class="container mt-5 show-container text-center">
   <% if post.photo.attached? %>
-    <div class="trip-banner mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path post.photo.key, crop: :fill %>');">
+    <div class="trip-banner mb-5" style="position: relative; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path post.photo.key, crop: :fill %>');">
+      <div style="position: absolute; bottom: 15px; right: 20px;">
+        <% if user_signed_in? %>
+          <%= link_to like_trip_post_path(post.trip.id, post.id), method: :patch, remote: true, data: { post: post.id }, class: "likes #{'liked' if current_user.voted_for?(post)} d-flex align-items-center", :action => 'go' do %>
+            <i class="fas fa-heart mr-1"></i>
+            <span class="likes-count" style="font-size: 24px; margin-bottom: 0px; margin-top: 2px;"><%= post.get_likes.size %></span>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   <% else %>
     <div class="trip-banner mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png');">
@@ -10,7 +18,7 @@
     <p style= "margin-bottom: 0px;"> <%= post.content %> </p>
   </div>
   <div>
-    <p>By:<strong> <%= User.find(post.user_id).first_name %> <%= User.find(post.user_id).last_name %></strong></p>
+    <p>By: <strong><%= User.find(post.user_id).first_name %> <%= User.find(post.user_id).last_name %></strong></p>
     <p>Published on: <%= post.created_at.strftime('%b %e, %l:%M %p') %> </p>
   </div>
 </div>
