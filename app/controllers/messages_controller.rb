@@ -8,6 +8,15 @@ class MessagesController < ApplicationController
       return redirect_to trip_path(@trip)
     end
 
+    @trip.bookings.where(status: "accepted").each do |booking|
+      booking.notifications.each do |notification|
+        if (notification.notification_type == "new-chat-activity") && (notification.receiver == current_user)
+          notification.read = true
+          notification.save
+        end
+      end
+    end
+
     @messages = @trip.messages
     @message = Message.new
   end
