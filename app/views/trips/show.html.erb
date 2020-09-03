@@ -42,7 +42,7 @@
       <h2 class="font-weight-bold text-center mb-2">about the trip</h2>
       <p class="text-center p-3"><%= @trip.description %></p>
       <hr>
-      <div class="icons my-3" style= "display:flex;justify-content: space-around">
+      <div class="icons my-3" style= "display: flex; justify-content: space-around;">
         <div class= "icon text-center">
           <div style="font-size: 30px;">💵</div>
           <p class="font-weight-bold text-center">Estimated</p>
@@ -91,10 +91,10 @@
 
 <!-- TRIP USERS -->
   <h2 class="font-weight-bold text-center mt-5 mb-4">meet your dream team</h2>
-  <% if @trip.user == current_user %>
+  <% if (@trip.user == current_user) && (@trip.bookings.where(status: "pending").count > 0) %>
     <div class="text-center mt-5 mb-3">
       <%= link_to 'Review applications', trip_review_booking_path(@trip), class: 'btn-travel-primary' %>
-      <p class="badge badge-pill badge-danger" style="position: relative; left:-19px; top: -21px;"><%=@trip.bookings.where(status: "pending").count%></p>
+      <p class="badge badge-pill badge-danger" style="position: relative; left:-19px; top: -21px;"><%=@trip.bookings.where(status: "pending").count %></p>
     </div>
   <% end %>
   <div class="users-grid d-flex justify-content-around mt-5">
