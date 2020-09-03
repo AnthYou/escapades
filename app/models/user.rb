@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy # as reviewer
   has_many :received_reviews, through: :bookings, source: :reviews # as booking participant
   has_many :posts, dependent: :destroy
+  has_many :notifications, dependent: :destroy, foreign_key: "receiver_id"
   has_many :messages, dependent: :destroy
 
   # Compute the average rating for a given user. Return an integer
@@ -34,5 +35,9 @@ class User < ApplicationRecord
 
   def applied_for?(trip_id)
     bookings.select{|booking| booking.status == "pending"}.map{|booking| booking.trip.id}.include?(trip_id)
+  end
+
+  def full_name
+    first_name + " " + last_name
   end
 end
