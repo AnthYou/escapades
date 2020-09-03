@@ -188,7 +188,7 @@ trips = [
       return_date: "23/08/2020".to_date,
       max_capacity: 6,
       user: User.first,
-      tag_list: ["RoadTrip"]
+      tag_list: ["Oceania", "Adventure"]
     },
     "https://images.unsplash.com/photo-1529108190281-9a4f620bc2d8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1023&q=80"
   ],
@@ -204,7 +204,7 @@ trips = [
       return_date: "5/01/2021".to_date,
       max_capacity: 6,
       user: User.all.sample,
-      tag_list: ["Magical", "christmas"]
+      tag_list: ["America", "Cultural", "Party"]
     },
     "https://images.unsplash.com/photo-1534430480872-3498386e7856?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
   ],
@@ -220,7 +220,7 @@ trips = [
       return_date: "17/09/2020".to_date,
       max_capacity: 6,
       user: User.all.sample,
-      tag_list: ["Summer", "RoadTrip", "Sea", "Chill"]
+      tag_list: ["Islands", "Adventure", "Chill"]
     },
     "https://www.decisionsdurables.com/wp-content/uploads/2017/03/la_reunion_vue_du_ciel02_-_credit_irt_-_serge_gelabert_dts_12_2014.jpg"
   ],
@@ -236,13 +236,13 @@ trips = [
       return_date: "31/08/2020".to_date,
       max_capacity: 6,
       user: User.all.sample,
-      tag_list: ["Horsing", "Chill"]
+      tag_list: ["Europe", "Chill"]
     },
     "https://images.unsplash.com/photo-1565622832101-358788927c53?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
   ],
   [
     {
-      title: "Week End to Rome",
+      title: "Weekend to Rome",
       description: "I want to go to Italy with someone cheerful. I plan to see the main tourist spots as well as good restaurants.",
       country: "Italy",
       city: "Roma, Lazio, Italy",
@@ -252,7 +252,7 @@ trips = [
       return_date: "31/08/2020".to_date,
       max_capacity: 4,
       user: User.all.sample,
-      tag_list: ["Romantic"]
+      tag_list: ["Europe", "Low-budget", "Cultural"]
     },
     "https://images.unsplash.com/photo-1546946590-5d739771abc4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1512&q=80"
   ],
@@ -267,9 +267,24 @@ trips = [
       return_date: "07/09/2020".to_date,
       max_capacity: 3,
       user: User.all.sample,
-      tag_list: ["Romantic"]
+      tag_list: ["Asia", "Europe", "Cultural"]
     },
     "https://images.unsplash.com/photo-1547448415-e9f5b28e570d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
+  ],
+  [
+    {
+      title: "Loco Morocco",
+      description: "Let's discover Morocco all together! We will chill and party hard, so don't hesitate to join!",
+      country: "Morocco",
+      budget_min: 200,
+      budget_max: 700,
+      departure_date: "18/10/2020".to_date,
+      return_date: "06/11/2020".to_date,
+      max_capacity: 6,
+      user: User.all.sample,
+      tag_list: ["Middle East", "Party", "Chill"]
+    },
+    "https://images.unsplash.com/photo-1505576391880-b3f9d713dc4f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80"
   ]
 ]
 
