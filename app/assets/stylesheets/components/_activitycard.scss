@@ -18,6 +18,9 @@ $darkGrey: #4f585e;
   color: $darkGrey;
   font-family: 'Source Sans Pro', sans-serif;
   text-rendering: optimizeLegibility;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .activity-toggle-info {
@@ -86,6 +89,7 @@ div.activity-card {
     z-index: 0;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    height: 100px;
 
     .activity-toggle-info {
       border-radius: 32px;
