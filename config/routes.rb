@@ -11,9 +11,6 @@ Rails.application.routes.draw do
     get "bookings", to: "bookings#review", as: "review_booking"
     resources :activities, only: [:new, :create]
 
-
-  resources :activities, only: [:edit, :update, :destroy]
-
     resources :posts, only: [:index, :create, :new, :show] do
       member do
         patch "like", to: "posts#like"
@@ -25,6 +22,8 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  resources :activities, only: [:edit, :update, :destroy]
 
   get '/filter', to: 'trips#filter'
 

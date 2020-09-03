@@ -6,6 +6,8 @@ puts "Destroy previous instances..."
 
 Review.destroy_all
 Post.destroy_all
+Notification.destroy_all
+Message.destroy_all
 Booking.destroy_all
 User.destroy_all
 Trip.destroy_all
