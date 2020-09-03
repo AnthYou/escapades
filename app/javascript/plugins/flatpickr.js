@@ -15,7 +15,6 @@ const initFlatpickr = () => {
     });
 
     departureDate.addEventListener('change', (event) => {
-      console.log(event.target.value)
       flatpickr(returnDate, {
         altInput: true,
         minDate: new Date(event.target.value).fp_incr(1),
@@ -27,7 +26,6 @@ const initFlatpickr = () => {
 
   const startDateEl = document.querySelector('.start_date_flatpickr'); //activity start date
   const endDateEl = document.querySelector('.end_date_flatpickr'); //activity end date
-
 
   if (startDateEl) {
 

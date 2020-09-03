@@ -25,6 +25,8 @@ class ActivitiesController < ApplicationController
   def edit
     @activity = Activity.find(params[:id])
     @trip = @activity.trip
+    @departure_date = @trip.departure_date.strftime("%d-%m-%Y")
+    @return_date = @trip.return_date.strftime("%d-%m-%Y")
     @first_activity = @trip.activities.order(:start_date).first
     authorize @activity
   end
