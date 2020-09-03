@@ -4,14 +4,12 @@ const initAcceptSweetalert = (selector, options = {}) => {
    const swalButton = document.querySelector(".accept-application");
   if (swalButton) { // protect other pages
     swalButton.addEventListener('click', () => {
-      console.log("click");
       swal({
         title: "Confirm acceptation?",
         icon: "warning"
       }).then((value) => {
         if (value) {
-            //const link = document.querySelector('#accept-link');
-            //link.click();
+       
            swalButton.nextElementSibling.click();
         }
       });
