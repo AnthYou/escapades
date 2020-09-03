@@ -48,15 +48,24 @@
             </div>
           </li>
 
+        <!--   NOTIFICATIONS -->
 
-          <li class="nav-item" style="position: relative;">
-            <div class="navbar-icon-bg-black" data-toggle="modal" data-target=".bd-example-modal-lg">
-              <i class="fas fa-bell"></i>
-            </div>
-            <% if Notification.where(receiver: current_user, read: false).count > 0%>
-              <p class="badge badge-pill badge-danger" style="position: absolute; right: 10px; top: -3px;"><%=Notification.where(receiver: current_user, read: false).count%></p>
-            <% end %>
-          </li>
+<li class="nav-item" style="position: relative;">
+  <div class="navbar-icon-bg-black">
+    <div class="dropdown">
+      <i class="fas fa-bell" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+
+      <%= render 'shared/notifications-partial', notifications: Notification.where(receiver: current_user, read: false) %>
+
+      </div>
+    </div>
+  </div>
+</li>
+
+
+
+
 
 
 
@@ -99,17 +108,4 @@
       </ul>
     </div>
   </div>
-<!--     MODAL FOR NOTIFICATIONS -->
 </div>
-
-<style>
-.modal-backdrop.show {
-  display: none;
-}
-
-.modal-open {
-  /*display: none;*/
-  background-color: rgba(0,0,0,0.5) !important;
-}
-</style>
-
