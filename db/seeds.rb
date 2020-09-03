@@ -229,6 +229,8 @@ users = [
     },
     "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597859853/hlm3ivjlz0tezolmvyvo.jpg"
   ],
+
+
 ]
 
 users.each do |user| iterated_user = User.new(user.first)
@@ -446,6 +448,22 @@ trips = [
     {
       title: "Sahara Desert",
       description: "Let's discover Algeria all together! We will chill and visit the isolating village in Algeria's wild Sahara desert. Don't hesitate to join!",
+      country: "Algeria",
+      budget_min: 400,
+      budget_max: 1000,
+      departure_date: "01/10/2020".to_date,
+      return_date: "06/11/2020".to_date,
+      max_capacity: 6,
+      user: User.all.sample,
+      tag_list: ["Africa", "Cultural", "Chill"]
+    },
+    "https://images.unsplash.com/photo-1545167496-c1e092d383a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=682&q=80"
+  ],
+
+  [
+    {
+      title: "Party in Amsterdam",
+      description: "Let's enjoy a fun journey with mates",
       country: "Algeria",
       budget_min: 400,
       budget_max: 1000,
