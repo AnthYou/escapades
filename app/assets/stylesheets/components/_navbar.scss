@@ -82,8 +82,23 @@
   transition: background 0.35s ease;
 }
 
+.form-navbar {
+  @include media-breakpoint-down(sm) {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  @include media-breakpoint-up(sm) {
+    max-width: 70vw;
+    width: 70vh;
+  }
+}
+
 .navbar-searchbar {
-  width: 33vh;
+  @include media-breakpoint-down(sm) {
+    width: 70vw;
+  }
   transition: all 0.3s ease;
   input#query {
     border-radius: 30px;
@@ -92,18 +107,18 @@
   &.hide-searchbar {
     transition: all 0s ease;
     width: 0;
-     input#query {
+    input#query {
       padding: 0;
       border: 0;
-     }
-     button {
+    }
+    button {
       height: 0;
       width: 0;
       display: none;
       i {
         font-size: 0;
       }
-     }
+    }
   }
 }
 

@@ -10,10 +10,10 @@
         <%= f.input :price, as: :integer %>
         <div class="row">
           <div class="col">
-            <%= f.input :start_date, as: :string, input_html: {class: "departure_date_flatpickr"} %>
+            <%= f.input :start_date, as: :string, input_html: {class: "start_date_flatpickr", data: {"start-date": @departure_date}} %> <!--  -->
           </div>
           <div class="col">
-            <%= f.input :end_date, as: :string, input_html: {class: "return_date_flatpickr"} %>
+            <%= f.input :end_date, as: :string, input_html: {class: "end_date_flatpickr", data: {"end-date": @return_date}} %>
           </div>
         </div>
         <% if @trip.activities != [] %>
@@ -25,6 +25,7 @@
       <% end %>
       <hr>
       <%= link_to 'Back', trips_path, class: "btn-travel-secondary mt-2" %>
+
     </div>
   </div>
 </div>
