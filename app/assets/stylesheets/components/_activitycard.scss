@@ -20,7 +20,7 @@ $darkGrey: #4f585e;
   text-rendering: optimizeLegibility;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .activity-toggle-info {
@@ -59,7 +59,7 @@ div.activity-cards {
 div.activity-card {
   background: $white;
   display: inline-block;
-  margin: 8px;
+  margin: 25px;
   max-width: 300px;
   perspective: 1000;
   position: relative;
