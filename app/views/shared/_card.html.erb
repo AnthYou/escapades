@@ -44,6 +44,7 @@
         <!-- Else (cancelled, rejected => show no tag)-->
         <% end %>
       <% end %>
+
     </div>
 
     <!-- USER AVATARS -->
@@ -79,6 +80,13 @@
         </div>
       </div>
     </div>
+    <% if trip.tags.first %>
+      <div class="d-flex align-items-center p-3">
+        <% trip.tags.each do |tag| %>
+          <span class="badge badge-light py-2 px-3 mx-1 font-weight-light"><%= tag.name %></span>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 <% end %>
 
