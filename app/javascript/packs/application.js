@@ -40,6 +40,8 @@ import { initPolaroidsRotation } from "../components/postcards";
 import { initTripCable } from "../channels/trip_channel";
 import { sendMessage } from "../components/send_message";
 import { initSelect2 } from '../plugins/init_select2';
+import { initAcceptSweetalert, initRejectSweetalert, initDeleteSweetalert } from '../plugins/init_sweetalert'
+
 
 document.addEventListener('turbolinks:load', () => {
   initTagCheckbox();
@@ -53,8 +55,9 @@ document.addEventListener('turbolinks:load', () => {
   initTripCable();
   sendMessage();
   initMapbox();
-  // Call your functions here, e.g:
-  // initSelect2();
+  initDeleteSweetalert();
+  initAcceptSweetalert();
+  initRejectSweetalert();
 });
 
 
