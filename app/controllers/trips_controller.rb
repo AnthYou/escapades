@@ -11,10 +11,12 @@ class TripsController < ApplicationController
     end
 
     @selected_filters = []
+
     if params[:filter].present?
       @selected_filters = params[:filter][:tags].reject { |tag| tag == "" }
       @trips = @trips.tagged_with(@selected_filters)
     end
+
     query = <<~SQL
       trips.*,
       CASE WHEN departure_date > current_date THEN 1

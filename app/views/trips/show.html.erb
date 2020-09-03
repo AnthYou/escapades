@@ -1,48 +1,24 @@
-<div class="container mt-5 show-container">
-
-  <% if @trip.photo.attached? %>
-    <div class="trip-banner mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @trip.photo.key, crop: :fill %>');">
-  <% else %>
-    <div class="trip-banner mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png');">
-  <% end %>
-    <h1><%=@trip.title%></h1>
-    <p><%= @trip.city ? @trip.city : @trip.country %></p>
-    <% if @trip.full? || @trip.departed? %>
-      <div class='text-center mt-3'>
-        <p>Trip is full or has already departed!</p>
-      </div>
-    <% elsif (@trip.full? || @trip.departed?) && (user_signed_in?) && (current_user.accepted_in?(@trip.id)) %>
-      <%= link_to 'Go to chatroom', trip_messages_path(@trip), class: 'btn-travel-special' %>
-    <% else %>
-      <% if user_signed_in? %>
-        <% if @trip.user == current_user %>
-          <div class="d-flex">
-            <%= link_to 'Go to chatroom', trip_messages_path(@trip), class: 'btn-travel-special' %>
-          </div>
-        <% elsif current_user.accepted_in?(@trip.id) %>
-          <div class='text-center mt-3'>
-            <%= link_to 'Go to chatroom', trip_messages_path(@trip), class: 'btn-travel-special' %>
-          </div>
-        <% elsif current_user.applied_for?(@trip.id) %>
-          <div class="text-center mt-3">
-            <p> You already applied to this trip!</p>
-          </div>
-        <% else %>
-          <div class='text-center mt-3'>
-            <button type="button" class="btn btn-travel-primary" data-toggle="modal" data-target="#joinModal">Join this trip</button>
-          </div>
-        <% end %>
+<% if @trip.photo.attached? %>
+  <div class="trip-banner mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('<%= cl_image_path @trip.photo.key, crop: :fill %>');">
+<% else %>
+  <div class="trip-banner mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png');">
+<% end %>
+  <h1><strong><%=@trip.title%></strong></h1>
+  <p><%= @trip.city ? @trip.city : @trip.country %></p>
+  <div class="mb-3">
+    <% @trip.participants.each do |participant| %>
+      <%= link_to user_path(participant), :action => 'go' do  %>
+        <%= cl_image_tag participant.photo.key, class: "avatar-trip #{'avatar-owner' if participant == @trip.user}", style: 'margin-right: 0px;' %>
       <% end %>
     <% end %>
   </div>
-
 <!-- SPECS -->
-  <div class="spec my-5">
+  <div class="container mt-3">
     <div class="trip-description">
       <h2 class="font-weight-bold text-center mb-2">about the trip</h2>
       <p class="text-center p-3"><%= @trip.description %></p>
       <hr>
-      <div class="icons my-3" style= "display:flex;justify-content: space-around">
+      <div class="icons my-3" style= "display: flex; justify-content: space-around;">
         <div class= "icon text-center">
           <div style="font-size: 30px;">💵</div>
           <p class="font-weight-bold text-center">Estimated</p>
@@ -66,37 +42,47 @@
       </div>
     </div>
   </div>
-
-
-<!-- MAPBOX -->
-<h2 class="text-center mt-5 pb-5 font-weight-bold">trip activities</h2>
-
-<div class="container-card2">
-  <% if policy(@trip).add_activity? %>
-    <div id="new-activity-btn" style="text-align: center">
-      <%= link_to "Add an activity", new_trip_activity_path(@trip), class: "btn btn-travel-primary"%>
+  <% if (@trip.user == current_user) && (@trip.bookings.where(status: "pending").count > 0) %>
+    <div class="text-center mt-5 mb-4">
+      <div style="position: relative;">
+        <%= link_to 'Review applications', trip_review_booking_path(@trip), class: 'btn-travel-primary' %>
+        <p class="badge badge-pill badge-danger" style="position: absolute; right: -5px; top: -15px;"><%=@trip.bookings.where(status: "pending").count%></p>
+      </div>
     </div>
   <% end %>
-  <div id="map2"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
+  <% if (@trip.full? || @trip.departed?) && (user_signed_in?) && (current_user.accepted_in?(@trip.id)) %>
+    <%= link_to 'Go to chatroom', trip_messages_path(@trip), class: 'btn-travel-special', style: 'position: fixed; bottom: 50px; right: 50px;' %>
+  <% elsif @trip.full? || @trip.departed? %>
+    <div class='text-center mt-3'>
+      <p>Trip is full or has already departed!</p>
+    </div>
+  <% else %>
+    <% if user_signed_in? %>
+      <% if @trip.user == current_user %>
+        <div class="d-flex">
+          <%= link_to 'Go to chatroom', trip_messages_path(@trip), class: 'btn-travel-special', style: 'position: fixed; bottom: 50px; right: 50px;' %>
+        </div>
+      <% elsif current_user.accepted_in?(@trip.id) %>
+        <div class='text-center mt-3'>
+          <%= link_to 'Go to chatroom', trip_messages_path(@trip), class: 'btn-travel-special', style: 'position: fixed; bottom: 50px; right: 50px;' %>
+        </div>
+      <% elsif current_user.applied_for?(@trip.id) %>
+        <div class="text-center mt-3">
+          <p> You already applied to this trip!</p>
+        </div>
+      <% else %>
+        <div class='text-center mt-3'>
+          <button type="button" class="btn btn-travel-primary" data-toggle="modal" data-target="#joinModal">Join this trip</button>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
 </div>
 
-<!-- TRIP ACTIVITIES -->
-<div class="mt-5">
-  <%= render 'shared/activity_cards', activities: @activities %>
-</div>
+<div class="container mt-5 show-container">
 
 <!-- TRIP USERS -->
   <h2 class="font-weight-bold text-center mt-5 mb-4">meet your dream team</h2>
-  <% if @trip.user == current_user %>
-    <div class="text-center mt-5 mb-3">
-      <%= link_to 'Review applications', trip_review_booking_path(@trip), class: 'btn-travel-primary' %>
-      <p class="badge badge-pill badge-danger" style="position: relative; left:-19px; top: -21px;"><%=@trip.bookings.where(status: "pending").count%></p>
-    </div>
-  <% end %>
   <div class="users-grid d-flex justify-content-around mt-5">
     <% @trip.bookings.each do |booking| %>
       <% if booking.status == "accepted" %>
@@ -105,6 +91,27 @@
         </div>
       <% end %>
     <% end %>
+  </div>
+
+  <!-- MAPBOX -->
+  <h2 class="text-center mt-5 pb-5 font-weight-bold">trip activities</h2>
+
+  <div class="container-card2" style="position: relative;">
+    <% if policy(@trip).add_activity? %>
+      <div id="new-activity-btn" style="text-align: center;">
+        <%= link_to "Add an activity", new_trip_activity_path(@trip), class: "btn btn-travel-primary" %>
+      </div>
+    <% end %>
+    <div id="map2"
+       style="width: 100%; height: 600px;"
+       data-markers="<%= @markers.to_json %>"
+       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
+
+  <!-- TRIP ACTIVITIES -->
+  <div class="mt-5">
+    <%= render 'shared/activity_cards', activities: @activities %>
   </div>
 
 </div>
@@ -127,21 +134,17 @@
 <!-- TRIP'S STATUS AND CTAs -->
 
 <div class="container show-container"></div>
-  <% if @trip.full? || @trip.departed? %>
+  <% if (@trip.full? || @trip.departed?) && (user_signed_in?) && (current_user.accepted_in?(@trip.id)) %>
     <div class='text-center mt-5'>
-      <p> Trip is full or has already departed !</p>
+      <%= link_to 'Go to chatroom', trip_messages_path(@trip), class: 'btn-travel-special' %>
+    </div>
+  <% elsif @trip.full? || @trip.departed? %>
+    <div class='text-center mt-5'>
+      <p> Trip is full or has already departed!</p>
     </div>
   <% else %>
     <% if user_signed_in? %>
-      <% if @trip.user == current_user %>
-        <div class="text-center mt-5 mb-3">
-          <%= link_to 'Go to chatroom', trip_messages_path(@trip), class: 'btn-travel-special' %>
-        </div>
-      <% elsif current_user.accepted_in?(@trip.id)%>
-        <div class='text-center mt-5'>
-          <%= link_to 'Go to chatroom', trip_messages_path(@trip), class: 'btn-travel-special' %>
-        </div>
-      <% elsif current_user.applied_for?(@trip.id) %>
+      <% if current_user.applied_for?(@trip.id) %>
         <div class="text-center mt-5">
           <p>You already applied to this trip!</p>
           <div class='text-center my-5'>

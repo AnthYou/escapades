@@ -60,3 +60,5 @@ document.addEventListener('turbolinks:load', () => {
   initRejectSweetalert();
 });
 
+
+// import "controllers"
