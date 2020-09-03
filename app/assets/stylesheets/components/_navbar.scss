@@ -8,8 +8,19 @@
   }
 }
 
+.navbar-nav .dropdown-menu {
+  position: absolute;
+}
+
 .navbar-lewagon .navbar-collapse {
+  @include media-breakpoint-down(xs) {
+    position: absolute;
+  }
+
   flex-grow: 0;
+
+  top: 80px;
+  right: 0px;
 }
 
 .navbar-lewagon .navbar-brand img {
