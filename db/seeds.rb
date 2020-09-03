@@ -17,149 +17,116 @@ puts "Done !"
 # USERS CREATION =========================================
 puts "Seeding users..."
 users = [
+    [
+    {
+      email: "ceciledezy@gmail.com",
+      password: '123456',
+      first_name: "Cecile",
+      last_name: "Dezy",
+      description: "Hey I'm Cecile Dezy!;)",
+      date_of_birth: "17/11/1990".to_date
+    },
+    "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1539599254/janttrofl6xagki5zk6g.jpg"
+  ],
   [
     {
-      email: "beargrylls@official.com",
+      email: "kenzamahresi@official.com",
       password: '123456',
-      first_name: "Bear",
-      last_name: "Grylls",
-      description: "I am the guy from Man vs Wild",
+      first_name: "Kenza",
+      last_name: "Mahresi",
+      description: "Hey I'm Kenza Mahresi! ",
       date_of_birth: "07/06/1974".to_date,
     },
-    "https://i.guim.co.uk/img/media/f8a09f6439b4cd6155eb0279fc223d51464d1888/0_86_4708_2825/master/4708.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=4892d97c7b94e7cbdaf1c19783f67d1d"
+    "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1596040834/t9woatfkaltgi61oulex.jpg"
   ],
   [
     {
-      email: "moundir@official.com",
+      email: "augustinlazarus@official.com",
       password: '123456',
-      first_name: "Moundir",
-      last_name: "Zoughari",
-      description: "I am the guy from Koh-Lanta and i love you",
+      first_name: "Augustin ",
+      last_name: "Lazarus",
+      description: "Hey, I'm Augustin Lazarus :)!",
       date_of_birth: "04/09/1973".to_date,
     },
-    "https://www.guide-de-survie.com/wp-content/uploads/MOUNDIR.png"
+    "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1593091081/hqyjruqc2m9ckock4edx.jpg"
   ],
   [
     {
-      email: "Denislevrai@official.com",
+      email: "eliottmogenet@gmail.com",
       password: '123456',
-      first_name: "Denis",
-      last_name: "Brogniart",
-      description: "Ha! Ha !",
-      date_of_birth: "12/06/1963".to_date,
-    },
-    "https://pbs.twimg.com/profile_images/906040030820536320/qQZ5_sgF.jpg"
-  ],
-  [
-    {
-      email: "Kanyeofficial@official.com",
-      password: '123456',
-      first_name: "Kanye",
-      last_name: "West",
-      description: "I am a god",
-      date_of_birth: "08/06/1977".to_date
-    },
-    "https://thumbor.forbes.com/thumbor/fit-in/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F5ed00f17d4a99d0006d2e738%2F0x0.jpg%3Fbackground%3D000000%26cropX1%3D154%26cropX2%3D4820%26cropY1%3D651%26cropY2%3D5314"
-  ],
-  [
-    {
-      email: "Squeezie@official.com",
-      password: '123456',
-      first_name: "Squeezie",
-      last_name: "LeVrai",
-      description: "Woaouh! Je suis trop chaud!",
+      first_name: "Eliott",
+      last_name: "Mongenet",
+      description: "Hello, I'm Eliott Mongenet",
       date_of_birth: "27/01/1996".to_date
     },
-    "https://is3-ssl.mzstatic.com/image/thumb/Purple71/v4/38/bc/e2/38bce2e4-02b3-c9bd-5fc6-1fa84791437e/source/256x256bb.jpg"
+    "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597912687/tmy20aexx0mnpwled9nt.jpg"
   ],
   [
     {
-      email: "BillGates@official.com",
+      email: "thomasdesmoulins@gmail.com",
       password: '123456',
-      first_name: "Bill",
-      last_name: "Gates",
-      description: "I created Microsoft =) Now I'm rich and I can travel around the world.",
-      date_of_birth: "28/10/1955".to_date
+      first_name: "Thomas",
+      last_name: "Desmoulins",
+      description: "Hey I'm Thomas Desmoulins!;)",
+      date_of_birth: "17/11/1985".to_date
     },
-    "https://s3-us-west-1.amazonaws.com/gtvcdn/image/channel_logo_636572480135692098.jpg"
+    "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1585588520/j0m6tlufeayghsj1uqdv.jpg"
   ],
   [
     {
-      email: "SpaceX@official.com",
+      email: "paulportier@official.com",
       password: '123456',
-      first_name: "Elon",
-      last_name: "Musk",
-      description: "I could go to Mars. But I'd rather go to the beach.",
-      date_of_birth: "28/06/1971".to_date
-    },
-    "https://s3-us-west-1.amazonaws.com/companies.comparably.com/25528/ceo_v1.jpg"
-  ],
-  [
-    {
-      email: "Beyoncee@official.com",
-      password: '123456',
-      first_name: "Beyoncé",
-      last_name: "Knowles",
+      first_name: "Paul",
+      last_name: "Portier",
       description: "I want to discover the world and meet new people",
-      date_of_birth: "04/09/1981".to_date
+      date_of_birth: "04/09/1991".to_date
     },
-    "https://c-sf.smule.com/rs-s-sg-1/sing_google/performance/cover/a4/b2/3893be42-ba02-4612-9019-8dd781bc71fa.jpg"
+    "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1583704409/r5cbmwhshuvafp3v7jmm.jpg"
   ],
   [
     {
-      email: "EmmanuelMacron@official.com",
+      email: "bradfujimoto@official.com",
       password: '123456',
-      first_name: "Emmanuel",
-      last_name: "Macron",
-      description: "J'ai envie de voyager parce que c'est mon projet",
-      date_of_birth: "21/12/1977".to_date
+      first_name: "Brad",
+      last_name: "Fujimoto",
+      description: "I want to travel all around the world with new people!",
+      date_of_birth: "21/12/1990".to_date
     },
-    "https://pbs.twimg.com/profile_images/711916465977466881/KpslvShn.jpg"
+    "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1592926912/otakmmkny8grdmruc4pq.jpg"
   ],
   [
     {
-      email: "harrisonford@official.com",
+      email: "juliedakoure@official.com",
       password: '123456',
-      first_name: "Harrison",
-      last_name: "Ford",
-      description: "I want to go on an adventure like it's the 80's",
-      date_of_birth: "13/07/1942".to_date
-    },
-    "https://d26oc3sg82pgk3.cloudfront.net/files/media/edit/image/4205/square_thumb%402x.jpg"
-  ],
-  [
-    {
-      email: "jeandujardin@official.com",
-      password: '123456',
-      first_name: "Jean",
-      last_name: "Dujardin",
-      description: "Comment est votre blanquette?",
+      first_name: "Julie",
+      last_name: "Dukouré",
+      description: "Hello guys, I'm Julie Dakouré",
       date_of_birth: "19/06/1972".to_date
     },
-    "https://pbs.twimg.com/profile_images/2952668177/4a8302fbfbe3b2bf1d0e2c3c7ce3303a.jpeg"
+    "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1586169339/baxobcnafstr5uvmp1iw.jpg"
   ],
   [
     {
-      email: "cristinacordula@gmail.com",
+      email: "isabellelafont@gmail.com",
       password: '123456',
-      first_name: "Cristina",
-      last_name: "Córdula",
-      description: "Love Fashion and travel with mes cheries!",
+      first_name: "Isabelle",
+      last_name: "Lafont",
+      description: "Hello guys, I'm Isabelle Fafont!",
       date_of_birth: "30/10/1964".to_date
     },
-    "https://media.melty.fr/article-3783779-square_256/media.jpg"
+    "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1593433763/mpgeqtybt7ftjnbrk7zj.jpg"
   ],
 
   [
     {
-      email: "sophiemarceau@gmail.com",
+      email: "louismauriac@gmail.com",
       password: '123456',
-      first_name: "Sophie",
-      last_name: "Marceau",
-      description: "Hey I'm Sophie Marceau! Coucou Louis ;)",
-      date_of_birth: "17/11/1966".to_date
+      first_name: "Louis",
+      last_name: "Mauriac",
+      description: "Hey I'm Louis Mauriac!",
+      date_of_birth: "17/11/1990".to_date
     },
-    "https://res.cloudinary.com/enjoymovie/image/upload/w_256,h_256,c_fill,g_auto:faces/tfig5iuaj4lmq9tblbw0.jpg"
+    "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1594803455/cx8uggkt52p2e8j7mbuv.jpg"
   ],
 
   [
@@ -229,8 +196,17 @@ users = [
     },
     "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597859853/hlm3ivjlz0tezolmvyvo.jpg"
   ],
-
-
+   [
+    {
+      email: "basilequinchon@gmail.com",
+      password: '123456',
+      first_name: "Basile",
+      last_name: "Quinchon",
+      description: "Hey I'm Basile Quinchon!;)",
+      date_of_birth: "17/11/1993".to_date
+    },
+    "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1574093268/su3s4sskyn9slfzihiez.jpg"
+  ],
 ]
 
 users.each do |user| iterated_user = User.new(user.first)
@@ -317,14 +293,14 @@ trips = [
       title: "Biarritz on fire",
       description: "Come and spend an incredible time in a charming private villa. Discover the activities and the region. Fun, chill and sunw! ",
       country: "France",
-      city: "Biarritz, France",
+      city: "Biarritz, Nouvelle-Aquitaine, France",
       budget_min: 350,
       budget_max: 400,
       departure_date: "4/09/2020".to_date,
       return_date: "6/09/2020".to_date,
       max_capacity: 6,
       user: User.all.sample,
-      tag_list: ["Chill"]
+      tag_list: ["Chill", "Europe"]
     },
     "https://images.unsplash.com/photo-1451159289881-10709108b343?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
   ],
@@ -334,14 +310,14 @@ trips = [
       title: "City Break à Stockholm",
       description: "Come and spend an exotic and rejuvenating weekend! ",
       country: "Sweden",
-      city: "Stockholm, Sweden",
+      city: "Stockholm, Stockholms Iän, Sweden",
       budget_min: 340,
       budget_max: 400,
       departure_date: "4/09/2020".to_date,
       return_date: "7/09/2020".to_date,
       max_capacity: 6,
       user: User.all.sample,
-      tag_list: ["Chill"]
+      tag_list: ["Chill", "Europe"]
     },
     "https://images.unsplash.com/photo-1509356843151-3e7d96241e11?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
   ],
@@ -351,7 +327,7 @@ trips = [
       title: "Safari in Tanzania",
       description: "Put your hat and your rangers on! Don't forget your binoculars!",
       country: "Tanzania",
-      city: "Zanzibar",
+      city: "Zanzibar, Unguja Mijni Magharibi, Tanzania",
       budget_min: 2500,
       budget_max: 3000,
       departure_date: "10/09/2020".to_date,
@@ -366,16 +342,15 @@ trips = [
   [
     {
       title: "Northern Lights in Norway",
-      description: "Discover nothern lights during an incredible roadtrip",
+      description: "Discover northern lights during an incredible roadtrip",
       country: "Norway",
-      city: "Harstad, Norway",
       budget_min: 1300,
       budget_max: 1600,
       departure_date: "20/12/2020".to_date,
       return_date: "5/01/2021".to_date,
       max_capacity: 4,
       user: User.all.sample,
-      tag_list: ["Europe"]
+      tag_list: ["Europe", "Adventure"]
     },
     "https://images.unsplash.com/photo-1579033461380-adb47c3eb938?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
   ],
@@ -402,7 +377,7 @@ trips = [
       title: "Bali: Sea, chill and sun ",
       description: "Discover Bali with great team mates ",
       country: "Indonesia",
-      city: "Bali, Indonesia",
+      city: "Bali Mester, Daerah Khusus Ibukota Jakarta, Indonesia",
       budget_min: 2000,
       budget_max: 2500,
       departure_date: "10/09/2020".to_date,
@@ -434,6 +409,7 @@ trips = [
       title: "Loco Morocco",
       description: "Let's discover Morocco all together! We will chill and party hard, so don't hesitate to join!",
       country: "Morocco",
+      city: "Casablanca, Morroco",
       budget_min: 200,
       budget_max: 700,
       departure_date: "18/10/2020".to_date,
@@ -449,13 +425,14 @@ trips = [
       title: "Sahara Desert",
       description: "Let's discover Algeria all together! We will chill and visit the isolating village in Algeria's wild Sahara desert. Don't hesitate to join!",
       country: "Algeria",
+      city: "Tamanghasset, Tamanrasset, Algeria",
       budget_min: 400,
       budget_max: 1000,
       departure_date: "01/10/2020".to_date,
-      return_date: "06/11/2020".to_date,
+      return_date: "06/10/2020".to_date,
       max_capacity: 6,
       user: User.all.sample,
-      tag_list: ["Africa", "Cultural", "Chill"]
+      tag_list: ["Africa", "Cultural", "Adventure"]
     },
     "https://images.unsplash.com/photo-1545167496-c1e092d383a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=682&q=80"
   ],
@@ -463,17 +440,134 @@ trips = [
   [
     {
       title: "Party in Amsterdam",
-      description: "Let's enjoy a fun journey with mates",
-      country: "Algeria",
-      budget_min: 400,
-      budget_max: 1000,
-      departure_date: "01/10/2020".to_date,
-      return_date: "06/11/2020".to_date,
+      description: "Let's take several walks in this beautiful city ! ",
+      country: "The Netherlands",
+      city: "Amsterdam, Noord-Holland, The Netherlands",
+      budget_min: 200,
+      budget_max: 400,
+      departure_date: "06/09/2020".to_date,
+      return_date: "10/09/2020".to_date,
       max_capacity: 6,
       user: User.all.sample,
-      tag_list: ["Africa", "Cultural", "Chill"]
+      tag_list: ["Europe", "Party", "Chill"]
     },
-    "https://images.unsplash.com/photo-1545167496-c1e092d383a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=682&q=80"
+    "https://images.unsplash.com/photo-1549701455-d0d42354b009?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
+  ],
+
+  [
+    {
+      title: "Break in Lisbon",
+      description: "Let's enjoy a great and short experience with mates in Lisbon!",
+      country: "Portugal",
+      city: "Lisbon, Portugal",
+      budget_min: 200,
+      budget_max: 400,
+      departure_date: "07/09/2020".to_date,
+      return_date: "10/09/2020".to_date,
+      max_capacity: 4,
+      user: User.all.sample,
+      tag_list: ["Europe", "Party", "Chill"]
+    },
+    "https://images.unsplash.com/photo-1513377888081-794d8e958972?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
+  ],
+
+  [
+    {
+      title: "London tour",
+      description: "Let's improve our English, and test all the best nightclub of the city",
+      country: "England",
+      city: "London, England, United Kingdom",
+      budget_min: 200,
+      budget_max: 400,
+      departure_date: "08/09/2020".to_date,
+      return_date: "11/09/2020".to_date,
+      max_capacity: 4,
+      user: User.all.sample,
+      tag_list: ["Europe", "Party", "Chill"]
+    },
+    "https://images.unsplash.com/photo-1505761671935-60b3a7427bad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
+  ],
+
+  [
+    {
+      title: "Barcelona with new people!",
+      description: "Let's enjoy a fun journey with mates",
+      country: "Spain",
+      city: "Barcelona, Catalunya, Spain",
+      budget_min: 200,
+      budget_max: 400,
+      departure_date: "4/09/2020".to_date,
+      return_date: "14/09/2020".to_date,
+      max_capacity: 4,
+      user: User.all.sample,
+      tag_list: ["Europe", "Party", "Chill"]
+    },
+    "https://images.unsplash.com/photo-1529551739587-e242c564f727?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1790&q=80"
+  ],
+  [
+    {
+      title: "Japan style",
+      description: "Let's enjoy a fun journey with mates",
+      country: "Japan",
+      city: "Tokyo, Japan",
+      budget_min: 200,
+      budget_max: 400,
+      departure_date: "15/08/2020".to_date,
+      return_date: "25/08/2020".to_date,
+      max_capacity: 4,
+      user: User.all.sample,
+      tag_list: ["Asia", "Cultural", "Party"]
+    },
+    "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1542&q=80"
+  ],
+
+  [
+    {
+      title: "Tahiti and cocktails",
+      description: "Let's enjoy a fun journey with mates",
+      country: "Tahiti, French Polynesia",
+      city: "Papeete, Tahiti",
+      budget_min: 3000,
+      budget_max: 4000,
+      departure_date: "20/09/2020".to_date,
+      return_date: "5/10/2020".to_date,
+      max_capacity: 4,
+      user: User.all.sample,
+      tag_list: ["Islands", "Chill", "Party"]
+    },
+    "https://images.unsplash.com/photo-1597851788739-bfd9500ea406?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1510&q=80"
+  ],
+
+  [
+    {
+      title: "Discover Nepal",
+      description: "Let's enjoy a fun journey with mates",
+      country: "Nepal",
+      city: "Kathmandu, Nepal",
+      budget_min: 2000,
+      budget_max: 3000,
+      departure_date: "10/06/2020".to_date,
+      return_date: "24/06/2020".to_date,
+      max_capacity: 4,
+      user: User.all.sample,
+      tag_list: ["Asia", "Adventure"]
+    },
+    "https://images.unsplash.com/photo-1531132734102-441c78aa0091?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
+  ],
+  [
+    {
+      title: "Discover Cuba",
+      description: "Let's enjoy a fun journey with mates",
+      country: "Cuba",
+      budget_min: 2000,
+      budget_max: 3000,
+      departure_date: "10/06/2020".to_date,
+      return_date: "24/06/2020".to_date,
+      max_capacity: 4,
+      user: User.all.sample,
+      tag_list: ["America", "Cultural", "Party"]
+    },
+    "https://images.unsplash.com/photo-1531132734102-441c78aa0091?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
   ],
 ]
 
@@ -495,7 +589,7 @@ puts "Seeding bookings..."
 
 status = ["pending", "accepted", "declined", "cancelled"]
 
-7.times do
+10.times do
 # vérifie que que le trip n'est pas plein, sinon on en prend un autre au hasard
   trip = Trip.all.sample
   until trip.max_capacity > trip.users.count
@@ -523,12 +617,20 @@ reviews = [
       stars: 5
     },
     {
+      content: "I really enjoy the trip with you =)",
+      stars: 5
+    },
+    {
+      content: "We experienced a beautiful adventure together =)",
+      stars: 4
+    },
+    {
       content: "You are such a beautiful person <3",
       stars: 5,
     },
     {
-      content: "You suck man",
-      stars: 0,
+      content: "I did not appreciate the experience.",
+      stars: 2,
     },
     {
       content: "I had a very good time with you =)",
@@ -537,7 +639,26 @@ reviews = [
     {
       content: "So many good memories with you my friend!!",
       stars: 5,
-    }
+    },
+    {
+      content: " I really enjoy the time I spent with you!!!",
+      stars: 5,
+    },
+
+    {
+      content: "I want to travel with you again! You're amazing!!",
+      stars: 5,
+    },
+
+    {
+      content: "We had so much fun together!",
+      stars: 5,
+    },
+
+    {
+      content: "We had a good time! ",
+      stars: 5,
+    },
   ]
 
 20.times do
