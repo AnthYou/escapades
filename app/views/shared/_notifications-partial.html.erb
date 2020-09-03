@@ -1,23 +1,17 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-sm-offset-12 bg-white p-4 rounded"><div>
-      <% notifications.each do |notification|%>
-          <div class="d-flex align-items-center mb-3">
-            <div class= "mr-3">
-              <%= cl_image_tag notification.booking.user.photo.key , class: "avatar" %>
-            </div>
-            <div>
-              <p style="margin-bottom: 0px; font-size:13px;"> <%= notification.content %>.
-              <% if notification.receiver == notification.booking.trip.user %>
-                <%= link_to "Review", trip_bookings_path(notification.booking.trip), style: "color: #f2a365" %>
-              <% else %>
-                <%= link_to "Go to your trip", trip_path(notification.booking.trip), style: "color: #f2a365" %>
-              <% end %>
-              | <%= link_to "Read", notification_read_path(notification), method: :patch, style: "color: #f2a365" %>
-              </p>
-            </div>
-          </div>
-      <% end %>
+<% notifications.each do |notification|%>
+    <div class="d-flex align-items-center mb-3">
+      <div class= "mr-3">
+        <%= cl_image_tag notification.booking.user.photo.key , class: "avatar" %>
+      </div>
+      <div>
+        <p style="margin-bottom: 0px; font-size:13px;"> <%= notification.content %>.
+        <% if notification.receiver == notification.booking.trip.user %>
+          <%= link_to "Review", trip_bookings_path(notification.booking.trip), style: "color: #f2a365" %>
+        <% else %>
+          <%= link_to "Go to your trip", trip_path(notification.booking.trip), style: "color: #f2a365" %>
+        <% end %>
+        | <%= link_to "Read", notification_read_path(notification), method: :patch, style: "color: #f2a365" %>
+        </p>
+      </div>
     </div>
-  </div>
-</div>
+<% end %>
