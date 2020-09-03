@@ -2,6 +2,7 @@ class TripsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :index, :show]
 
   def index
+    # raise
     @trips = policy_scope(Trip)
     authorize @trips
 
@@ -11,6 +12,7 @@ class TripsController < ApplicationController
     end
 
     @selected_filters = []
+
     if params[:filter].present?
       @selected_filters = params[:filter][:tags].reject { |tag| tag == "" }
       @trips = @trips.tagged_with(@selected_filters)
