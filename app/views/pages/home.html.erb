@@ -79,13 +79,13 @@
       </a>
     </div>
   </div>
-
+  <h2 class="text-center font-weight-bold mb-3">what do you have in mind?</h2>
   <div class="filter-tags-home">
     <% Trip.all.map(&:tags).flatten.uniq.each do |tag| %>
       <%= link_to trips_path(filter: { tags: [tag.name] }) do %>
         <div
           class="filter-tag-home tag-styling"
-          style="border-radius: 20px; background-image: url('https://source.unsplash.com/200x200/?<%= tag %>')">
+          style="border-radius: 20px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://source.unsplash.com/200x200/?<%= tag %>')">
             <%= tag %>
         </div>
       <% end %>
