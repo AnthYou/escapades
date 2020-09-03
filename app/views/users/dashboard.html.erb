@@ -3,7 +3,7 @@
   <div class="bg-white p-4 rounded mb-3 text-center">
     <h1 class="text-center mb-3"><strong>my dashboard</strong></h1>
     <% if @user.photo.attached? %>
-      <p> <%= cl_image_tag @user.photo.key, class: "avatar-dashboard" %> </p>
+      <p> <%= cl_image_tag @user.photo.key, class: "avatar-xl" %> </p>
     <% else %>
       <p> <%= image_tag "https://icon-library.com/images/default-user-icon/default-user-icon-8.jpg", class: "avatar-dashboard" %> </p>
     <% end %>
