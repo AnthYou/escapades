@@ -18,16 +18,16 @@
         <% Trip.all.map(&:tags).flatten.uniq.each do |tag| %>
           <div class="form-check" style="margin-bottom: 14px;">
             <input class="form-check-input check_boxes required d-none" type="checkbox" value="<%= tag %>" name="filter[tags][]" id="filter_tags_<%= tag %>" <%= 'checked' if @selected_filters.include?(tag.name) %>>
-            <label class="form-check-label collection_check_boxes filter-tag <%= 'active' if @selected_filters.include?(tag.name) %>" for="filter_tags_<%= tag %>" style="border-radius: 20px"><%= tag %></label>
+            <label class="form-check-label collection_check_boxes filter-tag <%= 'active' if @selected_filters.include?(tag.name) %>" for="filter_tags_<%= tag %>" style="border-radius: 20px; background-color:white; color: black"><%= tag %></label>
           </div>
         <% end %>
-      </div>
-
-    <%= f.input :query, input_html: { value: params[:query] }, as: :hidden %>
-    <div style="text-align: center; margin-bottom: 50px">
-      <%= f.submit "Filter", class: "btn btn-travel-primary"%>
-    </div>
+        <%= f.input :query, input_html: { value: params[:query] }, as: :hidden %>
+        <div style="text-align: center; margin-bottom: 50px">
+          <%= f.submit "Filter", class: "btn btn-travel-primary ml-2"%>
+       </div>
+     </div>
   <% end %>
+
 
   <div class ="d-flex flex-column flex-lg-row justify-content-between pt-4">
       <%= render "shared/cards-grid", trips: @trips %>
