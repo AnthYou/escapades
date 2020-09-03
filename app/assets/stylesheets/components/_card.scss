@@ -118,13 +118,37 @@ p.price-range {
 
 // USERCARD
 
+.users-grid {
+  display: flex;
+  justify-content: center;
+}
+
 .usercard-container {
+  transition: 0.4s ease-out;
   position: relative;
+  left: 0px;
   height: 400px;
   width: 300px;
   border-radius: 20px;
   background-color: white;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.2rem 1.2rem rgba(0, 0, 0, 0.2);
+  margin-right:-50px;
+}
+
+.usercard-container:not(:first-child) {
+    margin-left: 0px;
+}
+
+.usercard-container:hover {
+  transform: translateY(-20px);
+  transition: 0.4s ease-out;
+  margin-right: 0px
+}
+
+.usercard-container:hover ~ .usercard-container {
+  position: relative;
+  left: 50px;
+  transition: 0.4s ease-out;
 }
 
 .pending-usercard-container {
