@@ -27,9 +27,10 @@ class UsersController < ApplicationController
   def dashboard
     @trips = Trip.all
     @user = current_user
-    @trips_admin = @trips.where(user_id: @user.id)
-    @current_trips = @trips.select { |trip| trip.participants.include?(@user) && Date.today < trip.return_date }
-    @past_trips = @trips.departed.select { |trip| trip.participants.include?(@user) && Date.today > trip.return_date }
+    @trips_joined = @trips.select { |trip| trip.participants.include?(@user) }
+    # @trips_admin = @trips.where(user_id: @user.id)
+    # @current_trips = @trips.select { |trip| trip.participants.include?(@user) && Date.today < trip.return_date }
+    # @past_trips = @trips.departed.select { |trip| trip.participants.include?(@user) && Date.today > trip.return_date }
     authorize @user
   end
 
