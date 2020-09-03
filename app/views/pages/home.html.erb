@@ -80,4 +80,44 @@
     </div>
   </div>
 
+  <div class="filter-tags-home">
+    <% Trip.all.map(&:tags).flatten.uniq.each do |tag| %>
+      <%= link_to trips_path(filter: { tags: [tag.name]}) do %>
+        <div
+          class="filter-tag-home tag-styling"
+          style="border-radius: 20px; background-image: url('https://source.unsplash.com/200x200/?<%= tag %>')">
+            <%= tag %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <!-- TAG -->
+  <!-- <%#= simple_form_for :filter, url: trips_path, html: {"data-controller": "categories"}, method: :get do |f| %>
+    <%# @trips.map(&:tags).flatten.uniq.each do |tag| %>
+      <%#= f.input tag.name.to_sym, as: :boolean, input_html: { checked: @selected_filters.include?(tag.name) } %>
+    <%# end %>
+    <%#= f.input :tags, as: :check_boxes, collection: @trips.map(&:tags).flatten.uniq %>
+
+    <fieldset class="form-group check_boxes required filter_tags">
+      <legend class="col-form-label pt-0">
+        Filters <abbr title="required">*</abbr>
+      </legend>
+      <input type="hidden" name="filter[tags][]" value="">
+    </fieldset>
+
+      <div class="filter-tags-home">
+        <%# Trip.all.map(&:tags).flatten.uniq.each do |tag| %>
+          <div class="form-check">
+            <input class="form-check-input check_boxes required d-none" type="checkbox" value="<%= tag %>" name="filter[tags][]" id="filter_tags_<%= tag %>" data-action="change->categories#submit">
+            <label class="form-check-label collection_check_boxes filter-tag-home tag-styling" for="filter_tags_<%= tag %>" style="border-radius: 20px; background-image: url('https://source.unsplash.com/200x200/?<%= tag %>')"><%= tag %></label>
+          </div>
+        <%# end %>
+      </div>
+
+    <%#= f.input :query, input_html: { value: params[:query] }, as: :hidden %>
+    <div style="text-align: center; margin: 50px">
+      <%#= f.submit "Submit filters", class: "btn btn-travel-primary", "data-target": "categories.submit"%>
+    </div>
+  <%# end %> -->
 </div>

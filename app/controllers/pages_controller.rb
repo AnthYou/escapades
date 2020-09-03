@@ -9,6 +9,6 @@ class PagesController < ApplicationController
           lng: trip.longitude,
           infoWindow: render_to_string(partial: "shared/info_window_trips", locals: { trip: trip })
         }
-      end
     end
   end
+end
