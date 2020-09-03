@@ -20,7 +20,7 @@ users = [
   [
     {
       email: "beargrylls@official.com",
-      password: 'ManvsWild!',
+      password: '123456',
       first_name: "Bear",
       last_name: "Grylls",
       description: "I am the guy from Man vs Wild",
@@ -31,7 +31,7 @@ users = [
   [
     {
       email: "moundir@official.com",
-      password: 'coucoucestmoundir',
+      password: '123456',
       first_name: "Moundir",
       last_name: "Zoughari",
       description: "I am the guy from Koh-Lanta and i love you",
@@ -42,7 +42,7 @@ users = [
   [
     {
       email: "Denislevrai@official.com",
-      password: 'coucoucestDenis',
+      password: '123456',
       first_name: "Denis",
       last_name: "Brogniart",
       description: "Ha! Ha !",
@@ -53,7 +53,7 @@ users = [
   [
     {
       email: "Kanyeofficial@official.com",
-      password: 'heysguy567',
+      password: '123456',
       first_name: "Kanye",
       last_name: "West",
       description: "I am a god",
@@ -64,7 +64,7 @@ users = [
   [
     {
       email: "Squeezie@official.com",
-      password: 'machin24',
+      password: '123456',
       first_name: "Squeezie",
       last_name: "LeVrai",
       description: "Woaouh! Je suis trop chaud!",
@@ -75,7 +75,7 @@ users = [
   [
     {
       email: "BillGates@official.com",
-      password: 'hellomicrosoftworld',
+      password: '123456',
       first_name: "Bill",
       last_name: "Gates",
       description: "I created Microsoft =) Now I'm rich and I can travel around the world.",
@@ -86,7 +86,7 @@ users = [
   [
     {
       email: "SpaceX@official.com",
-      password: 'XXXXXXXX',
+      password: '123456',
       first_name: "Elon",
       last_name: "Musk",
       description: "I could go to Mars. But I'd rather go to the beach.",
@@ -97,7 +97,7 @@ users = [
   [
     {
       email: "Beyoncee@official.com",
-      password: 'sqgklenqf',
+      password: '123456',
       first_name: "Beyoncé",
       last_name: "Knowles",
       description: "I want to discover the world and meet new people",
@@ -108,7 +108,7 @@ users = [
   [
     {
       email: "EmmanuelMacron@official.com",
-      password: 'qrgzhtht',
+      password: '123456',
       first_name: "Emmanuel",
       last_name: "Macron",
       description: "J'ai envie de voyager parce que c'est mon projet",
@@ -119,7 +119,7 @@ users = [
   [
     {
       email: "harrisonford@official.com",
-      password: 'sdfbfbfs',
+      password: '123456',
       first_name: "Harrison",
       last_name: "Ford",
       description: "I want to go on an adventure like it's the 80's",
@@ -130,7 +130,7 @@ users = [
   [
     {
       email: "jeandujardin@official.com",
-      password: 'dflhqgrqf',
+      password: '123456',
       first_name: "Jean",
       last_name: "Dujardin",
       description: "Comment est votre blanquette?",
@@ -141,7 +141,7 @@ users = [
   [
     {
       email: "cristinacordula@gmail.com",
-      password: 'isqdhrgiqreghif',
+      password: '123456',
       first_name: "Cristina",
       last_name: "Córdula",
       description: "Love Fashion and travel with mes cheries!",
@@ -149,17 +149,53 @@ users = [
     },
     "https://media.melty.fr/article-3783779-square_256/media.jpg"
   ],
+
   [
     {
       email: "sophiemarceau@gmail.com",
-      password: 'heiuegriuyiy',
+      password: '123456',
       first_name: "Sophie",
       last_name: "Marceau",
       description: "Hey I'm Sophie Marceau! Coucou Louis ;)",
       date_of_birth: "17/11/1966".to_date
     },
     "https://res.cloudinary.com/enjoymovie/image/upload/w_256,h_256,c_fill,g_auto:faces/tfig5iuaj4lmq9tblbw0.jpg"
-  ]
+  ],
+
+  [
+    {
+      email: "anthonyyou@gmail.com",
+      password: '123456',
+      first_name: "Anthony",
+      last_name: "You",
+      description: "Hey I'm Anthony You!;)",
+      date_of_birth: "17/11/1993".to_date
+    },
+    "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"
+  ],
+
+  [
+    {
+      email: "raphaeltoubiana@gmail.com",
+      password: '123456',
+      first_name: "Raphael",
+      last_name: "Toubina",
+      description: "Hey I'm Raphael Toubiana!;)",
+      date_of_birth: "17/11/1993".to_date
+    },
+    "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1598027117/lg7kzhcjqieldye3ffmg.jpg"
+  ],
+  [
+    {
+      email: "mathieuvalery@gmail.com",
+      password: '123456',
+      first_name: "Mathieu",
+      last_name: "Valéry",
+      description: "Hey I'm Mathieu Valéry!;)",
+      date_of_birth: "17/11/1993".to_date
+    },
+    "https://kitt.lewagon.com/placeholder/users/mathieuvalery"
+  ],
 ]
 
 users.each do |user| iterated_user = User.new(user.first)
@@ -240,6 +276,75 @@ trips = [
     },
     "https://images.unsplash.com/photo-1565622832101-358788927c53?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
   ],
+
+  [
+    {
+      title: "Biarritz on fire",
+      description: "Come and spend an incredible time in a charming private villa. Discover the activities and the region. Fun, chill and sunw! ",
+      country: "France",
+      city: "Biarritz, France",
+      budget_min: 350,
+      budget_max: 400,
+      departure_date: "4/09/2020".to_date,
+      return_date: "6/09/2020".to_date,
+      max_capacity: 6,
+      user: User.all.sample,
+      tag_list: ["Chill"]
+    },
+    "https://images.unsplash.com/photo-1451159289881-10709108b343?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+  ],
+
+  [
+    {
+      title: "City Break à Stockholm",
+      description: "Come and spend an exotic and rejuvenating weekend! ",
+      country: "Sweden",
+      city: "Stockholm, Sweden",
+      budget_min: 340,
+      budget_max: 400,
+      departure_date: "4/09/2020".to_date,
+      return_date: "7/09/2020".to_date,
+      max_capacity: 6,
+      user: User.all.sample,
+      tag_list: ["Chill"]
+    },
+    "https://images.unsplash.com/photo-1509356843151-3e7d96241e11?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+  ],
+
+  [
+    {
+      title: "Safari in Tanzania",
+      description: "Put your hat and your rangers on! Don't forget your binoculars!",
+      country: "Tanzania",
+      city: "Zanzibar",
+      budget_min: 2500,
+      budget_max: 3000,
+      departure_date: "10/09/2020".to_date,
+      return_date: "25/09/2020".to_date,
+      max_capacity: 4,
+      user: User.all.sample,
+      tag_list: ["Safari"]
+    },
+    "https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1348&q=80"
+  ],
+
+  [
+    {
+      title: "Northern Lights in Norway",
+      description: "Discover nothern lights during an incredible roadtrip",
+      country: "Norway",
+      city: "Harstad, Norway",
+      budget_min: 1300,
+      budget_max: 1600,
+      departure_date: "20/12/2020".to_date,
+      return_date: "5/01/2021".to_date,
+      max_capacity: 4,
+      user: User.all.sample,
+      tag_list: ["RoadTrip", "Magical"]
+    },
+    "https://images.unsplash.com/photo-1579033461380-adb47c3eb938?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
+  ],
+
   [
     {
       title: "Week End to Rome",
@@ -256,6 +361,24 @@ trips = [
     },
     "https://images.unsplash.com/photo-1546946590-5d739771abc4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1512&q=80"
   ],
+
+  [
+    {
+      title: "Bali: Sea, chill and sun ",
+      description: "Discover Bali with great team mates ",
+      country: "Indonesia",
+      city: "Bali, Indonesia",
+      budget_min: 2000,
+      budget_max: 2500,
+      departure_date: "10/09/2020".to_date,
+      return_date: "25/09/2020".to_date,
+      max_capacity: 5,
+      user: User.all.sample,
+      tag_list: ["Chill", "Sea"]
+    },
+    "https://images.unsplash.com/photo-1537996194471-e657df975ab4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=754&q=80"
+  ],
+
   [
     {
       title: "From Russia with Love",
@@ -270,9 +393,8 @@ trips = [
       tag_list: ["Romantic"]
     },
     "https://images.unsplash.com/photo-1547448415-e9f5b28e570d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
-  ]
+  ],
 ]
-
 
 trips.each do |trip|
   iterated_trip = Trip.new(trip.first)
