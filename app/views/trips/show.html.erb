@@ -15,8 +15,14 @@
 <!-- SPECS -->
   <div class="container mt-3">
     <div class="trip-description">
-      <h2 class="font-weight-bold text-center mb-2">about the trip</h2>
       <p class="text-center p-3"><%= @trip.description %></p>
+      <% if @trip.tags.first %>
+      <div class="d-flex align-items-center justify-content-center">
+        <% @trip.tags.each do |tag| %>
+          <span class="badge badge-light py-2 px-3 font-weight-light mx-1"><%= tag.name %></span>
+        <% end %>
+      </div>
+    <% end %>
       <hr>
       <div class="icons my-3" style= "display: flex; justify-content: space-around;">
         <div class= "icon text-center">
@@ -51,7 +57,7 @@
     </div>
   <% end %>
   <% if (@trip.full? || @trip.departed?) && (user_signed_in?) && (current_user.accepted_in?(@trip.id)) %>
-    <%= link_to 'Go to chatroom', trip_messages_path(@trip), class: 'btn-travel-special', style: 'position: fixed; bottom: 50px; right: 50px;' %>
+    <%= link_to 'Go to chatroom', trip_messages_path(@trip), class: 'btn-travel-special', style: 'position: fixed; bottom: 50px; right: 50px; z-index: 1050' %>
   <% elsif @trip.full? || @trip.departed? %>
     <div class='text-center mt-3'>
       <p>Trip is full or has already departed!</p>
@@ -83,12 +89,10 @@
 
 <!-- TRIP USERS -->
   <h2 class="font-weight-bold text-center mt-5 mb-4">meet your dream team</h2>
-  <div class="users-grid d-flex justify-content-around mt-5">
+  <div class="users-grid mt-5">
     <% @trip.bookings.each do |booking| %>
       <% if booking.status == "accepted" %>
-        <div class="card-and-review">
           <%= render 'shared/usercards', user: booking.user, booking: booking, current_user_booking: @booking %>
-        </div>
       <% end %>
     <% end %>
   </div>
@@ -105,6 +109,7 @@
     <div id="map2"
        style="width: 100%; height: 600px;"
        data-markers="<%= @markers.to_json %>"
+       data-activity="<%= @activities.first%>"
        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>

@@ -7,27 +7,27 @@
     <%# end %>
     <%#= f.input :tags, as: :check_boxes, collection: @trips.map(&:tags).flatten.uniq %>
 
-    <fieldset class="form-group check_boxes required filter_tags">
+    <fieldset class="form-group check_boxes required filter_tags mt-5">
       <legend class="col-form-label pt-0">
-        Filters <abbr title="required">*</abbr>
+        Choose your categories <abbr title="required">*</abbr>
       </legend>
       <input type="hidden" name="filter[tags][]" value="">
     </fieldset>
 
       <div class="filter-tags">
         <% Trip.all.map(&:tags).flatten.uniq.each do |tag| %>
-          <div class="form-check">
+          <div class="form-check" style="margin-bottom: 14px;">
             <input class="form-check-input check_boxes required d-none" type="checkbox" value="<%= tag %>" name="filter[tags][]" id="filter_tags_<%= tag %>" <%= 'checked' if @selected_filters.include?(tag.name) %>>
-            <label class="form-check-label collection_check_boxes filter-tag <%= 'active' if @selected_filters.include?(tag.name) %>" for="filter_tags_<%= tag %>" style="border-radius: 20px"><%= tag %></label>
+            <label class="form-check-label collection_check_boxes filter-tag <%= 'active' if @selected_filters.include?(tag.name) %>" for="filter_tags_<%= tag %>" style="border-radius: 20px; background-color:white; color: black"><%= tag %></label>
           </div>
         <% end %>
-      </div>
-
-    <%= f.input :query, input_html: { value: params[:query] }, as: :hidden %>
-    <div style="text-align: center; margin: 50px">
-      <%= f.submit "Submit filters", class: "btn btn-travel-primary"%>
-    </div>
+        <%= f.input :query, input_html: { value: params[:query] }, as: :hidden %>
+        <div style="text-align: center; margin-bottom: 50px">
+          <%= f.submit "Filter", class: "btn btn-travel-primary ml-2"%>
+       </div>
+     </div>
   <% end %>
+
 
   <div class ="d-flex flex-column flex-lg-row justify-content-between pt-4">
       <%= render "shared/cards-grid", trips: @trips %>

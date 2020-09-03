@@ -2,6 +2,9 @@
   justify-content: space-between;
   height: $navbar-height;
   background-color: white;
+  .dropdown-menu {
+    overflow: hidden;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
