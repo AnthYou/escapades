@@ -91,7 +91,7 @@
 
 <!-- TRIP USERS -->
   <h2 class="font-weight-bold text-center mt-5 mb-4">meet your dream team</h2>
-  <% if @trip.user == current_user %>
+  <% if @trip.user == current_user && @trip.bookings.where(status: "pending").count>0%>
     <div class="text-center mt-5 mb-3">
       <%= link_to 'Review applications', trip_review_booking_path(@trip), class: 'btn-travel-primary' %>
       <p class="badge badge-pill badge-danger" style="position: relative; left:-19px; top: -21px;"><%=@trip.bookings.where(status: "pending").count%></p>
