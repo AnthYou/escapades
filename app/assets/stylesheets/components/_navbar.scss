@@ -1,5 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
+  transition: background-color 0.35s ease-in-out;
   height: $navbar-height;
   background-color: white;
   .dropdown-menu {
@@ -120,4 +121,9 @@
 .navbar-white .container form {
   opacity: 1;
   height: auto;
+}
+
+.background-none {
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.35s ease-in-out;
 }
