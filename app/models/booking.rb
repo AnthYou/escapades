@@ -11,11 +11,13 @@ class Booking < ApplicationRecord
     if self.status == "accepted"
       Notification.create(content: "Congratulations #{self.user.full_name}! You have been accepted in: #{self.trip.title}",
                           receiver: self.user,
-                          booking: self)
+                          booking: self,
+                          notification_type: "booking-accepted")
     elsif self.status == "pending"
       Notification.create(content: "#{self.user.full_name} made a request to join your trip: #{self.trip.title}",
                           receiver: self.trip.user,
-                          booking: self)
+                          booking: self,
+                          notification_type: "new-booking")
     end
   end
 end

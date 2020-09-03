@@ -1,7 +1,8 @@
 <% notifications.each do |notification|%>
-    <div class="d-flex align-items-center mb-2">
+  <div class="d-flex align-items-center mb-2">
+    <% if notification.notification_type == "new-booking" || notification.notification_type == "booking-accepted" %>
       <div class= "mr-3">
-        <%= cl_image_tag notification.booking.user.photo.key , class: "avatar" %>
+          <%= cl_image_tag notification.booking.user.photo.key , class: "avatar" %>
       </div>
       <div>
         <p style="margin-bottom: 0px; font-size:13px;"> <%= notification.content %>.
@@ -13,5 +14,16 @@
         | <%= link_to "Read", notification_read_path(notification), method: :patch, style: "color: #f2a365" %>
         </p>
       </div>
-    </div>
+    <% elsif notification.notification_type == "new-chat-activity" %>
+      <div class= "mr-3">
+        <%= cl_image_tag notification.booking.trip.photo.key , class: "avatar" %>
+      </div>
+      <div>
+        <p style="margin-bottom: 0px; font-size:13px;"> <%= notification.content %>.
+          <%= link_to "Go to chat", trip_messages_path(notification.booking.trip), style: "color: #f2a365" %>
+        | <%= link_to "Read", notification_read_path(notification), method: :patch, style: "color: #f2a365" %>
+        </p>
+      </div>
+    <% end %>
+  </div>
 <% end %>

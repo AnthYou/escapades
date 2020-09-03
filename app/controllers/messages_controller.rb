@@ -23,6 +23,11 @@ class MessagesController < ApplicationController
         @trip,
         render_to_string(partial: "message", locals: { message: @message })
       )
+      @trip.bookings.where(status: "accepted").each do |booking|
+        unless booking.user == @message.user
+          Notification.create(content: "New activity in your chatroom", receiver: booking.user, booking: booking, notification_type: "new-chat-activity")
+        end
+      end
       redirect_to trip_messages_path(@trip, anchor: "message-#{@message.id}")
     else
       render "messages/index"
