@@ -1,0 +1,5 @@
+meta_product_name: "Escapades"
+meta_title: "Escapades - Travel Together"
+meta_description: "Find travel buddies to explore the world together"
+meta_image: "escapades-meta-image.jpg" # should exist in `app/assets/images/`
+twitter_account: "@escapades"   # required for Twitter Cards
