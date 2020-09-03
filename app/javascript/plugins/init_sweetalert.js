@@ -9,7 +9,6 @@ const initAcceptSweetalert = (selector, options = {}) => {
         title: "Confirm acceptation?",
         icon: "warning"
       }).then((value) => {
-        console.log(value);
         if (value) {
             //const link = document.querySelector('#accept-link');
             //link.click();
@@ -24,21 +23,27 @@ const initRejectSweetalert = (selector, options = {}) => {
    const swalButton = document.querySelector(".reject-application");
   if (swalButton) { // protect other pages
     swalButton.addEventListener('click', () => {
-      console.log("click");
       swal({
         title: "Do you really want to reject this application?",
         text: "This action cannot be reversed",
-        icon: "warning"
-      }).then((value) => {
-        console.log(value);
-        if (value) {
-            //const link = document.querySelector('#accept-link');
-            //link.click();
-           swalButton.nextElementSibling.click();
-        }
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          swal("This application has been rejected!", {
+              icon: "success",
+            }).then((redirect) => {
+              if (redirect) {
+                swalButton.nextElementSibling.click();
+                }
+            });;
+        } else {
+          swal("This application hasn't been rejected");
+        };
       });
     });
-  }
+  };
 };
 
 const initDeleteSweetalert = () => {
@@ -48,16 +53,24 @@ const initDeleteSweetalert = () => {
       swal({
         title: "Do you really want to delete this activity?",
         text: "This action cannot be reversed",
-        icon: "warning"
-      }).then((value) => {
-        console.log(value);
-        if (value) {
-          // const link = document.querySelector('#delete-link');
-          swalButton.nextElementSibling.click();
-        }
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          swal("This activity has been deleted!", {
+              icon: "success",
+            }).then((redirect) => {
+              if (redirect) {
+                swalButton.nextElementSibling.click();
+                }
+            });;
+        } else {
+          swal("This activity hasn't been deleted");
+        };
       });
     });
-  }
+  };
 };
 
 export { initAcceptSweetalert, initDeleteSweetalert, initRejectSweetalert };
