@@ -83,12 +83,10 @@
 
 <!-- TRIP USERS -->
   <h2 class="font-weight-bold text-center mt-5 mb-4">meet your dream team</h2>
-  <div class="users-grid d-flex justify-content-around mt-5">
+  <div class="users-grid mt-5">
     <% @trip.bookings.each do |booking| %>
       <% if booking.status == "accepted" %>
-        <div class="card-and-review">
           <%= render 'shared/usercards', user: booking.user, booking: booking, current_user_booking: @booking %>
-        </div>
       <% end %>
     <% end %>
   </div>
@@ -105,6 +103,7 @@
     <div id="map2"
        style="width: 100%; height: 600px;"
        data-markers="<%= @markers.to_json %>"
+       data-activity="<%= @activities.first%>"
        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>
