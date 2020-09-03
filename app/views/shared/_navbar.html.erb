@@ -30,10 +30,12 @@
             <% end %>
           </li>
           <li class="nav-item dropdown">
-            <div class="navbar-icon-bg-black" id="navbarDropdown" data-toggle="dropdown">
+            <div class="navbar-icon-bg-black" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-comment-dots"></i>
-              <div class="roundcounter-red" style="position: absolute; left: 26px; top: -3px;"><%=Notification.where(receiver: current_user, read: false, notification_type: "new-chat-activity").count%>
-              </div>
+              <%if Notification.where(receiver: current_user, read: false, notification_type: "new-chat-activity").count > 0 %>
+                <div class="roundcounter-red" style="position: absolute; left: 26px; top: -3px;"><%=Notification.where(receiver: current_user, read: false, notification_type: "new-chat-activity").count%>
+                </div>
+              <% end %>
             </div>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <p class="text-center mb-1"><strong>Choose your chatroom</strong></p>
@@ -48,20 +50,20 @@
           </li>
         <!--   NOTIFICATIONS -->
           <li class="nav-item dropdown">
-            <div class="navbar-icon-bg-black" id="navbarDropdown" data-toggle="dropdown">
+            <div class="navbar-icon-bg-black" id="navbarDropdownNotif" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <!-- <div class="dropdown dropleft"> -->
-                <i class="fas fa-bell" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                <i class="fas fa-bell" role="button" id="dropdownMenuLink"></i>
               <% if Notification.where(receiver: current_user, read: false, notification_type: ["booking-accepted", "new-booking"]).count > 0  %>
                 <div class="roundcounter-red" style="position: absolute; left: 26px; top: -3px;"><%=Notification.where(receiver: current_user, read: false, notification_type: ["booking-accepted", "new-booking"]).count%>
                 </div>
               <% end %>
-              <div class="dropdown-menu dropdown-menu-right p-3" aria-labelledby="navbarDropdown" style= "min-width: 500px;">
-                <% if Notification.where(receiver: current_user, read: false).count > 0  %>
-                  <%= render 'shared/notifications-partial', notifications: Notification.where(receiver: current_user, read: false, notification_type: ["booking-accepted", "new-booking"]) %>
-                <% else %>
-                  <p class= "text-center mb-0">You have no notification for the moment ! Come back later.</p>
-                <% end %>
-              </div>
+            </div>
+            <div class="dropdown-menu dropdown-menu-right p-3" aria-labelledby="navbarDropdownNotif" style= "min-width: 500px;">
+              <% if Notification.where(receiver: current_user, read: false).count > 0  %>
+                <%= render 'shared/notifications-partial', notifications: Notification.where(receiver: current_user, read: false, notification_type: ["booking-accepted", "new-booking"]) %>
+              <% else %>
+                <p class= "text-center mb-0">You have no notification for the moment ! Come back later.</p>
+              <% end %>
             </div>
           </li>
 
