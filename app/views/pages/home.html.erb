@@ -82,7 +82,7 @@
 
   <div class="filter-tags-home">
     <% Trip.all.map(&:tags).flatten.uniq.each do |tag| %>
-      <%= link_to trips_path(filter: { tags: [tag.name]}) do %>
+      <%= link_to trips_path(filter: { tags: [tag.name] }) do %>
         <div
           class="filter-tag-home tag-styling"
           style="border-radius: 20px; background-image: url('https://source.unsplash.com/200x200/?<%= tag %>')">
