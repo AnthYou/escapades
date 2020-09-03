@@ -23,7 +23,7 @@
         <%= f.input :photo, as: :file, required: true %>
         <%= f.submit "Save changes", class: "btn btn-travel-primary" %>
       <% end %>
-      <button id="sweet-alert-demo" class="btn btn-travel-special delete-btn mt-3">Delete <%=@activity.title%></button>
+      <button class="btn btn-travel-special delete-btn mt-3">Delete <%=@activity.title%></button>
       <%= link_to "",
                 activity_path(@activity),
                 method: :delete,

@@ -1,10 +1,42 @@
 import swal from 'sweetalert';
 
-const initSweetalert = (selector, options = {}) => {
-  const swalButton = document.querySelector(selector);
+const initAcceptSweetalert = (selector, options = {}) => {
+   const swalButton = document.querySelector(".accept-application");
   if (swalButton) { // protect other pages
     swalButton.addEventListener('click', () => {
-      swal(options);
+      console.log("click");
+      swal({
+        title: "Confirm acceptation?",
+        icon: "warning"
+      }).then((value) => {
+        console.log(value);
+        if (value) {
+            //const link = document.querySelector('#accept-link');
+            //link.click();
+           swalButton.nextElementSibling.click();
+        }
+      });
+    });
+  }
+};
+
+const initRejectSweetalert = (selector, options = {}) => {
+   const swalButton = document.querySelector(".reject-application");
+  if (swalButton) { // protect other pages
+    swalButton.addEventListener('click', () => {
+      console.log("click");
+      swal({
+        title: "Do you really want to reject this application?",
+        text: "This action cannot be reversed",
+        icon: "warning"
+      }).then((value) => {
+        console.log(value);
+        if (value) {
+            //const link = document.querySelector('#accept-link');
+            //link.click();
+           swalButton.nextElementSibling.click();
+        }
+      });
     });
   }
 };
@@ -14,7 +46,7 @@ const initDeleteSweetalert = () => {
   if (swalButton) { // protect other pages
     swalButton.addEventListener('click', () => {
       swal({
-        title: "Are you sure?",
+        title: "Do you really want to delete this activity?",
         text: "This action cannot be reversed",
         icon: "warning"
       }).then((value) => {
@@ -28,4 +60,4 @@ const initDeleteSweetalert = () => {
   }
 };
 
-export { initSweetalert, initDeleteSweetalert };
+export { initAcceptSweetalert, initDeleteSweetalert, initRejectSweetalert };

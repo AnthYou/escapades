@@ -40,7 +40,7 @@ import { initPolaroidsRotation } from "../components/postcards";
 import { initTripCable } from "../channels/trip_channel";
 import { sendMessage } from "../components/send_message";
 import { initSelect2 } from '../plugins/init_select2';
-import { initSweetalert, initDeleteSweetalert } from '../plugins/init_sweetalert'
+import { initAcceptSweetalert, initRejectSweetalert, initDeleteSweetalert } from '../plugins/init_sweetalert'
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -56,5 +56,7 @@ document.addEventListener('turbolinks:load', () => {
   sendMessage();
   initMapbox();
   initDeleteSweetalert();
+  initAcceptSweetalert();
+  initRejectSweetalert();
 });
 
