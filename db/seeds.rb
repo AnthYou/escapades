@@ -187,14 +187,47 @@ users = [
   ],
   [
     {
-      email: "mathieuvalery@gmail.com",
+      email: "eugenieavedikian@gmail.com",
       password: '123456',
-      first_name: "Mathieu",
-      last_name: "Valéry",
-      description: "Hey I'm Mathieu Valéry!;)",
+      first_name: "Eugénie",
+      last_name: "Avedikian",
+      description: "Hey I'm Eugenie Avedikian!;)",
       date_of_birth: "17/11/1993".to_date
     },
-    "https://kitt.lewagon.com/placeholder/users/mathieuvalery"
+    "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1598194006/pub2eya930lxyhpjqfof.jpg"
+  ],
+  [
+    {
+      email: "nicolaschevalier@gmail.com",
+      password: '123456',
+      first_name: "Nicolas",
+      last_name: "Chevalier",
+      description: "Hey I'm Nicolas Chevalier!;)",
+      date_of_birth: "17/11/1993".to_date
+    },
+    "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597852803/ynwdfogs8xfmzqonmo2f.jpg"
+  ],
+  [
+    {
+      email: "elsakrief@gmail.com",
+      password: '123456',
+      first_name: "Elsa",
+      last_name: "Krief",
+      description: "Hey I'm Elsa Kiefer",
+      date_of_birth: "17/11/1993".to_date
+    },
+    "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1598975754/yqvb1mn4ughztj2mhp7o.jpg"
+  ],
+  [
+    {
+      email: "oceaneleroy@gmail.com",
+      password: '123456',
+      first_name: "Oceane",
+      last_name: "Leroy",
+      description: "Hey I'm Oceane Leroy!;)",
+      date_of_birth: "17/11/1993".to_date
+    },
+    "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597859853/hlm3ivjlz0tezolmvyvo.jpg"
   ],
 ]
 
@@ -224,7 +257,7 @@ trips = [
       return_date: "23/08/2020".to_date,
       max_capacity: 6,
       user: User.first,
-      tag_list: ["RoadTrip"]
+      tag_list: ["Oceania", "Adventure"]
     },
     "https://images.unsplash.com/photo-1529108190281-9a4f620bc2d8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1023&q=80"
   ],
@@ -240,7 +273,7 @@ trips = [
       return_date: "5/01/2021".to_date,
       max_capacity: 6,
       user: User.all.sample,
-      tag_list: ["Magical", "christmas"]
+      tag_list: ["America", "Cultural", "Party"]
     },
     "https://images.unsplash.com/photo-1534430480872-3498386e7856?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
   ],
@@ -256,7 +289,7 @@ trips = [
       return_date: "17/09/2020".to_date,
       max_capacity: 6,
       user: User.all.sample,
-      tag_list: ["Summer", "RoadTrip", "Sea", "Chill"]
+      tag_list: ["Islands", "Adventure", "Chill"]
     },
     "https://www.decisionsdurables.com/wp-content/uploads/2017/03/la_reunion_vue_du_ciel02_-_credit_irt_-_serge_gelabert_dts_12_2014.jpg"
   ],
@@ -272,7 +305,7 @@ trips = [
       return_date: "31/08/2020".to_date,
       max_capacity: 6,
       user: User.all.sample,
-      tag_list: ["Horsing", "Chill"]
+      tag_list: ["Europe", "Chill"]
     },
     "https://images.unsplash.com/photo-1565622832101-358788927c53?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
   ],
@@ -323,7 +356,7 @@ trips = [
       return_date: "25/09/2020".to_date,
       max_capacity: 4,
       user: User.all.sample,
-      tag_list: ["Safari"]
+      tag_list: ["Africa", "Adventure"]
     },
     "https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1348&q=80"
   ],
@@ -340,14 +373,14 @@ trips = [
       return_date: "5/01/2021".to_date,
       max_capacity: 4,
       user: User.all.sample,
-      tag_list: ["RoadTrip", "Magical"]
+      tag_list: ["Europe"]
     },
     "https://images.unsplash.com/photo-1579033461380-adb47c3eb938?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
   ],
 
   [
     {
-      title: "Week End to Rome",
+      title: "Weekend to Rome",
       description: "I want to go to Italy with someone cheerful. I plan to see the main tourist spots as well as good restaurants.",
       country: "Italy",
       city: "Roma, Lazio, Italy",
@@ -357,7 +390,7 @@ trips = [
       return_date: "31/08/2020".to_date,
       max_capacity: 4,
       user: User.all.sample,
-      tag_list: ["Romantic"]
+      tag_list: ["Europe", "Low-budget", "Cultural"]
     },
     "https://images.unsplash.com/photo-1546946590-5d739771abc4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1512&q=80"
   ],
@@ -374,7 +407,7 @@ trips = [
       return_date: "25/09/2020".to_date,
       max_capacity: 5,
       user: User.all.sample,
-      tag_list: ["Chill", "Sea"]
+      tag_list: ["Chill", "Oceania"]
     },
     "https://images.unsplash.com/photo-1537996194471-e657df975ab4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=754&q=80"
   ],
@@ -390,9 +423,39 @@ trips = [
       return_date: "07/09/2020".to_date,
       max_capacity: 3,
       user: User.all.sample,
-      tag_list: ["Romantic"]
+      tag_list: ["Asia", "Europe", "Cultural"]
     },
     "https://images.unsplash.com/photo-1547448415-e9f5b28e570d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
+  ],
+  [
+    {
+      title: "Loco Morocco",
+      description: "Let's discover Morocco all together! We will chill and party hard, so don't hesitate to join!",
+      country: "Morocco",
+      budget_min: 200,
+      budget_max: 700,
+      departure_date: "18/10/2020".to_date,
+      return_date: "06/11/2020".to_date,
+      max_capacity: 6,
+      user: User.all.sample,
+      tag_list: ["Middle East", "Party", "Chill"]
+    },
+    "https://images.unsplash.com/photo-1505576391880-b3f9d713dc4f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80"
+  ],
+  [
+    {
+      title: "Sahara Desert",
+      description: "Let's discover Algeria all together! We will chill and visit the isolating village in Algeria's wild Sahara desert. Don't hesitate to join!",
+      country: "Algeria",
+      budget_min: 400,
+      budget_max: 1000,
+      departure_date: "01/10/2020".to_date,
+      return_date: "06/11/2020".to_date,
+      max_capacity: 6,
+      user: User.all.sample,
+      tag_list: ["Africa", "Cultural", "Chill"]
+    },
+    "https://images.unsplash.com/photo-1545167496-c1e092d383a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=682&q=80"
   ],
 ]
 

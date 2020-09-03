@@ -1,44 +1,47 @@
 <%= link_to user_path(user), :action => 'go' do %>
   <!-- USER CARD -->
   <div class="usercard-container mb-4">
+
     <% if user.photo.attached? %>
       <li class="usercard-image" style="background-image: url('<%= cl_image_path user.photo.key %>');"></li>
     <% else %>
       <li class="usercard-image" style="background-image: url('https://icon-library.com/images/default-user-icon/default-user-icon-8.jpg');"></li>
     <% end %>
-    <!-- BADGE -->
-  <div class="card-badges">
-    <% if @trip.user == user %>
-      <span class="badge badge-secondary py-2 px-3 font-weight-light" style="position: absolute; left: 20px; top: 20px;">OWNER</span>
-    <% end %>
-    <% if booking && current_user_booking && current_user_booking.status == "accepted" && @trip.return_date < Date.today && booking.user != current_user %>
-          <%= link_to "Leave a review", new_booking_review_path(booking), class: "badge badge-primary py-2 px-3 font-weight-light", style: "color: white; position: absolute; right: 10px; bottom: 120px;" %>
-      <% end %>
-  </div>
 
-  <div class="card-info">
-    <div class="usercard-top">
-      <h2 class="usercard-name"><%= user.first_name %> <%= user.last_name%></h2>
-      <!-- AVERAGE RATING -->
-      <div class="reviews">
-        <% if user.user_average_rating != nil  %>
-          <% user.user_average_rating.times do %>
-            <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
+      <!-- BADGE -->
+    <div class="card-badges">
+      <% if @trip.user == user %>
+        <span class="badge badge-secondary py-2 px-3 font-weight-light" style="position: absolute; left: 20px; top: 20px;">OWNER</span>
+      <% end %>
+      <% if booking && current_user_booking && current_user_booking.status == "accepted" && @trip.return_date < Date.today && booking.user != current_user %>
+            <%= link_to "Leave a review", new_booking_review_path(booking), class: "badge badge-primary py-2 px-3 font-weight-light", style: "color: white; position: absolute; right: 10px; bottom: 120px;" %>
+        <% end %>
+    </div>
+
+    <div class="card-info">
+      <div class="usercard-top">
+        <h2 class="usercard-name"><%= user.first_name %> <%= user.last_name%></h2>
+        <!-- AVERAGE RATING -->
+        <div class="reviews">
+          <% if user.user_average_rating != nil  %>
+            <% user.user_average_rating.times do %>
+              <li class="list-inline-item star-orange"><i class="fas fa-star"></i></li>
+            <% end %>
+            <% (5 - user.user_average_rating).times do %>
+              <li class="list-inline-item star-grey"><i class="fas fa-star"></i></li>
+            <% end %>
+          <% else %>
+            <li class="list-inline-item">No review</li>
           <% end %>
-          <% (5 - user.user_average_rating).times do %>
-            <li class="list-inline-item star-grey"><i class="fas fa-star"></i></li>
-          <% end %>
-        <% else %>
-          <li class="list-inline-item"> No review </li>
+        </div>
+      </div>
+      <div class="usercard-description">
+        <% if user.description %>
+          <%= user.description.truncate(70) %>
         <% end %>
       </div>
     </div>
-    <div class="usercard-description">
-      <% if user.description %>
-        <%= user.description.truncate(70) %>
-      <% end %>
-    </div>
-  </div>
-</div>
-<% end %>
 
+  </div>
+
+<% end %>
