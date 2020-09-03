@@ -150,6 +150,9 @@ const initMapbox = () => {
 
   // MAP IN TRIP SHOW
    const mapElement2 = document.getElementById('map2');
+   // const activity = mapElement2.dataset.activity;
+   // console.log(activity);
+   // console.log(typeof(JSON.parse(activity)));
 
    if (mapElement2) {
      mapboxgl.accessToken = mapElement2.dataset.mapboxApiKey;
@@ -178,8 +181,9 @@ const initMapbox = () => {
 
 
      // drawRouteDriving(map2, markers);
-
-     fitMapToMarkers(map2, markers);
+     if ((mapElement2.dataset.activity) !== "") {
+          fitMapToMarkers(map2, markers);
+        }
 
    }
 };
