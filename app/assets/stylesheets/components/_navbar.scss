@@ -9,6 +9,10 @@
 }
 
 .navbar-nav .dropdown-menu {
+  @include media-breakpoint-down(xs) {
+    min-width: 300px;
+  }
+  min-width: 400px;
   position: absolute;
 }
 
@@ -16,9 +20,7 @@
   @include media-breakpoint-down(xs) {
     position: absolute;
   }
-
   flex-grow: 0;
-
   top: 80px;
   right: 0px;
 }
@@ -110,6 +112,11 @@
   @include media-breakpoint-down(sm) {
     width: 70vw;
   }
+
+   @include media-breakpoint-up(sm) {
+    width: 100%;
+  }
+
   transition: all 0.3s ease;
   input#query {
     border-radius: 30px;
@@ -133,12 +140,13 @@
   }
 }
 
-.hide-searchbar .container form {
+.form-navbar .container form {
   transition: all 1s ease-out;
   opacity: 0;
   height: 0;
   overflow: hidden;
 }
+
 
 .linear-gradient {
   background: linear-gradient(to top, rgba(255, 255, 255, 0), #ffffff);
