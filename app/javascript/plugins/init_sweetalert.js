@@ -11,7 +11,7 @@ const initAcceptSweetalert = (selector, options = {}) => {
         }).then((value) => {
           if (value) {
 
-             swalButton.nextElementSibling.click();
+             button.nextElementSibling.click();
           }
         });
       });
@@ -36,7 +36,9 @@ const initRejectSweetalert = (selector, options = {}) => {
                 icon: "success",
               }).then((redirect) => {
                 if (redirect) {
-                  swalButton.nextElementSibling.click();
+                  console.log(button)
+                  console.log(redirect)
+                  button.nextElementSibling.click();
                   }
               });;
           } else {
