@@ -45,7 +45,7 @@
       <h2><%= trip.country %></h2>
       <h3><%= trip.city.presence %></h3>
       <% if trip.description %>
-        <p><%= trip.description.truncate(250) %></p>
+        <p><%= trip.description.truncate(150) %></p>
       <% end %>
       <!-- USER AVATARS -->
       <div class="carousel-users">
