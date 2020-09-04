@@ -13,7 +13,8 @@ const initAutocomplete = () => {
         }
       }
     }).configure({
-      type: 'country'
+      type: 'country',
+      language: 'en'
     });
   })
 
@@ -27,6 +28,7 @@ const initAutocomplete = () => {
       }
     }).configure({
       type: 'city',
+      language: 'en',
       aroundLatLngViaIP: false
     });
   })
