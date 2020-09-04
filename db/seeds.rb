@@ -591,7 +591,7 @@ puts "Seeding bookings..."
 status = ["pending", "accepted", "declined", "cancelled"]
 
 5.times do
-  Booking.create!(user: User.all.sample, trip: Trip.first, status: "accepted")
+  Booking.create(user: User.all.sample, trip: Trip.first, status: "accepted")
 end
 
 20.times do
@@ -607,7 +607,7 @@ end
     user = User.all.sample
   end
 
-  Booking.create!(user: user, trip: trip, status: "accepted")
+  Booking.create(user: user, trip: trip, status: "accepted")
 end
 
 
