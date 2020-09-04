@@ -57,7 +57,7 @@
     </div>
   <% end %>
   <% if (@trip.full? || @trip.departed?) && (user_signed_in?) && (current_user.accepted_in?(@trip.id)) %>
-    <%= link_to 'Go to chatroom', trip_messages_path(@trip), class: 'btn-travel-special', style: 'position: fixed; bottom: 50px; right: 50px; z-index: 1050' %>
+    <%= link_to 'Go to chatroom', trip_messages_path(@trip), class: 'btn-travel-special', style: 'position: fixed; bottom: 50px; right: 50px; z-index: 1050;' %>
   <% elsif @trip.full? || @trip.departed? %>
     <div class='text-center mt-3'>
       <p>Trip is full or has already departed!</p>
@@ -66,11 +66,11 @@
     <% if user_signed_in? %>
       <% if @trip.user == current_user %>
         <div class="d-flex">
-          <%= link_to 'Go to chatroom', trip_messages_path(@trip), class: 'btn-travel-special', style: 'position: fixed; bottom: 50px; right: 50px;' %>
+          <%= link_to 'Go to chatroom', trip_messages_path(@trip), class: 'btn-travel-special', style: 'position: fixed; bottom: 50px; right: 50px; z-index: 1050;' %>
         </div>
       <% elsif current_user.accepted_in?(@trip.id) %>
         <div class='text-center mt-3'>
-          <%= link_to 'Go to chatroom', trip_messages_path(@trip), class: 'btn-travel-special', style: 'position: fixed; bottom: 50px; right: 50px;' %>
+          <%= link_to 'Go to chatroom', trip_messages_path(@trip), class: 'btn-travel-special', style: 'position: fixed; bottom: 50px; right: 50px; z-index: 1050;' %>
         </div>
       <% elsif current_user.applied_for?(@trip.id) %>
         <div class="text-center mt-3">
