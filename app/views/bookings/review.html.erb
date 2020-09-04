@@ -5,7 +5,7 @@
     <div class="users-grid d-flex justify-content-around mt-5">
       <% if @bookings.first %>
         <% @bookings.each do |booking| %>
-          <div class="card-and-review">
+          <div id="booking-<%= booking.id %>" class="card-and-review">
             <%= render 'shared/usercards-pending', user: booking.user, booking: booking %>
           </div>
         <% end %>
