@@ -15,6 +15,7 @@ const initUpdateNavbarOnScroll = () => {
 
   if (homepage) {
     navbar.classList.add('background-none');
+    navbar.classList.add('login-white');
     logo.src = "https://res.cloudinary.com/dg4hemebf/image/upload/v1599153497/1599153244-escapades-logo-white_fyf4lg.png"
     window.addEventListener('scroll', () => {
 
