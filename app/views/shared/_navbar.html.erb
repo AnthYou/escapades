@@ -58,7 +58,7 @@
                 </div>
               <% end %>
             </div>
-            <div class="dropdown-menu dropdown-menu-right p-3" aria-labelledby="navbarDropdownNotif">
+            <div class="dropdown-menu dropdown-menu-right p-3" aria-labelledby="navbarDropdownNotif" style= "min-width: 400px;">
               <% if Notification.where(receiver: current_user, read: false).count > 0  %>
                 <%= render 'shared/notifications-partial', notifications: Notification.where(receiver: current_user, read: false, notification_type: ["booking-accepted", "new-booking"]) %>
               <% else %>
