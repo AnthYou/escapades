@@ -16,6 +16,7 @@ Activity.destroy_all
 puts "Done !"
 # USERS CREATION =========================================
 puts "Seeding users..."
+
 users = [
     [
     {
@@ -23,7 +24,7 @@ users = [
       password: '123456',
       first_name: "Cecile",
       last_name: "Dezy",
-      description: "Hey I'm Cecile Dezy!;)",
+      description: "Hey I'm Cecile Dezy! ;)",
       date_of_birth: "17/11/1990".to_date
     },
     "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1539599254/janttrofl6xagki5zk6g.jpg"
@@ -34,7 +35,7 @@ users = [
       password: '123456',
       first_name: "Kenza",
       last_name: "Mahresi",
-      description: "Hey I'm Kenza Mahresi! ",
+      description: "Hey I'm Kenza Mahresi!",
       date_of_birth: "07/06/1974".to_date,
     },
     "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1596040834/t9woatfkaltgi61oulex.jpg"
@@ -43,9 +44,9 @@ users = [
     {
       email: "augustinlazarus@official.com",
       password: '123456',
-      first_name: "Augustin ",
+      first_name: "Augustin",
       last_name: "Lazarus",
-      description: "Hey, I'm Augustin Lazarus :)!",
+      description: "Hey, I'm Augustin Lazarus!",
       date_of_birth: "04/09/1973".to_date,
     },
     "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1593091081/hqyjruqc2m9ckock4edx.jpg"
@@ -55,8 +56,8 @@ users = [
       email: "eliottmogenet@gmail.com",
       password: '123456',
       first_name: "Eliott",
-      last_name: "Mongenet",
-      description: "Hello, I'm Eliott Mongenet",
+      last_name: "Mogenet",
+      description: "Hello, I'm Eliott Mogenet",
       date_of_birth: "27/01/1996".to_date
     },
     "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597912687/tmy20aexx0mnpwled9nt.jpg"
@@ -67,7 +68,7 @@ users = [
       password: '123456',
       first_name: "Thomas",
       last_name: "Desmoulins",
-      description: "Hey I'm Thomas Desmoulins!;)",
+      description: "Hey I'm Thomas Desmoulins! ;)",
       date_of_birth: "17/11/1985".to_date
     },
     "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1585588520/j0m6tlufeayghsj1uqdv.jpg"
@@ -99,7 +100,7 @@ users = [
       email: "juliedakoure@official.com",
       password: '123456',
       first_name: "Julie",
-      last_name: "Dukouré",
+      last_name: "Dakouré",
       description: "Hello guys, I'm Julie Dakouré",
       date_of_birth: "19/06/1972".to_date
     },
@@ -111,7 +112,7 @@ users = [
       password: '123456',
       first_name: "Isabelle",
       last_name: "Lafont",
-      description: "Hello guys, I'm Isabelle Fafont!",
+      description: "Hello guys, I'm Isabelle Lafont!",
       date_of_birth: "30/10/1964".to_date
     },
     "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1593433763/mpgeqtybt7ftjnbrk7zj.jpg"
@@ -135,7 +136,7 @@ users = [
       password: '123456',
       first_name: "Anthony",
       last_name: "You",
-      description: "Hey I'm Anthony You!;)",
+      description: "I love to travel with amazing people!",
       date_of_birth: "17/11/1993".to_date
     },
     "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597872878/ykktauyyzddh4mkkrzd2.jpg"
@@ -146,8 +147,8 @@ users = [
       email: "raphaeltoubiana@gmail.com",
       password: '123456',
       first_name: "Raphael",
-      last_name: "Toubina",
-      description: "Hey I'm Raphael Toubiana!;)",
+      last_name: "Toubiana",
+      description: "Hey I'm Raphael Toubiana! ;)",
       date_of_birth: "17/11/1993".to_date
     },
     "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1598027117/lg7kzhcjqieldye3ffmg.jpg"
@@ -158,7 +159,7 @@ users = [
       password: '123456',
       first_name: "Eugénie",
       last_name: "Avedikian",
-      description: "Hey I'm Eugenie Avedikian!;)",
+      description: "Hey I'm Eugenie Avedikian! ;)",
       date_of_birth: "17/11/1993".to_date
     },
     "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1598194006/pub2eya930lxyhpjqfof.jpg"
@@ -169,7 +170,7 @@ users = [
       password: '123456',
       first_name: "Nicolas",
       last_name: "Chevalier",
-      description: "Hey I'm Nicolas Chevalier!;)",
+      description: "Hey I'm Nicolas Chevalier! ;)",
       date_of_birth: "17/11/1993".to_date
     },
     "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597852803/ynwdfogs8xfmzqonmo2f.jpg"
@@ -179,7 +180,7 @@ users = [
       email: "elsakrief@gmail.com",
       password: '123456',
       first_name: "Elsa",
-      last_name: "Krief",
+      last_name: "Kiefer",
       description: "Hey I'm Elsa Kiefer",
       date_of_birth: "17/11/1993".to_date
     },
@@ -191,7 +192,7 @@ users = [
       password: '123456',
       first_name: "Oceane",
       last_name: "Leroy",
-      description: "Hey I'm Oceane Leroy!;)",
+      description: "Hey I'm Oceane Leroy! ;)",
       date_of_birth: "17/11/1993".to_date
     },
     "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1597859853/hlm3ivjlz0tezolmvyvo.jpg"
@@ -202,7 +203,7 @@ users = [
       password: '123456',
       first_name: "Basile",
       last_name: "Quinchon",
-      description: "Hey I'm Basile Quinchon!;)",
+      description: "Hey I'm Basile Quinchon! ;)",
       date_of_birth: "17/11/1993".to_date
     },
     "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1574093268/su3s4sskyn9slfzihiez.jpg"
@@ -374,7 +375,7 @@ trips = [
 
   [
     {
-      title: "Bali: Sea, chill and sun ",
+      title: "Bali: Sea, chill and sun",
       description: "Discover Bali with great team mates ",
       country: "Indonesia",
       city: "Bali Mester, Daerah Khusus Ibukota Jakarta, Indonesia",
@@ -506,14 +507,14 @@ trips = [
   ],
   [
     {
-      title: "Japan style",
+      title: "Japan Style",
       description: "Let's enjoy a fun journey with mates",
       country: "Japan",
       city: "Tokyo, Japan",
       budget_min: 200,
       budget_max: 400,
-      departure_date: "15/08/2020".to_date,
-      return_date: "25/08/2020".to_date,
+      departure_date: "15/12/2020".to_date,
+      return_date: "25/12/2020".to_date,
       max_capacity: 4,
       user: User.all.sample,
       tag_list: ["Asia", "Cultural", "Party"]
@@ -546,8 +547,8 @@ trips = [
       city: "Kathmandu, Nepal",
       budget_min: 2000,
       budget_max: 3000,
-      departure_date: "10/06/2020".to_date,
-      return_date: "24/06/2020".to_date,
+      departure_date: "10/09/2020".to_date,
+      return_date: "24/10/2020".to_date,
       max_capacity: 4,
       user: User.all.sample,
       tag_list: ["Asia", "Adventure"]
@@ -561,13 +562,13 @@ trips = [
       country: "Cuba",
       budget_min: 2000,
       budget_max: 3000,
-      departure_date: "10/06/2020".to_date,
-      return_date: "24/06/2020".to_date,
+      departure_date: "10/10/2020".to_date,
+      return_date: "24/11/2020".to_date,
       max_capacity: 4,
       user: User.all.sample,
       tag_list: ["America", "Cultural", "Party"]
     },
-    "https://images.unsplash.com/photo-1531132734102-441c78aa0091?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
+    "https://images.unsplash.com/photo-1503192851959-c6da8ac80cff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2550&q=80"
   ],
 ]
 
@@ -576,10 +577,10 @@ trips.each do |trip|
   file = URI.open(trip.last)
   iterated_trip.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   iterated_trip.save!
-  Booking.create(trip_id: iterated_trip.id, user_id: iterated_trip.user.id, status:'accepted')
+  Booking.create(trip_id: iterated_trip.id, user_id: iterated_trip.user.id, status: 'accepted')
 end
 
-puts "Done !"
+puts "Done!"
 
 
 
@@ -589,7 +590,7 @@ puts "Seeding bookings..."
 
 status = ["pending", "accepted", "declined", "cancelled"]
 
-10.times do
+20.times do
 # vérifie que que le trip n'est pas plein, sinon on en prend un autre au hasard
   trip = Trip.all.sample
   until trip.max_capacity > trip.users.count
