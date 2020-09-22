@@ -8,6 +8,7 @@ gem 'cloudinary', '~> 1.12.0'
 gem 'geocoder'
 gem 'pg_search', '~> 2.3.0'
 gem 'acts_as_votable'
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 # =========================
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

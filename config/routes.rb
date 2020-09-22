@@ -38,7 +38,12 @@ Rails.application.routes.draw do
 
   resources :reviews, only: [:destroy]
 
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    member do
+      patch "follow", to: "users#follow"
+    end
+  end
+
   get "/dashboard", to: "users#dashboard", as: :dashboard
   get "/notifications", to: "notifications#index", as: :notifications
   patch "notifications/:id/read", to: "notifications#notification_read", as: "notification_read"

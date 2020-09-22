@@ -12,4 +12,8 @@ class UserPolicy < ApplicationPolicy
   def dashboard?
     true
   end
+
+  def follow?
+    true
+  end
 end

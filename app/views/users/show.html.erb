@@ -3,6 +3,15 @@
   <div class="bg-white p-4 rounded mb-3 text-center d-flex align-items-center" >
     <div class="user-col-left">
       <div class="user-info p-3" style="background-color: rgba(255, 255, 255, 0.4); border-radius: 20px; box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); position: relative; left: -10px;">
+        <% unless @user == current_user %>
+          <%= link_to follow_user_path, method: :patch, :action => 'go' do  %>
+            <% if current_user.following?(@user) %>
+              <i class="fas fa-user-minus" style="position: absolute; right: 10px";></i>
+            <% else %>
+              <i class="fas fa-user-plus" style="position: absolute; right: 10px;"></i>
+            <% end %>
+          <% end %>
+        <% end %>
         <% if @user.photo.attached? %>
           <p> <%= cl_image_tag @user.photo.key, class: "avatar-xl" %> </p>
         <% else %>
@@ -34,6 +43,16 @@
         </div>
       <% end %>
        <div class="user-info p-3" style="background-color: rgba(255, 255, 255, 0.4); border-radius: 20px; box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1); position: relative; left: -10px;">
+          <div class="d-flex justify-content-around">
+            <div class="followers">
+              <p style="margin-bottom: 0px; font-weight: bold;">Followers</p>
+              <p><%= @user.followers_count %></p>
+            </div>
+            <div class="followings">
+              <p style="margin-bottom: 0px; font-weight: bold;">Following</p>
+              <p><%= @user.follow_count %></p>
+            </div>
+          </div>
           <ul style= "margin: 0px; padding-left: 0px">
             <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
             <li class="list-inline-item"><a href="#"><i class="fab fa-facebook"></i></a></li>
