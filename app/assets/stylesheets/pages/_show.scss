@@ -121,6 +121,14 @@ a:hover {
     width: 75%;
 }
 
+i.fa-user-plus:hover {
+  color: $my-orange;
+}
+
+i.fa-user-minus:hover {
+  color: $my-grey;
+}
+
 // RAPH
 .posts-grid {
   display: grid;

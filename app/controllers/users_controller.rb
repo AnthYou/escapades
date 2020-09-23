@@ -34,6 +34,19 @@ class UsersController < ApplicationController
     authorize @user
   end
 
+  def follow
+    @user = User.find(params[:id])
+    if current_user.following?(@user)
+      current_user.stop_following(@user)
+      flash[:alert] = "You have unfollowed #{@user.first_name}."
+    else
+      current_user.follow(@user)
+      flash[:notice] = "You are now following #{@user.first_name}."
+    end
+    redirect_to user_path(@user)
+    authorize @user
+  end
+
   private
 
   def user_params

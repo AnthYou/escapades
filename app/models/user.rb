@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   acts_as_voter
+  acts_as_follower
+  acts_as_followable
   has_one_attached :photo
   validates :photo, presence: true
   has_many :trips, dependent: :destroy

@@ -1,7 +1,6 @@
 const initUpdateNavbarOnScroll = () => {
   const homepage = document.getElementById('pages-home');
   const logo = document.getElementById('logo');
-  console.log(logo.src);
 
   const navbar = document.querySelector('.navbar');
   const navbarSearchbar = document.querySelector('.navbar-searchbar');
