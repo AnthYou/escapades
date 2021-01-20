@@ -1,0 +1,12 @@
+cecile:
+  email: "ceciledezy@gmail.com"
+  first_name: "Cecile"
+  last_name: "Dezy"
+  description: "Hey I'm Cecile Dezy! ;)"
+  date_of_birth: <%= "17/11/1990".to_date %>
+kenza:
+  email: "kenzamahresi@official.com"
+  first_name: "Kenza"
+  last_name: "Mahresi"
+  description: "Hey I'm Kenza Mahresi!"
+  date_of_birth: <%= "07/06/1974".to_date %>

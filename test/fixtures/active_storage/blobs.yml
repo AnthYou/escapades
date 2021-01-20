@@ -1,0 +1,14 @@
+australias_picture_blob:
+  key: 3y5btkb1dp33rmj7v5g3nc9u5kba
+  filename: australia.jpg
+  content_type: image/jpg
+  metadata: '{"identified":true,"analyzed":true}'
+  byte_size: <%= File.size('tmp/storage/3y/5b/3y5btkb1dp33rmj7v5g3nc9u5kba') %>
+  checksum: Miv8gzUmk8WI8KEcWw+3Pw==
+new_yorks_picture_blob:
+  key: 3ovlxqbx60m0q1go30wj8ilt2x5j
+  filename: new_york.jpg
+  content_type: image/jpg
+  metadata: '{"identified":true,"analyzed":true}'
+  byte_size: <%= File.size('tmp/storage/3o/vl/3ovlxqbx60m0q1go30wj8ilt2x5j') %>
+  checksum: Hcd23mTBFJI6I5uKNCvM8g==
