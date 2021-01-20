@@ -1,9 +1,9 @@
 require "application_system_test_case"
 
 class HomesTest < ApplicationSystemTestCase
-  def setup
-    Rails.application.load_seed
-  end
+  # def setup
+  #   Rails.application.load_seed
+  # end
 
   test "visiting the index" do
     visit root_url
