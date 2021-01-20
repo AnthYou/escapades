@@ -2,7 +2,7 @@
   <div class="container d-flex flex-column justify-content-center align-items-center">
     <h1 class="mb-3">find the right trip with the right team.</h1>
     <!-- NB OF USERS -->
-    <p class="mb-3">there are <strong> <%= pluralize Trip.all.select{|trip| trip.joinable?}.count, "trip" %></strong> & <strong><%= User.count %> buddies </strong> waiting for you! 🥳</p>
+    <p class="text-center mb-3">there are <strong> <%= pluralize Trip.all.select{|trip| trip.joinable?}.count, "trip" %></strong> & <strong><%= User.count %> buddies </strong> waiting for you! 🥳</p>
     <%= form_tag trips_path, class: 'mt-3', method: :get do %>
       <div class="d-flex align-items-center">
         <%= text_field_tag :query,
