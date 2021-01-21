@@ -1,0 +1,8 @@
+australias_picture:
+  name: photo
+  record: australia (Trip)
+  blob: australias_picture_blob
+new_yorks_picture:
+  name: photo
+  record: new_york (Trip)
+  blob: new_yorks_picture_blob

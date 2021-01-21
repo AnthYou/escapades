@@ -1,0 +1,21 @@
+australia:
+  title: "Road trip in Australia"
+  description: "Amazing road trip for backpackers and nature lovers. We're gonna start our trip Melbourne and then go to Cairns and finally finish our journey in Darwin"
+  country: "Australia"
+  budget_min: 1500
+  budget_max: 2500
+  departure_date: <%= "21/07/2021".to_date %>
+  return_date: <%= "23/08/2021".to_date %>
+  max_capacity: 6
+  user: users(:cecile)
+new_york:
+  title: "Experience a magical christmas in New York"
+  description: "This christmas we'll go to New York. I'd like to with 3 people to discover the big apple"
+  country: "United States of America"
+  city: "New York, United States of America"
+  budget_min: 1000
+  budget_max: 2000
+  departure_date: <%= "20/12/2020".to_date %>
+  return_date: <%= "5/01/2021".to_date %>
+  max_capacity: 6
+  user: users(:kenza)
