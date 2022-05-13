@@ -1,9 +1,6 @@
 {
   "name": "escapades",
   "private": true,
-  "engines": {
-    "node": "14.15.4"
-  },
   "dependencies": {
     "@mapbox/mapbox-gl-geocoder": "^4.7.0",
     "@rails/actioncable": "^6.0.0",
